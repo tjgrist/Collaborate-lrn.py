@@ -1,1 +1,59 @@
-﻿ 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="f258ceea-3867-4fe2-aac2-04321e7447ef" name="UMLDiagram" linkedPackageId="55df078d-2d29-4621-8341-5885628c6e46" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="26427729-a650-4470-8e6a-ec2b40dea2f5">
+      <profileInstance Id="5bde0c56-c512-4a6d-83ff-709c41be4102" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="0929ec80-e3b5-48ab-a9c8-7b3521f27fa8">
+      <profileInstance Id="73f3a4aa-79d3-43f4-a53d-7da23293bd8e" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasPackages>
+      <package Id="a0a45117-093e-41f9-892d-836d47a9a763" name="ASP.net users">
+        <elementDefinition Id="f6472bdf-a943-479d-a667-9f42b8106db3" />
+        <packagedElements>
+          <packageHasNamedElement>
+            <class Id="7b1cbf79-02fd-43fd-a312-cc36cb6e949d" name="Educator" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="dab08b18-a756-4248-8027-d1aa53713e44" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="1d7d63bb-ec56-4db2-8fc9-eff3ad2dd13f" name="Student" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="3ba566bb-25d8-41f7-aa0c-162ee30f837d" />
+            </class>
+          </packageHasNamedElement>
+          <packageHasNamedElement>
+            <class Id="478db19a-26d1-4944-a2c0-1884c7653c18" name="Admin" isAbstract="false" isLeaf="false" isActiveClass="false">
+              <elementDefinition Id="960337b6-beb7-4fea-9f28-894e600f2a54" />
+            </class>
+          </packageHasNamedElement>
+        </packagedElements>
+      </package>
+    </logicalClassDesignerModelHasPackages>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cb1cf52c-a47a-4d40-a9dd-c34ea9e486ca" name="Tutorial" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="2b3072de-b301-4c46-9d78-ed49dabbaf06" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="771b6f06-5220-4600-84a4-f930506d7d7d" name="Quiz" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="88a4e4a0-0b60-4f25-bdb7-c965cad7f961" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="1d21abd5-1137-4cbc-9ac1-375efee1475d" name="Path" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="5bfdca37-463e-4984-8ad8-811d94b48ecf" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="55df078d-2d29-4621-8341-5885628c6e46" name="ModelingDiagram1.0">
+    <elementDefinition Id="2275c92a-a181-4eb7-b7a9-d77ab1478f3e" />
+  </package>
+</logicalClassDesignerModel>

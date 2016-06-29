@@ -16,8 +16,9 @@ namespace Collaborate_lrn_Py.Models
         public float Rating { get; set; }
 
         public virtual ICollection<Tutorial> Tutorials { get; set; }
-        public virtual string CreatorId { get; set; }
+
         [ForeignKey("Creator")]
+        public virtual string CreatorId { get; set; }
         public virtual ApplicationUser Creator { get; set; }
     }
 }

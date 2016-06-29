@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace Collaborate_lrn_Py.Models
 {
@@ -16,7 +17,13 @@ namespace Collaborate_lrn_Py.Models
             // Add custom user claims here
             return userIdentity;
         }
-    }
+        public virtual ICollection<Tutorial> Tutorials { get; set; }
+
+        public virtual ICollection<Path> Paths { get; set; }
+            
+
+}
+
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -29,5 +36,12 @@ namespace Collaborate_lrn_Py.Models
         {
             return new ApplicationDbContext();
         }
+
+        DbSet<Path> Paths { get; set; }
+        DbSet<Tutorial> Tutorials { get; set; }
+        DbSet<Quiz> Quizzes { get; set; }
+
+
+
     }
 }

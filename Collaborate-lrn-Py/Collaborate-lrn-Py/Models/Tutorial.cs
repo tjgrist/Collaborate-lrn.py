@@ -20,10 +20,10 @@ namespace Collaborate_lrn_Py.Models
         public List<string> BodyText { get; set; }
         [Display( Name = "Created:")]
         public DateTime CreationDate { get; set; }
-        public float Rating { get; set; }
+        public float? Rating { get; set; }
 
+        [ForeignKey("Educator")]
         public virtual string EducatorId { get; set; }
-        [ForeignKey("EducatorId")]
         public virtual ApplicationUser Educator { get; set; }
 
         public virtual ICollection<Quiz> Quizzes { get; set; }

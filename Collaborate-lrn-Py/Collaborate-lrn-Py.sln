@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborate-lrn-Py", "Colla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collaborate-lrn-Py.Tests", "Collaborate-lrn-Py.Tests\Collaborate-lrn-Py.Tests.csproj", "{0E73A963-8755-41BA-93DC-152D0A8B4B2B}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingDiagram1.0", "ModelingDiagram1.0\ModelingDiagram1.0.modelproj", "{6F5AA43B-2653-4895-AD93-77FBBBA1AE0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0E73A963-8755-41BA-93DC-152D0A8B4B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E73A963-8755-41BA-93DC-152D0A8B4B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E73A963-8755-41BA-93DC-152D0A8B4B2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F5AA43B-2653-4895-AD93-77FBBBA1AE0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5AA43B-2653-4895-AD93-77FBBBA1AE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5AA43B-2653-4895-AD93-77FBBBA1AE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5AA43B-2653-4895-AD93-77FBBBA1AE0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
