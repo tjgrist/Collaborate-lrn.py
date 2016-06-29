@@ -178,6 +178,10 @@
     <Compile Include="Migrations\201606292158560_initial.Designer.cs">
       <DependentUpon>201606292158560_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606292306339_roles.cs" />
+    <Compile Include="Migrations\201606292306339_roles.Designer.cs">
+      <DependentUpon>201606292306339_roles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -255,6 +259,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\ChooseRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +272,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606292158560_initial.resx">
       <DependentUpon>201606292158560_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606292306339_roles.resx">
+      <DependentUpon>201606292306339_roles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

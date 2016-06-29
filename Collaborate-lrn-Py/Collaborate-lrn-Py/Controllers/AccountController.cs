@@ -17,9 +17,11 @@ namespace Collaborate_lrn_Py.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db;
 
         public AccountController()
         {
+            db = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -138,7 +140,7 @@ namespace Collaborate_lrn_Py.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {
+        {                                         
             return View();
         }
 
@@ -151,21 +153,44 @@ namespace Collaborate_lrn_Py.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ChooseRole", "Account");
                 }
                 AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        [Authorize]
+        public ActionResult ChooseRole()
+        {
+            ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
+
+            return View();
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChooseRole(RegisterViewModel model)
+        {
+            if (ModelState.IsValid && model.UserRoles != null)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    await this.UserManager.AddToRoleAsync(User.Identity.GetUserId(), model.UserRoles);
+                    return RedirectToAction("Index", "Home");
+                }
+                ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
             }
 
             // If we got this far, something failed, redisplay form

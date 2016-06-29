@@ -70,7 +70,6 @@ namespace Collaborate_lrn_Py.Models
         public string Email { get; set; }
 
         [Required]
-        [EmailAddress]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
 
@@ -84,6 +83,9 @@ namespace Collaborate_lrn_Py.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "UserRoles")]
+        public string UserRoles { get; set; }
     }
 
     public class ResetPasswordViewModel
