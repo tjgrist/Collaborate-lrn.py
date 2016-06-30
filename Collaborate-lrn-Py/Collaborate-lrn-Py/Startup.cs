@@ -24,7 +24,7 @@ namespace Collaborate_lrn_Py
   
             if (!roleManager.RoleExists("Admin"))
             {  
-                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                var role = new IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);               
 

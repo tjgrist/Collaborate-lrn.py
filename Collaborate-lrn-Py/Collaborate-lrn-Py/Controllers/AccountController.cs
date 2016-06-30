@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Collaborate_lrn_Py.Models;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Collaborate_lrn_Py.Controllers
 {
@@ -140,7 +142,8 @@ namespace Collaborate_lrn_Py.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {                                         
+        {  
+             ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");                                       
             return View();
         }
 
@@ -153,49 +156,48 @@ namespace Collaborate_lrn_Py.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
-                    return RedirectToAction("ChooseRole", "Account");
-                }
-                AddErrors(result);
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
-
-        [Authorize]
-        public ActionResult ChooseRole()
-        {
-            ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
-
-            return View();
-        }
-
-        //
-        // POST: /Account/Register
-        [HttpPost]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ChooseRole(RegisterViewModel model)
-        {
-            if (ModelState.IsValid && model.UserRoles != null)
-            {
-                if (User.Identity.IsAuthenticated)
-                {
-                    await this.UserManager.AddToRoleAsync(User.Identity.GetUserId(), model.UserRoles);
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     return RedirectToAction("Index", "Home");
                 }
-                ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
+                ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
+                AddErrors(result);
             }
-
+            ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //[Authorize]
+        //public ActionResult ChooseRole()
+        //{
+        //    ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
+        //    IEnumerable<SelectListItem> roles = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
+        //    ViewData["Roles"] = roles;
+        //    return View();
+        //}
+
+        ////
+        //// POST: /Account/ChooseRole
+        //[HttpPost]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ChooseRole(RegisterViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        await this.UserManager.AddToRoleAsync(User.Identity.GetUserId(), model.UserRoles);
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
+            
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // GET: /Account/ConfirmEmail
