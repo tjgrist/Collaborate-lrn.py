@@ -37,11 +37,8 @@ namespace Collaborate_lrn_Py.Models
             return new ApplicationDbContext();
         }
 
-        DbSet<Path> Paths { get; set; }
-        DbSet<Tutorial> Tutorials { get; set; }
-        DbSet<Quiz> Quizzes { get; set; }
-
-
-
+        public DbSet<Path> Paths { get; set; }
+        public DbSet<Tutorial> Tutorials { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
     }
 }
