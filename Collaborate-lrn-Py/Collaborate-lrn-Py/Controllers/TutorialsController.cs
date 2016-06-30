@@ -18,7 +18,8 @@ namespace Collaborate_lrn_Py.Controllers
         // GET: Tutorials
         public ActionResult Index()
         {
-            return View(db.Tutorials.ToList());
+            var publishedTutorials = db.Tutorials.Where(x => x.Published == true).ToList();
+            return View(publishedTutorials);
         }
 
         // GET: Tutorials/Details/5
@@ -126,6 +127,27 @@ namespace Collaborate_lrn_Py.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Authorize(Roles = "Educator")]
+        public ActionResult Publish(int? id)
+        {
+            //need to make sure somewhere it's the proper editor
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tutorial tutorial = db.Tutorials.Find(id);
+            if (tutorial == null)
+            {
+                return HttpNotFound();
+            }
+            if(tutorial != null)
+            {
+                db.Entry(tutorial).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(tutorial);
+        }      
 
         protected override void Dispose(bool disposing)
         {
