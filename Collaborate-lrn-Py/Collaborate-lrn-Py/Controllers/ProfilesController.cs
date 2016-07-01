@@ -11,7 +11,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Collaborate_lrn_Py.Controllers
 {
-    public class ApplicationUsersController : Controller
+    public class ProfilesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
