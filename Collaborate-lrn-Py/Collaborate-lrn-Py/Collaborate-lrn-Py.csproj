@@ -169,8 +169,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TutorialsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +191,7 @@
     <Compile Include="Models\Path.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\Tutorial.cs" />
+    <Compile Include="Models\TutorialViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -260,9 +263,15 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\ChooseRole.cshtml" />
+    <Content Include="Views\Tutorials\Delete.cshtml" />
+    <Content Include="Views\Tutorials\Details.cshtml" />
+    <Content Include="Views\Tutorials\Edit.cshtml" />
+    <Content Include="Views\Tutorials\Index.cshtml" />
+    <Content Include="Views\Tutorials\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ApplicationUsers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

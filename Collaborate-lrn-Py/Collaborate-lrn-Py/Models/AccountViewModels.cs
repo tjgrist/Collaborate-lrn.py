@@ -50,7 +50,6 @@ namespace Collaborate_lrn_Py.Models
     {
         [Required]
         [Display(Name = "User Name")]
-        [EmailAddress]
         public string UserName { get; set; }
 
         [Required]
@@ -87,6 +86,8 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         [Display(Name = "UserRoles")]
         public string UserRoles { get; set; }
+
+        //consider using something like this instead: public ICollection<SelectListItem> Roles { get; set; }
     }
 
     public class ResetPasswordViewModel
