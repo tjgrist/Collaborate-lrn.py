@@ -130,23 +130,28 @@ namespace Collaborate_lrn_Py.Controllers
         [Authorize(Roles = "Educator")]
         public ActionResult Publish(int? id)
         {
-            //need to make sure somewhere it's the proper editor
-            if (id == null)
+            //need to make sure somewhere it's the proper publisher
+            using (var db = new ApplicationDbContext())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Tutorial tutorial = db.Tutorials.Find(id);
+                if (tutorial == null)
+                {
+                    return HttpNotFound();
+                }
+                if (tutorial != null)
+                {
+                    //tutorial.Quiz = null;
+                    tutorial.Published = true;
+                    db.Entry(tutorial).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return View("Index");
+                }
             }
-            Tutorial tutorial = db.Tutorials.Find(id);
-            if (tutorial == null)
-            {
-                return HttpNotFound();
-            }
-            if(tutorial != null)
-            {
-                db.Entry(tutorial).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(tutorial);
+            return RedirectToAction("Profile", "Profiles");
         }      
 
         protected override void Dispose(bool disposing)

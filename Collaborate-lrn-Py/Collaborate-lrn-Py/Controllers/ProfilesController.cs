@@ -25,7 +25,8 @@ namespace Collaborate_lrn_Py.Controllers
         public new ActionResult Profile()
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
-            return View(currentUser);
+            var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
+            return PartialView("_ProfileTutorials", educatorsTutorials);
         }
 
         // GET: ApplicationUsers/Edit/5
