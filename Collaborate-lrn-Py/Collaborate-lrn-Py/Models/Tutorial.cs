@@ -35,10 +35,7 @@ namespace Collaborate_lrn_Py.Models
         public virtual string EducatorId { get; set; }
         public virtual ApplicationUser Educator { get; set; }
 
-        [ForeignKey("Quiz")]
-        public virtual int QuizId { get; set; }
-        public virtual Quiz Quiz { get; set; }
-
+ 
 
     }
 }

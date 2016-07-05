@@ -39,14 +39,14 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Tutorials/Create
-        [Authorize]
+        //[Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Tutorials/Create
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(TutorialViewModel model)

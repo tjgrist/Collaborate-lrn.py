@@ -18,7 +18,6 @@ namespace Collaborate_lrn_Py.Models
         public string BodyText { get; set; }
 
         //consider adding a simple function that returns the user that creates the tutorial.
-
         public virtual ICollection<Quiz> Quizzes { get; set; }
     }
 }

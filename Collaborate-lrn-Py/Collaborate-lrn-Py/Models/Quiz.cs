@@ -19,5 +19,8 @@ namespace Collaborate_lrn_Py.Models
         public virtual string EducatorId { get; set; }
         public virtual ApplicationUser Educator { get; set; }
 
+        [ForeignKey("Tutorial")]
+        public virtual int TutorialId { get; set; }
+        public virtual Tutorial Tutorial { get; set; }
     }
 }

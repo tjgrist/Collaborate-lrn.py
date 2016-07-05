@@ -192,6 +192,10 @@
     <Compile Include="Migrations\201607051949502_bodytext.Designer.cs">
       <DependentUpon>201607051949502_bodytext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607052116497_quiztable.cs" />
+    <Compile Include="Migrations\201607052116497_quiztable.Designer.cs">
+      <DependentUpon>201607052116497_quiztable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -299,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607051949502_bodytext.resx">
       <DependentUpon>201607051949502_bodytext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607052116497_quiztable.resx">
+      <DependentUpon>201607052116497_quiztable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
