@@ -16,7 +16,6 @@ namespace Collaborate_lrn_Py.Models
         public string Description { get; set; }
         [Required]
         public string Difficulty { get; set; }
-        [Required]
         public ICollection<string> BodyText { get; set; }
         [Display( Name = "Created:")]
         public DateTime CreationDate { get; set; }
@@ -27,7 +26,7 @@ namespace Collaborate_lrn_Py.Models
         public virtual string EducatorId { get; set; }
         public virtual ApplicationUser Educator { get; set; }
 
-        public virtual ICollection<Quiz> Quizzes { get; set; }
+        //public virtual ICollection<Quiz> Quizzes { get; set; }
 
 
     }

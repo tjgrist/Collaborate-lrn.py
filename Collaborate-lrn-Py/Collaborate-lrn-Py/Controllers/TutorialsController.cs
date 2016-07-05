@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity.Validation;
 
 namespace Collaborate_lrn_Py.Controllers
 {
@@ -127,10 +128,13 @@ namespace Collaborate_lrn_Py.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         [Authorize(Roles = "Educator")]
         public ActionResult Publish(int? id)
         {
             //need to make sure somewhere it's the proper publisher
+            //At db.savechanges this method breaks due to an entityState error. 
+            //I believe the problem is with the Quizzes on the Tutorial model class.
             using (var db = new ApplicationDbContext())
             {
                 if (id == null)
@@ -144,11 +148,28 @@ namespace Collaborate_lrn_Py.Controllers
                 }
                 if (tutorial != null)
                 {
-                    //tutorial.Quiz = null;
-                    tutorial.Published = true;
-                    db.Entry(tutorial).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return View("Index");
+                    try
+                    {
+                        //tutorial.Quiz = null;
+                        tutorial.Published = true;
+                        db.Entry(tutorial).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    catch (DbEntityValidationException dbEx)
+                    {
+                        foreach (var eve in dbEx.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                        throw;
+                    }
                 }
             }
             return RedirectToAction("Profile", "Profiles");
