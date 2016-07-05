@@ -12,6 +12,7 @@ namespace Collaborate_lrn_Py.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
         public string Instruction { get; set; }
 
         [ForeignKey("Educator")]

@@ -49,7 +49,7 @@ namespace Collaborate_lrn_Py.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User Name")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
@@ -69,7 +69,7 @@ namespace Collaborate_lrn_Py.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "User Name")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]

@@ -39,7 +39,7 @@ namespace Collaborate_lrn_Py.Models
 
         public DbSet<Path> Paths { get; set; }
         public DbSet<Tutorial> Tutorials { get; set; }
-        //public DbSet<Quiz> Quizzes { get; set; }
+        public DbSet<Quiz> Quizzes { get; set; }
 
     }
 }

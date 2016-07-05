@@ -39,15 +39,14 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Tutorials/Create
-        [Authorize(Roles = "Educator")]
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Tutorials/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(TutorialViewModel model)
@@ -84,7 +83,12 @@ namespace Collaborate_lrn_Py.Controllers
             {
                 return HttpNotFound();
             }
-            return View(tutorial);
+            if (tutorial.EducatorId == User.Identity.GetUserId())
+            {
+                return View(tutorial);
+            }
+            ViewBag.Message = "You cannot edit that tutorial.";
+            return RedirectToAction("Index", ViewBag.Message);
         }
 
         // POST: Tutorials/Edit/5
@@ -92,7 +96,7 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Description,Difficulty,CreationDate,Rating,EducatorId")] Tutorial tutorial)
+        public ActionResult Edit([Bind(Include = "Title,Description,Difficulty,CreationDate,Rating")] Tutorial tutorial)
         {
             if (ModelState.IsValid)
             {

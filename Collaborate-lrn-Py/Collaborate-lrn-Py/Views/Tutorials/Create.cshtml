@@ -1,12 +1,12 @@
 ﻿@model Collaborate_lrn_Py.Models.TutorialViewModel
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create a New Tutorial.";
 }
 
 @using (Html.BeginForm("Create", "Tutorials", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <h4>@ViewBag.Title</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
@@ -30,7 +30,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.BodyText, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-           @Html.TextAreaFor(m => m.BodyText, new { @class = "form-control", @rows = 5 })
+           @Html.TextAreaFor(m => m.BodyText, new { @class = "form-control", @rows = 12 })
         </div>
     </div>
 
