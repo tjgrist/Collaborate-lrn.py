@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Collaborate_lrn_Py.Controllers
 {
@@ -37,9 +38,12 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Quiz/Create
+        [Authorize]
         public ActionResult Create()
         {
-            ViewBag.TutorialId = new SelectList(db.Tutorials, "ID", "Title");
+            var user = User.Identity.GetUserId();
+            ViewBag.SelectTutorial = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
+            //do something to link tutID and quizID
             return View();
         }
 
@@ -48,17 +52,22 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Instruction,EducatorId,TutorialId")] Quiz quiz)
+        public ActionResult Create([Bind(Include = "Name,Instruction,TutorialId")] QuizViewModel model)
         {
             if (ModelState.IsValid)
             {
+                Quiz quiz = new Quiz
+                {
+                    Name = model.Name,
+                    Instruction = model.Instruction,
+                    EducatorId = User.Identity.GetUserId(),
+                    Tutorial = model.TutorialSelection
+                };
                 db.Quiz.Add(quiz);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.TutorialId = new SelectList(db.Tutorials, "ID", "Title", quiz.TutorialId);
-            return View(quiz);
+            return View();
         }
 
         // GET: Quiz/Edit/5

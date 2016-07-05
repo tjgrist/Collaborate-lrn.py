@@ -16,13 +16,7 @@
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Difficulty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Rating)
@@ -42,13 +36,7 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Difficulty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rating)
@@ -59,7 +47,8 @@
         <td>
             @Html.ActionLink("Publish", "Publish", "Tutorials", new { id=item.ID }, null) |
             @Html.ActionLink("Details", "Details", "Tutorials", new { id=item.ID }, null) |
-            @Html.ActionLink("Delete", "Delete", "Tutorials", new { id=item.ID }, null)
+            @Html.ActionLink("Delete", "Delete", "Tutorials", new { id=item.ID }, null) |
+            @Html.ActionLink("Add a Quiz", "Create", "Quiz")
         </td>
     </tr>
 }

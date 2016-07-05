@@ -20,9 +20,11 @@ namespace Collaborate_lrn_Py.Models
         public virtual ICollection<Tutorial> Tutorials { get; set; }
 
         public virtual ICollection<Path> Paths { get; set; }
-            
 
-}
+        public int Points { get; set; }
+
+
+    }
 
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

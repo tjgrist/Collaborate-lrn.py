@@ -197,12 +197,17 @@
     <Compile Include="Migrations\201607052116497_quiztable.Designer.cs">
       <DependentUpon>201607052116497_quiztable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607052151113_add user points.cs" />
+    <Compile Include="Migrations\201607052151113_add user points.Designer.cs">
+      <DependentUpon>201607052151113_add user points.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
     <Compile Include="Models\Quiz.cs" />
+    <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Models\Tutorial.cs" />
     <Compile Include="Models\TutorialViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -281,12 +286,13 @@
     <Content Include="Views\Tutorials\Edit.cshtml" />
     <Content Include="Views\Tutorials\Index.cshtml" />
     <Content Include="Views\Tutorials\Create.cshtml" />
-    <Content Include="Views\Profiles\Index.cshtml" />
-    <Content Include="Views\Profiles\_ProfileTutorials.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\_ProfileTutorials.cshtml" />
+    <Content Include="Views\Shared\_CreateQuiz.cshtml" />
+    <Content Include="Views\Quiz\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Quiz\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607052116497_quiztable.resx">
       <DependentUpon>201607052116497_quiztable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607052151113_add user points.resx">
+      <DependentUpon>201607052151113_add user points.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
