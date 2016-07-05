@@ -156,7 +156,7 @@ namespace Collaborate_lrn_Py.Controllers
         {
             if (ModelState.IsValid && model.UserRoles != null)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
