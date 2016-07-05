@@ -11,18 +11,12 @@ using Microsoft.AspNet.Identity;
 
 namespace Collaborate_lrn_Py.Controllers
 {
-    public class ProfilesController : Controller
+    public class ProfileController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ApplicationUsers
-        public ActionResult Index()
-        {
-            return View(db.Users.ToList());
-        }
-
         [Authorize]
-        public new ActionResult Profile()
+        public ActionResult Index()
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
             var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
