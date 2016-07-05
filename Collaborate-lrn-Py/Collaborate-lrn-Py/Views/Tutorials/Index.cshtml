@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Collaborate_lrn_Py.Models.Tutorial>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tutorials on PyOrial";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Educator.Email)
+            @Html.DisplayNameFor(model => model.Educator.UserName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -35,7 +35,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Educator.Email)
+            @Html.DisplayFor(modelItem => item.Educator.UserName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -53,8 +53,7 @@
             @Html.DisplayFor(modelItem => item.Rating)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Publish", "Publish", new { id = item.ID })
+            @Html.ActionLink("Details", "Details", new { id=item.ID })
         </td>
     </tr>
 }

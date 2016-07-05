@@ -10,17 +10,26 @@ namespace Collaborate_lrn_Py.Models
     public class Tutorial
     {
         public int ID { get; set; }
+
         [Required]
         public string Title { get; set; }
+
         [Required]
         public string Description { get; set; }
+
         [Required]
         public string Difficulty { get; set; }
-        public ICollection<string> BodyText { get; set; }
+
+        [Display(Name = "Instructions")]
+        public string BodyText { get; set; }
+
         [Display( Name = "Created:")]
         public DateTime CreationDate { get; set; }
+
         public float? Rating { get; set; }
+
         public bool Published { get; set; }
+
 
         [ForeignKey("Educator")]
         public virtual string EducatorId { get; set; }

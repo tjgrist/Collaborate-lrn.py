@@ -15,7 +15,7 @@ namespace Collaborate_lrn_Py.Models
         public string Difficulty { get; set; }
         [Required]
         [Display(Name = "Instructions")]
-        public ICollection<string> BodyText { get; set; }
+        public string BodyText { get; set; }
 
         //consider adding a simple function that returns the user that creates the tutorial.
 
