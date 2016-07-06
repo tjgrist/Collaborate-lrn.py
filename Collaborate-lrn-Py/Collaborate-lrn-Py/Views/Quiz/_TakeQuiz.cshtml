@@ -1,0 +1,32 @@
+﻿@model Collaborate_lrn_Py.Models.Quiz
+
+@{ 
+    ViewBag.Title = Model.Name;
+}
+<div>
+    <h4>@ViewBag.Title</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Goal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instruction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instruction)
+        </dd>
+        
+        Put the JS Python linter here.
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

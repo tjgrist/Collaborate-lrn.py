@@ -1,0 +1,35 @@
+﻿@model Collaborate_lrn_Py.Models.TutQuizViewModel
+
+@{
+    ViewBag.Title = Model.ModelTutorial.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Tutorial</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelTutorial.BodyText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelTutorial.BodyText)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@{
+    if (Model.ModelQuiz != null)
+    {
+        <div>@Html.Partial("~/Views/Quiz/_TakeQuiz.cshtml", Model.ModelQuiz)</div>
+    }
+    else
+    {
+        <div>@ViewBag.Message</div>
+    }
+}

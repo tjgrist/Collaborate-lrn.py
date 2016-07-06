@@ -53,7 +53,6 @@ namespace Collaborate_lrn_Py.Controllers
         {
             if (ModelState.IsValid)
             {
-                //do creation logic
                 var tutorial = new Tutorial
                 {
                     Title = model.Title,
@@ -176,7 +175,7 @@ namespace Collaborate_lrn_Py.Controllers
             return RedirectToAction("Profile", "Profiles");
         }   
         [Authorize]
-        public ActionResult Practice(int? id)
+        public ActionResult TakeTutorial(int? id)
         {
             if (id == null)
             {
@@ -189,7 +188,21 @@ namespace Collaborate_lrn_Py.Controllers
             }
             if (tutorial != null)
             {
-                return View(tutorial);
+                TutQuizViewModel model = new TutQuizViewModel() { ModelTutorial = tutorial };
+                try
+                {
+                    Quiz quiz = db.Quiz.First(x => x.TutorialId == tutorial.ID);
+                    model.ModelQuiz = quiz;
+                    return View(model);
+                }
+                catch (InvalidOperationException)
+                {
+                    ViewBag.Message = "There doesn't seem to be a quiz associated with this tutorial yet.";
+                    model.ModelQuiz = null;
+                    return View(model);
+                }
+
+                
             }
             return View();
         }   

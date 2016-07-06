@@ -218,6 +218,7 @@
     <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Models\Tutorial.cs" />
     <Compile Include="Models\TutorialViewModel.cs" />
+    <Compile Include="Models\TutQuizViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -299,6 +300,8 @@
     <Content Include="Views\Shared\_CreateQuiz.cshtml" />
     <Content Include="Views\Quiz\Create.cshtml" />
     <Content Include="Views\Quiz\Index.cshtml" />
+    <Content Include="Views\Quiz\_TakeQuiz.cshtml" />
+    <Content Include="Views\Tutorials\TakeTutorial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

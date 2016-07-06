@@ -143,8 +143,7 @@ namespace Collaborate_lrn_Py.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewData["UserRoles"] = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
-            //ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");                                       
+            ViewData["UserRoles"] = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");                                     
             return View();
         }
 
@@ -166,11 +165,9 @@ namespace Collaborate_lrn_Py.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 ViewData["UserRoles"] = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
-                //ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
                 AddErrors(result);
             }
             ViewData["UserRoles"] = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
-            //ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
             // If we got this far, something failed, redisplay form
             return View(model);
         }
