@@ -17,7 +17,6 @@ namespace Collaborate_lrn_Py.Models
             // Add custom user claims here
             return userIdentity;
         }
-        public virtual ICollection<Tutorial> Tutorials { get; set; }
 
         public virtual ICollection<Path> Paths { get; set; }
 

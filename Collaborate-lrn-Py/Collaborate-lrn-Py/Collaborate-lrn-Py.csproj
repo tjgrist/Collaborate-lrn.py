@@ -201,6 +201,14 @@
     <Compile Include="Migrations\201607052151113_add user points.Designer.cs">
       <DependentUpon>201607052151113_add user points.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607061854250_rm tutorial icollection for user.cs" />
+    <Compile Include="Migrations\201607061854250_rm tutorial icollection for user.Designer.cs">
+      <DependentUpon>201607061854250_rm tutorial icollection for user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607061857263_rm collaborator column tutorial.cs" />
+    <Compile Include="Migrations\201607061857263_rm collaborator column tutorial.Designer.cs">
+      <DependentUpon>201607061857263_rm collaborator column tutorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -318,6 +326,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607052151113_add user points.resx">
       <DependentUpon>201607052151113_add user points.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607061854250_rm tutorial icollection for user.resx">
+      <DependentUpon>201607061854250_rm tutorial icollection for user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607061857263_rm collaborator column tutorial.resx">
+      <DependentUpon>201607061857263_rm collaborator column tutorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
