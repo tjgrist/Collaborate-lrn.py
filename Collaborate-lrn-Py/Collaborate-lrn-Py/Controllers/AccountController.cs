@@ -142,8 +142,9 @@ namespace Collaborate_lrn_Py.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {  
-             ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");                                       
+        {
+            ViewData["UserRoles"] = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
+            //ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");                                       
             return View();
         }
 
@@ -164,10 +165,12 @@ namespace Collaborate_lrn_Py.Controllers
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     return RedirectToAction("Index", "Home");
                 }
-                ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
+                ViewData["UserRoles"] = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
+                //ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
                 AddErrors(result);
             }
-            ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
+            ViewData["UserRoles"] = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
+            //ViewBag.Role = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
             // If we got this far, something failed, redisplay form
             return View(model);
         }

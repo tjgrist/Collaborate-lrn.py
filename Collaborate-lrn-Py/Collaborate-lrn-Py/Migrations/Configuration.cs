@@ -9,7 +9,7 @@ namespace Collaborate_lrn_Py.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(Collaborate_lrn_Py.Models.ApplicationDbContext context)
