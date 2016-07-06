@@ -10,9 +10,9 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.Label("For which tutorial would you like to add a quiz?", new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.TutorialSelection, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownList("Tutorials", (SelectList)ViewBag.SelectTutorial, " ")
+            @Html.DropDownList("TutorialSelection")
         </div>
     </div>
     <div class="form-group">
@@ -22,24 +22,24 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Instruction, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Goal, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextAreaFor(m => m.Instruction, new { @class = "form-control" })
-        </div>
-    </div>
-
-    @*<div class="form-group">
-        @Html.LabelFor(m => m.Difficulty, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Difficulty, new { @class = "form-control" })
+            @Html.TextAreaFor(m => m.Goal, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.BodyText, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.Instruction, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextAreaFor(m => m.BodyText, new { @class = "form-control", @rows = 12 })
+            @Html.TextAreaFor(m => m.Instruction, new { @class = "form-control", @rows = 12 })
         </div>
-    </div>*@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ExpectedOutput, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.ExpectedOutput, new { @class = "form-control" })
+        </div>
+    </div>
 
     //Add a partial view here and do a foreach loop for each quiz that has a link to each quiz page.
 

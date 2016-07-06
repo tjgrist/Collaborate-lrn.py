@@ -137,8 +137,6 @@ namespace Collaborate_lrn_Py.Controllers
         public ActionResult Publish(int? id)
         {
             //need to make sure somewhere it's the proper publisher
-            //At db.savechanges this method breaks due to an entityState error. 
-            //I believe the problem is with the Quizzes on the Tutorial model class.
             using (var db = new ApplicationDbContext())
             {
                 if (id == null)
@@ -154,7 +152,6 @@ namespace Collaborate_lrn_Py.Controllers
                 {
                     try
                     {
-                        //tutorial.Quiz = null;
                         tutorial.Published = true;
                         db.Entry(tutorial).State = EntityState.Modified;
                         db.SaveChanges();
@@ -177,7 +174,25 @@ namespace Collaborate_lrn_Py.Controllers
                 }
             }
             return RedirectToAction("Profile", "Profiles");
-        }      
+        }   
+        [Authorize]
+        public ActionResult Practice(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tutorial tutorial = db.Tutorials.Find(id);
+            if (tutorial == null)
+            {
+                return HttpNotFound();
+            }
+            if (tutorial != null)
+            {
+                return View(tutorial);
+            }
+            return View();
+        }   
 
         protected override void Dispose(bool disposing)
         {

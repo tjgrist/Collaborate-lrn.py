@@ -18,8 +18,8 @@ namespace Collaborate_lrn_Py.Controllers
         // GET: Quiz
         public ActionResult Index()
         {
-            var quiz = db.Quiz.Include(q => q.Educator).Include(q => q.Tutorial);
-            return View(quiz.ToList());
+            var quiz = db.Quiz.ToList();
+            return View(quiz);
         }
 
         // GET: Quiz/Details/5
@@ -42,7 +42,7 @@ namespace Collaborate_lrn_Py.Controllers
         public ActionResult Create()
         {
             var user = User.Identity.GetUserId();
-            ViewBag.SelectTutorial = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
+            ViewData["TutorialSelection"] = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
             //do something to link tutID and quizID
             return View();
         }
@@ -52,21 +52,30 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Instruction,TutorialId")] QuizViewModel model)
+        public ActionResult Create(QuizViewModel model)
         {
+            var user = User.Identity.GetUserId();
+            if (model.TutorialSelection == null)
+            {
+                ViewData["TutorialSelection"] = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 Quiz quiz = new Quiz
                 {
+                    TutorialId = db.Tutorials.First(x => x.Title == model.TutorialSelection).ID,
                     Name = model.Name,
                     Instruction = model.Instruction,
                     EducatorId = User.Identity.GetUserId(),
-                    Tutorial = model.TutorialSelection
+                    Goal = model.Goal,
+                    ExpectedOutput = model.ExpectedOutput
                 };
                 db.Quiz.Add(quiz);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewData["TutorialSelection"] = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
             return View();
         }
 

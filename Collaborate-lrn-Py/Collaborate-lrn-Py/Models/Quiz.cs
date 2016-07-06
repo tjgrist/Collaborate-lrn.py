@@ -15,6 +15,10 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         public string Instruction { get; set; }
 
+        public string Goal { get; set; }
+
+        public string ExpectedOutput { get; set; }
+
         [ForeignKey("Educator")]
         public virtual string EducatorId { get; set; }
         public virtual ApplicationUser Educator { get; set; }

@@ -12,11 +12,14 @@ namespace Collaborate_lrn_Py.Models
         public string Name { get; set; }
         [Required]
         public string Instruction { get; set; }
+        [Required]
+        public string Goal { get; set; }
+
+        [Display(Name = "What should the output of the user's code be?")]
+        public string ExpectedOutput { get; set; }
 
         [Required]
-        [Display(Name = "Tutorials")]
-        public Tutorial TutorialSelection { get; set; }
-
-        public string ExpectedOutput { get; set; }
+        [Display(Name = "Tutorial Name")]
+        public string TutorialSelection { get; set; }
     }
 }
