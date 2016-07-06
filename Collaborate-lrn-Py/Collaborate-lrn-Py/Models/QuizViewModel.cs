@@ -16,5 +16,7 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         [Display(Name = "Tutorials")]
         public Tutorial TutorialSelection { get; set; }
+
+        public string ExpectedOutput { get; set; }
     }
 }
