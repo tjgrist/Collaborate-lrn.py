@@ -52,6 +52,11 @@ namespace Collaborate_lrn_Py.Controllers
             return View(applicationUser);
         }
 
+        public ActionResult Linter()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

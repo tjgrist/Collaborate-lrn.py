@@ -48,9 +48,10 @@
             @Html.ActionLink("Publish", "Publish", "Tutorials", new { id=item.ID }, null) |
             @Html.ActionLink("Details", "Details", "Tutorials", new { id=item.ID }, null) |
             @Html.ActionLink("Delete", "Delete", "Tutorials", new { id=item.ID }, null) |
-            @Html.ActionLink("Add a Quiz", "Create", "Quiz")
         </td>
     </tr>
 }
-
 </table>
+
+<p>@Html.ActionLink("Add a Quiz", "Create", "Quiz")</p>
+<p>@Html.ActionLink("Linter", "Linter")</p>

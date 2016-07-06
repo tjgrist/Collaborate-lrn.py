@@ -22,10 +22,17 @@
         <dd>
             @Html.DisplayFor(model => model.Instruction)
         </dd>
-        
-        Put the JS Python linter here.
-
     </dl>
+    <h3>Try It:</h3>
+        <form>
+            <textarea id="yourcode" cols="40" rows="10">
+print("Hello World")
+            </textarea><br />
+            <button type="button" onclick="runit()">Run</button>
+        </form>
+    <pre id="output"></pre>
+    <!-- If you want turtle graphics include a canvas -->
+    <div id="mycanvas"></div> 
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")

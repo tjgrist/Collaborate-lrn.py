@@ -242,6 +242,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\browserpy.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -295,7 +296,7 @@
     <Content Include="Views\Tutorials\Edit.cshtml" />
     <Content Include="Views\Tutorials\Index.cshtml" />
     <Content Include="Views\Tutorials\Create.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\Linter.cshtml" />
     <Content Include="Views\Profile\_ProfileTutorials.cshtml" />
     <Content Include="Views\Shared\_CreateQuiz.cshtml" />
     <Content Include="Views\Quiz\Create.cshtml" />
