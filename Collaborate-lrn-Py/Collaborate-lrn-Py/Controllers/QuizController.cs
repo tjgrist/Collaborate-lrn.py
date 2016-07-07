@@ -78,6 +78,13 @@ namespace Collaborate_lrn_Py.Controllers
             ViewData["TutorialSelection"] = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
             return View();
         }
+        [HttpPost]
+        public ActionResult Grade(string s)
+        {
+            ViewBag.Message = "Good Job!";
+            return PartialView("_Grade");
+        }
+
 
         // GET: Quiz/Edit/5
         public ActionResult Edit(int? id)

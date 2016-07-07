@@ -70,6 +70,13 @@ namespace Collaborate_lrn_Py.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public PartialViewResult Grade(string m)
+        {
+            ViewBag.Message = "Good Job!";
+            return PartialView("_Grade");
+        }
+
         // GET: Tutorials/Edit/5
         public ActionResult Edit(int? id)
         {
