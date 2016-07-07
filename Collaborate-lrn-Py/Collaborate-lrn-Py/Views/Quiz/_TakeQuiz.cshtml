@@ -24,7 +24,6 @@
         </dd>
     </dl>
 <script>
-    @*var correctAnswer = @Model.ExpectedOutput;*@
     function outf(text) {
         var mypre = document.getElementById("output");
         mypre.innerHTML = mypre.innerHTML + text;
@@ -36,22 +35,40 @@
     }
 
     function runit() {
-    var prog = document.getElementById("yourcode").value;
-    var mypre = document.getElementById("output");
-    mypre.innerHTML = '';
-    Sk.pre = "output";
-    Sk.configure({ output: outf, read: builtinRead });
-    (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
-    var myPromise = Sk.misceval.asyncToPromise(function () {
-        return Sk.importMainWithBody("<stdin>", false, prog, true);
-    });
-    myPromise.then(function (mod) {
-        console.log('success');
-    },
-        function (err) {
-            console.log(err.toString());
+        var prog = document.getElementById("yourcode").value;
+        var mypre = document.getElementById("output");
+        isCorrect(prog, mypre);
+        mypre.innerHTML = '';
+        Sk.pre = "output";
+        Sk.configure({ output: outf, read: builtinRead });
+        (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+        var myPromise = Sk.misceval.asyncToPromise(function () {
+            return Sk.importMainWithBody("<stdin>", false, prog, true);
         });
+        myPromise.then(function (mod) {
+            console.log('success');
+        },
+            function (err) {
+                console.log(err.toString());
+            });
     }
+    function isCorrect(prog, mypre) {
+        var stprog = prog.replace(/'/g, '');
+        console.log(stprog);
+        var correctAnswer = "@Model.ExpectedOutput";
+        if(stprog === correctAnswer){
+            console.log("correct!")
+            return true;
+        }
+        else{
+            console.log("hm...")
+            return false;
+        }
+        //String.prototype.replaceAll = function (search, replacement) {
+        //    var target = this;
+        //    return target.split(search).join(replacement);
+        //};
+    } 
 </script>
     <h3>Try It:</h3>
     <p>Remember to use four spaces instead of tabs when indenting.</p>
