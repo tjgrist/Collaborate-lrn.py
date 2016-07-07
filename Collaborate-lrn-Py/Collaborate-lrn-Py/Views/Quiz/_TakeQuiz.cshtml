@@ -52,11 +52,12 @@
                 console.log(err.toString());
             });
     }
-    function isCorrect(prog, mypre) {
+    function isCorrect(prog, outp) {
+        console.log(outp);
         var stprog = prog.replace(/'/g, '');
         console.log(stprog);
-        var correctAnswer = "@Model.ExpectedOutput";
-        if(stprog === correctAnswer){
+        var correctOutput = "@Model.ExpectedOutput";
+        if(stprog === correctOutput){
             console.log("correct!")
             return true;
         }
@@ -64,10 +65,6 @@
             console.log("hm...")
             return false;
         }
-        //String.prototype.replaceAll = function (search, replacement) {
-        //    var target = this;
-        //    return target.split(search).join(replacement);
-        //};
     } 
 </script>
     <h3>Try It:</h3>
