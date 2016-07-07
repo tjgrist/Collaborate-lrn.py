@@ -11,16 +11,16 @@ using Microsoft.AspNet.Identity;
 
 namespace Collaborate_lrn_Py.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [Authorize]
         public ActionResult Index()
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
             var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
-            return PartialView("_ProfileTutorials", educatorsTutorials);
+            return View("Profile", educatorsTutorials);
         }
 
         // GET: ApplicationUsers/Edit/5
@@ -41,7 +41,7 @@ namespace Collaborate_lrn_Py.Controllers
         // POST: Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public ActionResult Edit(ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
             {
@@ -51,7 +51,13 @@ namespace Collaborate_lrn_Py.Controllers
             }
             return View(applicationUser);
         }
-
+        
+        public ActionResult ShowQuiz()
+        {
+            var currentUser = db.Users.Find(User.Identity.GetUserId());
+            List<Quiz> educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();
+            return PartialView("_ProfileQuizzes", educatorsQuizzes);
+        }
         public ActionResult Linter()
         {
             return View();

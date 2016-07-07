@@ -303,6 +303,9 @@
     <Content Include="Views\Quiz\Index.cshtml" />
     <Content Include="Views\Quiz\_TakeQuiz.cshtml" />
     <Content Include="Views\Tutorials\TakeTutorial.cshtml" />
+    <Content Include="Views\Profile\_ProfileQuizzes.cshtml" />
+    <Content Include="Views\Profile\Profile.cshtml" />
+    <Content Include="Views\Quiz\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

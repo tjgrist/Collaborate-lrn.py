@@ -4,9 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Create a New Tutorial", "Create", "Tutorials")
-</p>
+<h3>Your Tutorials</h3>
 <table class="table">
     <tr>
         <th>
@@ -47,11 +45,13 @@
         <td>
             @Html.ActionLink("Publish", "Publish", "Tutorials", new { id=item.ID }, null) |
             @Html.ActionLink("Details", "Details", "Tutorials", new { id=item.ID }, null) |
-            @Html.ActionLink("Delete", "Delete", "Tutorials", new { id=item.ID }, null) |
+            @Html.ActionLink("Delete", "Delete", "Tutorials", new { id=item.ID }, null) 
         </td>
     </tr>
 }
 </table>
 
-<p>@Html.ActionLink("Add a Quiz", "Create", "Quiz")</p>
-<p>@Html.ActionLink("Linter", "Linter")</p>
+<p>
+    @Html.ActionLink("Create a New Tutorial", "Create", "Tutorials")
+</p>
+

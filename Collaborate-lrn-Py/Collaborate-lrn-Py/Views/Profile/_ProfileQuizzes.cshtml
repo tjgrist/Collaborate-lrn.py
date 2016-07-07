@@ -1,10 +1,15 @@
 ﻿@model IEnumerable<Collaborate_lrn_Py.Models.Quiz>
-@{ 
-    ViewBag.Title = "Available Quizzes";
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title</h2>
+
+<h3>Your Quizzes</h3>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Educator.UserName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Tutorial.Title)
         </th>
@@ -14,14 +19,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Goal)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Educator)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Educator.UserName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Tutorial.Title)
         </td>
@@ -32,9 +37,14 @@
             @Html.DisplayFor(modelItem => item.Goal)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Educator.UserName)
+            @Html.ActionLink("Edit", "Edit", "Quiz", new { id=item.Id }, null) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
 
 </table>
+
+<p>@Html.ActionLink("Add a Quiz", "Create", "Quiz")</p>
+<p>@Html.ActionLink("Linter", "Linter")</p>

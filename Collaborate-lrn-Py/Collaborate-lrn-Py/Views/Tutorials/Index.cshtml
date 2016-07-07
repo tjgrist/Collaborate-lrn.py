@@ -12,9 +12,7 @@
 <h4>@ViewBag.Message</h4>
 <table class="table">
     <tr>
-        <th>
-            Author
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -30,14 +28,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Rating)
         </th>
+        <th>Author</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Educator.UserName)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -52,6 +48,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Educator.UserName)
         </td>
         <td>
             @Html.ActionLink("Details", "Details", new { id=item.ID })

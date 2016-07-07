@@ -96,11 +96,9 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // POST: Quiz/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Instruction,EducatorId,TutorialId")] Quiz quiz)
+        public ActionResult Edit(Quiz quiz)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +106,6 @@ namespace Collaborate_lrn_Py.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TutorialId = new SelectList(db.Tutorials, "ID", "Title", quiz.TutorialId);
             return View(quiz);
         }
 
