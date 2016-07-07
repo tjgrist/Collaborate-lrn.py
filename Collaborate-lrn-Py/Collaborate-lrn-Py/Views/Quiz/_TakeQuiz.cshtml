@@ -102,16 +102,17 @@
     }
 </div>
 
-@*<div id="forma">
-    <h3>@ViewBag.Message</h3>
-    <form method="post" id="contactForm">
-        <textarea name="message" id="message"></textarea>
-        <input type="submit" />
-    </form>
-</div>*@
-
 @section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
 
+
+@*//$(function() {
+    //    $('#checkCode').click(function(){
+    //        var prog = document.getElementById("yourcode").value;
+    //        }
+    //    }*@
+    
     @*<script>
         $('#contactForm'.submit(function () {
             $.post('', { message: $('#message').val() })
@@ -121,10 +122,11 @@
             return false;
         }));
     </script>*@
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-}
-@*//$(function() {
-    //    $('#checkCode').click(function(){
-    //        var prog = document.getElementById("yourcode").value;
-    //        }
-    //    }*@
+    
+    @*<div id="forma">
+        <h3>@ViewBag.Message</h3>
+        <form method="post" id="contactForm">
+            <textarea name="message" id="message"></textarea>
+            <input type="submit" />
+        </form>
+    </div>*@
