@@ -23,6 +23,9 @@ namespace Collaborate_lrn_Py.Models
         [Display(Name = "Instructions")]
         public string BodyText { get; set; }
 
+        [Display(Name = "Sample Code")]
+        public string CodeSample { get; set; }
+
         [Display( Name = "Created:")]
         public DateTime CreationDate { get; set; }
 

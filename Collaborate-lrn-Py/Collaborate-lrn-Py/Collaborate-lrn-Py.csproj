@@ -446,6 +446,14 @@
     <Compile Include="Migrations\201607061857263_rm collaborator column tutorial.Designer.cs">
       <DependentUpon>201607061857263_rm collaborator column tutorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607081706034_answerfield to quiz.cs" />
+    <Compile Include="Migrations\201607081706034_answerfield to quiz.Designer.cs">
+      <DependentUpon>201607081706034_answerfield to quiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607081733227_addedcodesampletoTutorial.cs" />
+    <Compile Include="Migrations\201607081733227_addedcodesampletoTutorial.Designer.cs">
+      <DependentUpon>201607081733227_addedcodesampletoTutorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -588,6 +596,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607061857263_rm collaborator column tutorial.resx">
       <DependentUpon>201607061857263_rm collaborator column tutorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081706034_answerfield to quiz.resx">
+      <DependentUpon>201607081706034_answerfield to quiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081733227_addedcodesampletoTutorial.resx">
+      <DependentUpon>201607081733227_addedcodesampletoTutorial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

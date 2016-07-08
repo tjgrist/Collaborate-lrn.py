@@ -69,7 +69,8 @@ namespace Collaborate_lrn_Py.Controllers
                     Instruction = model.Instruction,
                     EducatorId = User.Identity.GetUserId(),
                     Goal = model.Goal,
-                    ExpectedOutput = model.ExpectedOutput
+                    ExpectedOutput = model.ExpectedOutput,
+                    Answer = model.Answer
                 };
                 db.Quiz.Add(quiz);
                 db.SaveChanges();

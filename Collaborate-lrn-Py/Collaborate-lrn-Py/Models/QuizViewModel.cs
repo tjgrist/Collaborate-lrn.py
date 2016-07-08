@@ -18,6 +18,9 @@ namespace Collaborate_lrn_Py.Models
         [Display(Name = "What should the output of the user's code be?")]
         public string ExpectedOutput { get; set; }
 
+        [Display(Name = "Example Answer")]
+        public string Answer { get; set; }
+
         [Required]
         [Display(Name = "Tutorial Name")]
         public string TutorialSelection { get; set; }

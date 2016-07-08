@@ -17,7 +17,13 @@
         <dd>
             @Html.DisplayFor(model => model.ModelTutorial.BodyText)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelTutorial.CodeSample)
+        </dt>
 
+        <dd>
+            <code>@Html.DisplayFor(model => model.ModelTutorial.CodeSample)</code>
+        </dd>
     </dl>
 </div>
 <p>
@@ -33,3 +39,4 @@
         <div>@ViewBag.Message</div>
     }
 }
+

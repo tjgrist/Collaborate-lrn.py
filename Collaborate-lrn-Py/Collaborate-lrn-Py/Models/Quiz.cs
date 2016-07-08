@@ -17,8 +17,11 @@ namespace Collaborate_lrn_Py.Models
 
         public string Goal { get; set; }
 
-        [Display(Name = "Desired output of Student's code")]
+        [Display(Name = "Desired output of Student's code:")]
         public string ExpectedOutput { get; set; }
+
+        [Display(Name = "Example Answer")]
+        public string Answer { get; set; }
 
         [ForeignKey("Educator")]
         public virtual string EducatorId { get; set; }

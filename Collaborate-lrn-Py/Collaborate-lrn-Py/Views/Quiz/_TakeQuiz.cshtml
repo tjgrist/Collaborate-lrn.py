@@ -24,6 +24,16 @@
             @Html.DisplayFor(model => model.Instruction)
         </dd>
     </dl>
+        <kbd id="Answer">@Html.DisplayFor(model => model.Answer)</kbd>
+    <script>
+        $(document).ready(function () {
+            $('#Answer').hide();
+            $('#answerbtn').click(function () {
+                $('#Answer').fadeIn();
+            });
+        });
+       
+    </script>
     <script>
         function outf(text) {
             var mypre = document.getElementById("output");
@@ -93,6 +103,7 @@
         <br />
         <button type="button" onclick="runit()">Run</button>
         <button type="button" onclick="checkCode()">Check</button>
+        <button type="button" id="answerbtn">Show Answer</button>
         <button type="button">Rate</button>
     </form>
     <pre id="output"></pre>
