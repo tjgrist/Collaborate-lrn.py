@@ -22,35 +22,6 @@ namespace Collaborate_lrn_Py.Controllers
             var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
             return View("Profile", educatorsTutorials);
         }
-
-        // GET: ApplicationUsers/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser applicationUser = db.Users.Find(id);
-            if (applicationUser == null)
-            {
-                return HttpNotFound();
-            }
-            return View(applicationUser);
-        }
-
-        // POST: Users/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(ApplicationUser applicationUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(applicationUser);
-        }
         
         public ActionResult ShowQuiz()
         {
@@ -58,6 +29,33 @@ namespace Collaborate_lrn_Py.Controllers
             List<Quiz> educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();
             return PartialView("_ProfileQuizzes", educatorsQuizzes);
         }
+
+        public ActionResult AddCollaborator()
+        {
+            ViewData["Collaborator"] = new SelectList(db.Users.Distinct().ToList(), "UserName", "UserName");
+            var user = User.Identity.GetUserId();
+            ViewData["TutorialSelection"] = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCollaborator(CollaborateViewModel collaborator)
+        {
+            string searchedCollaborator = collaborator.InputCollaborator;
+            try
+            {
+                ApplicationUser user = db.Users.First(x => x.UserName == searchedCollaborator);
+                Tutorial tut = db.Tutorials.First(x => x.Title == collaborator.TutorialSelection);
+                tut.Collaborators.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (InvalidOperationException)
+            {
+                return View();
+            }
+        }
+
         public ActionResult Linter()
         {
             return View();
