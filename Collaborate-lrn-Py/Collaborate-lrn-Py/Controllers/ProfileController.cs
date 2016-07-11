@@ -22,11 +22,11 @@ namespace Collaborate_lrn_Py.Controllers
             var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
             try
             {
-                var collabTutorials = db.Tutorials.Where(x => x.Collaborators.Count > 0).ToList();
+                var collabTutorials = db.Tutorials.Select(y => y.Collaborators.Where(x => x.Id == currentUser.Id)).ToList(); 
                 //List<Tutorial> usercollabs = collabTutorials.Where(x => x.Collaborators.First(y => y.Id == currentUser.Id)).ToList();
                 if (collabTutorials != null)
                 {
-                    PartialView("_CollaborativeTutorials", collabTutorials);
+                     PartialView("_CollaborativeTutorials", collabTutorials);
                 }
             }
             catch (NotSupportedException)
