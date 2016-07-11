@@ -457,6 +457,7 @@
     <Compile Include="Migrations\201607112028455_something changed in db.cs" />
     <Compile Include="Migrations\201607112028455_something changed in db.Designer.cs">
       <DependentUpon>201607112028455_something changed in db.cs</DependentUpon>
+	  </Compile>
     <Compile Include="Migrations\201607082031521_addicollectioncollaborators.cs" />
     <Compile Include="Migrations\201607082031521_addicollectioncollaborators.Designer.cs">
       <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
