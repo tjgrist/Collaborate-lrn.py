@@ -4,6 +4,19 @@
     ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Answer').hide();
+            $('#answerbtn').click(function () {
+                $('#Answer').show();
+            });
+        });    
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/react/react.min.js"></script>
+    @*<script src="@Url.Content("~/Scripts/JSX/GoodJob.jsx")"></script>*@
+
 <div>
     <h4>@ViewBag.Title</h4>
     <hr />
@@ -23,17 +36,12 @@
         <dd>
             @Html.DisplayFor(model => model.Instruction)
         </dd>
+        <dd>
+            <div style="width:300px;">
+                <kbd id="Answer" width="50%">@Html.DisplayFor(model => model.Answer)</kbd>
+            </div>
+        </dd>
     </dl>
-        <kbd id="Answer">@Html.DisplayFor(model => model.Answer)</kbd>
-    <script>
-        $(document).ready(function () {
-            $('#Answer').hide();
-            $('#answerbtn').click(function () {
-                $('#Answer').fadeIn();
-            });
-        });
-       
-    </script>
     <script>
         function outf(text) {
             var mypre = document.getElementById("output");
@@ -130,8 +138,3 @@
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
-@section scripts{
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Scripts/react/react.min.js"></script>
-    @*<script src="@Url.Content("~/Scripts/JSX/GoodJob.jsx")"></script>*@
-}

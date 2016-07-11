@@ -1,17 +1,24 @@
 ﻿@model IEnumerable<Collaborate_lrn_Py.Models.Tutorial>
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+@{ViewBag.Title = "Tutorials you're collaborating on"; }
 
-<h3>Your Tutorials</h3>
+<h3>@ViewBag.Title</h3>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Educator.UserName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Difficulty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Rating)
@@ -25,10 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Educator.UserName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Difficulty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rating)
@@ -37,18 +53,10 @@
             @Html.DisplayFor(modelItem => item.Published)
         </td>
         <td>
-            @Html.ActionLink("Publish", "Publish", "Tutorials", new { id=item.ID }, null) |
-            @Html.ActionLink("Add a Collaborator", "AddCollaborator", "Profile", new { id=item.ID }, null) |
-            @Html.ActionLink("Details", "Details", "Tutorials", new { id=item.ID }, null) |
-            @Html.ActionLink("Edit", "Edit", "Tutorials", new { id = item.ID }, null) |
-            @Html.ActionLink("Delete", "Delete", "Tutorials", new { id=item.ID }, null)
-
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
         </td>
     </tr>
 }
+
 </table>
-
-<p>
-    @Html.ActionLink("Create a New Tutorial", "Create", "Tutorials")
-</p>
-

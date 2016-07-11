@@ -33,6 +33,12 @@
            @Html.TextAreaFor(m => m.BodyText, new { @class = "form-control", @rows = 12 })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CodeSample, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.CodeSample, new { @class = "form-control", @rows = 12 })
+        </div>
+    </div>
 
     //Add a partial view here and do a foreach loop for each quiz that has a link to each quiz page.
 

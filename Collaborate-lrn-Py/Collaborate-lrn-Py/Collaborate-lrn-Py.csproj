@@ -454,8 +454,16 @@
     <Compile Include="Migrations\201607081733227_addedcodesampletoTutorial.Designer.cs">
       <DependentUpon>201607081733227_addedcodesampletoTutorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607112028455_something changed in db.cs" />
+    <Compile Include="Migrations\201607112028455_something changed in db.Designer.cs">
+      <DependentUpon>201607112028455_something changed in db.cs</DependentUpon>
+    <Compile Include="Migrations\201607082031521_addicollectioncollaborators.cs" />
+    <Compile Include="Migrations\201607082031521_addicollectioncollaborators.Designer.cs">
+      <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CollaborateViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
@@ -485,6 +493,8 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\whitestar.gif" />
+    <Content Include="images\yellowstar.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\browserpy.js" />
@@ -563,6 +573,9 @@
     <Content Include="Views\Quiz\Edit.cshtml" />
     <Content Include="Views\Tutorials\_Grade.cshtml" />
     <Content Include="Scripts\JSX\GoodJob.jsx" />
+    <Content Include="Views\Shared\_VoteNow.cshtml" />
+    <Content Include="Views\Profile\AddCollaborator.cshtml" />
+    <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -602,6 +615,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607081733227_addedcodesampletoTutorial.resx">
       <DependentUpon>201607081733227_addedcodesampletoTutorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607112028455_something changed in db.resx">
+      <DependentUpon>201607112028455_something changed in db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201607082031521_addicollectioncollaborators.resx">
+      <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

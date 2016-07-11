@@ -59,6 +59,7 @@ namespace Collaborate_lrn_Py.Controllers
                     Description = model.Description,
                     Difficulty = model.Difficulty,
                     BodyText = model.BodyText,
+                    CodeSample = model.CodeSample,
                     CreationDate = DateTime.Now,
                     EducatorId = User.Identity.GetUserId()
                 }; 
@@ -102,12 +103,13 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Title,Description,Difficulty,CreationDate,Rating")] Tutorial tutorial)
+        public ActionResult Edit(Tutorial tutorial)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tutorial).State = EntityState.Modified;
                 db.SaveChanges();
+                ViewBag.Message = "You edited your Tutorial! Make sure to re-publish it.";
                 return RedirectToAction("Index");
             }
             return View(tutorial);

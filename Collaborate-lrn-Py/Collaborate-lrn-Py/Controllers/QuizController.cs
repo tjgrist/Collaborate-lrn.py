@@ -55,11 +55,6 @@ namespace Collaborate_lrn_Py.Controllers
         public ActionResult Create(QuizViewModel model)
         {
             var user = User.Identity.GetUserId();
-            if (model.TutorialSelection == null)
-            {
-                ViewData["TutorialSelection"] = new SelectList(db.Tutorials.Where(x => x.EducatorId == user).ToList(), "Title", "Title");
-                return View(model);
-            }
             if (ModelState.IsValid)
             {
                 Quiz quiz = new Quiz
