@@ -1,0 +1,57 @@
+﻿@model Collaborate_lrn_Py.Models.ApplicationUser
+
+@{ 
+    ViewBag.Title = "Student Profile";
+}
+<h3>Hi, @Model.UserName</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Points)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Points)
+        </td>
+    </tr>
+</table>
+@foreach (var i in Model.Paths)
+    {
+   <table class="table">i.PathName
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => i.PathName)
+            </th>
+            <td>
+                @Html.DisplayFor(m => i.PathName)
+            </td>
+        </tr>
+       </table>
+        foreach (var x in i.Tutorials)
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(m => x.Title)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(m => x.Title)
+                    </td>
+                    <th>
+                        @Html.DisplayNameFor(m => x.Description)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(m => x.Description)
+                    </td>
+                    <th>
+                        @Html.DisplayNameFor(m => x.CodeSample)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(m => x.CodeSample)
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+    <p>@Html.ActionLink("Create a Path", "Create", "Paths")</p>
+

@@ -454,17 +454,24 @@
     <Compile Include="Migrations\201607081733227_addedcodesampletoTutorial.Designer.cs">
       <DependentUpon>201607081733227_addedcodesampletoTutorial.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\201607112028455_something changed in db.cs" />
     <Compile Include="Migrations\201607112028455_something changed in db.Designer.cs">
       <DependentUpon>201607112028455_something changed in db.cs</DependentUpon>
 	  </Compile>
+
     <Compile Include="Migrations\201607082031521_addicollectioncollaborators.cs" />
     <Compile Include="Migrations\201607082031521_addicollectioncollaborators.Designer.cs">
       <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607112134427_changedstartupprojectbacktonormal.cs" />
+    <Compile Include="Migrations\201607112134427_changedstartupprojectbacktonormal.Designer.cs">
+      <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
+    <Compile Include="Models\CollaborativeTutorials.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
@@ -577,6 +584,8 @@
     <Content Include="Views\Shared\_VoteNow.cshtml" />
     <Content Include="Views\Profile\AddCollaborator.cshtml" />
     <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
+    <Content Include="Views\Profile\Student.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -622,6 +631,9 @@
 	  </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607082031521_addicollectioncollaborators.resx">
       <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607112134427_changedstartupprojectbacktonormal.resx">
+      <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
