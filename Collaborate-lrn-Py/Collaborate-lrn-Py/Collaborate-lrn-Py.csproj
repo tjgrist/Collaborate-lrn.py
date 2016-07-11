@@ -458,6 +458,10 @@
     <Compile Include="Migrations\201607082031521_addicollectioncollaborators.Designer.cs">
       <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607112134427_changedstartupprojectbacktonormal.cs" />
+    <Compile Include="Migrations\201607112134427_changedstartupprojectbacktonormal.Designer.cs">
+      <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -615,6 +619,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607082031521_addicollectioncollaborators.resx">
       <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607112134427_changedstartupprojectbacktonormal.resx">
+      <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
