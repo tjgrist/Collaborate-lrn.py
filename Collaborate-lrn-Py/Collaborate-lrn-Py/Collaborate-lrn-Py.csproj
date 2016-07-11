@@ -619,6 +619,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607112028455_something changed in db.resx">
       <DependentUpon>201607112028455_something changed in db.cs</DependentUpon>
+	  </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607082031521_addicollectioncollaborators.resx">
       <DependentUpon>201607082031521_addicollectioncollaborators.cs</DependentUpon>
     </EmbeddedResource>
