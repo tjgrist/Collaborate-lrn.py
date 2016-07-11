@@ -578,6 +578,7 @@
     <Content Include="Views\Shared\_VoteNow.cshtml" />
     <Content Include="Views\Profile\AddCollaborator.cshtml" />
     <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
+    <Content Include="Views\Profile\Student.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
