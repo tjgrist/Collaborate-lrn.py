@@ -572,6 +572,7 @@
     <Content Include="Scripts\JSX\GoodJob.jsx" />
     <Content Include="Views\Shared\_VoteNow.cshtml" />
     <Content Include="Views\Profile\AddCollaborator.cshtml" />
+    <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

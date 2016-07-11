@@ -20,6 +20,19 @@ namespace Collaborate_lrn_Py.Controllers
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
             var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
+            try
+            {
+                var collabTutorials = db.Tutorials.Where(x => x.Collaborators.Count > 0).ToList();
+                //List<Tutorial> usercollabs = collabTutorials.Where(x => x.Collaborators.First(y => y.Id == currentUser.Id)).ToList();
+                if (collabTutorials != null)
+                {
+                    PartialView("_CollaborativeTutorials", collabTutorials);
+                }
+            }
+            catch (NotSupportedException)
+            {
+                return View("Profile", educatorsTutorials);
+            }
             return View("Profile", educatorsTutorials);
         }
         
@@ -52,7 +65,7 @@ namespace Collaborate_lrn_Py.Controllers
             }
             catch (InvalidOperationException)
             {
-                return View();
+                return View(collaborator);
             }
         }
 

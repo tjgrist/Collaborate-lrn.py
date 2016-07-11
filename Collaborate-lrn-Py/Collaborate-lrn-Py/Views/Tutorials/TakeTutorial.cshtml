@@ -22,7 +22,9 @@
         </dt>
 
         <dd>
-            <code>@Html.DisplayFor(model => model.ModelTutorial.CodeSample)</code>
+            <div style="width:300px">
+                <code>@Html.DisplayFor(model => model.ModelTutorial.CodeSample)</code>
+            </div>
         </dd>
     </dl>
 </div>
@@ -32,7 +34,7 @@
 @{
     if (Model.ModelQuiz != null)
     {
-        <div>@Html.Partial("~/Views/Quiz/_TakeQuiz.cshtml", Model.ModelQuiz)</div>
+        @Html.Partial("~/Views/Quiz/_TakeQuiz.cshtml", Model.ModelQuiz)
     }
     else
     {

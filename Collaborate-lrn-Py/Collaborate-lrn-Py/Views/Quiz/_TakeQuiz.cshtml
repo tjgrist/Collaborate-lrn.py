@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Answer').hide();
+            $('#answerbtn').click(function () {
+                $('#Answer').show();
+            });
+        });    
+    </script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/react/react.min.js"></script>
     @*<script src="@Url.Content("~/Scripts/JSX/GoodJob.jsx")"></script>*@
@@ -34,15 +42,6 @@
             </div>
         </dd>
     </dl>
-    <script>
-        $(document).ready(function () {
-            $('#Answer').hide();
-            $('#answerbtn').click(function () {
-                $('#Answer').show();
-            });
-        });
-       
-    </script>
     <script>
         function outf(text) {
             var mypre = document.getElementById("output");
