@@ -61,7 +61,8 @@ namespace Collaborate_lrn_Py.Controllers
                     BodyText = model.BodyText,
                     CodeSample = model.CodeSample,
                     CreationDate = DateTime.Now,
-                    EducatorId = User.Identity.GetUserId()
+                    EducatorId = User.Identity.GetUserId(),
+                    Rating = 0
                 }; 
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();
@@ -214,7 +215,27 @@ namespace Collaborate_lrn_Py.Controllers
                 
             }
             return View();
-        }   
+        }
+        [Authorize]   
+        public ActionResult UpVote(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tutorial tutorial = db.Tutorials.Find(id);
+            if (tutorial == null)
+            {
+                return HttpNotFound();
+            }
+            if (tutorial != null)
+            {
+                tutorial.Rating += 1;
+                db.Entry(tutorial).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

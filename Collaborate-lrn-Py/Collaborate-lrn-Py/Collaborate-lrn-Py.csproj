@@ -406,6 +406,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PathsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -465,6 +466,14 @@
     <Compile Include="Migrations\201607112134427_changedstartupprojectbacktonormal.cs" />
     <Compile Include="Migrations\201607112134427_changedstartupprojectbacktonormal.Designer.cs">
       <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607121654456_changed float to int for rating.cs" />
+    <Compile Include="Migrations\201607121654456_changed float to int for rating.Designer.cs">
+      <DependentUpon>201607121654456_changed float to int for rating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607121657244_changed int to nullable in model.cs" />
+    <Compile Include="Migrations\201607121657244_changed int to nullable in model.Designer.cs">
+      <DependentUpon>201607121657244_changed int to nullable in model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -588,6 +597,7 @@
     <Content Include="Views\Profile\AddCollaborator.cshtml" />
     <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
     <Content Include="Views\Profile\Student.cshtml" />
+    <Content Include="Views\Paths\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -627,7 +637,7 @@
     <EmbeddedResource Include="Migrations\201607081733227_addedcodesampletoTutorial.resx">
       <DependentUpon>201607081733227_addedcodesampletoTutorial.cs</DependentUpon>
     </EmbeddedResource>
-<!--     <EmbeddedResource Include="Migrations\201607112028455_something changed in db.resx">
+    <!--     <EmbeddedResource Include="Migrations\201607112028455_something changed in db.resx">
       <DependentUpon>201607112028455_something changed in db.cs</DependentUpon>
     </EmbeddedResource> -->
     <EmbeddedResource Include="Migrations\201607082031521_addicollectioncollaborators.resx">
@@ -635,6 +645,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607112134427_changedstartupprojectbacktonormal.resx">
       <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121654456_changed float to int for rating.resx">
+      <DependentUpon>201607121654456_changed float to int for rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121657244_changed int to nullable in model.resx">
+      <DependentUpon>201607121657244_changed int to nullable in model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

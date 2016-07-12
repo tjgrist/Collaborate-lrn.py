@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Difficulty)
             </th>
             <th>
@@ -35,6 +38,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Difficulty)
         </td>
         <td>
@@ -46,10 +52,13 @@
         <td>
             @Html.ActionLink("View", "TakeTutorial", new { id=item.ID }, new { @class = "btn btn-primary" })
         </td>
+        <td>
+            @Html.ActionLink(" ", "UpVote", "Tutorials", new { id = item.ID }, new { @class = "glyphicon glyphicon-arrow-up btn btn-primary" })
+        </td>
     </tr>
 }
 
 </table>
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn primary" })
+    @Html.ActionLink("Create New", "Create", "Tutorial", null, new { @class = "btn btn primary" })
 </p>

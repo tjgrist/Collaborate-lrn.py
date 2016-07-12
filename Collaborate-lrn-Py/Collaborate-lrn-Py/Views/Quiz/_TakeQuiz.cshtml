@@ -3,17 +3,10 @@
 @{
     ViewBag.Title = Model.Name;
 }
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
 <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
-<script>
-    $(document).ready(function () {
-        $('#Answer').hide();
-        $('#answerbtn').click(function () {
-            $('#Answer').show();
-        });
-    });
-</script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/Scripts/react/react.min.js"></script>
 @*<script src="@Url.Content("~/Scripts/JSX/GoodJob.jsx")"></script>*@
@@ -60,10 +53,13 @@
         <div id="mycanvas"></div>
         <div id="result"></div>
     </div>
+    <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">See Answer</button>
+    @Html.ActionLink("Complete", "Complete", "Profile", null, new { @class = "btn btn-primary"})
 </div>
-<!-- Trigger the modal with a button -->
+<div class="container">
 
+</div>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -78,29 +74,27 @@
                 <pre><code class="python" id="show">@Html.DisplayFor(model => model.Answer)</code></pre>
             </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
         </div>
 
     </div>
 
 
     @*<script src="~/Scripts/browserpy.js" type="text/javascript"></script>*@
-    <div id="formSection">
-        @*<h4>@ViewBag.Message</h4>
+    @*<div id="formSection">
+        <h4>@ViewBag.Message</h4>
             @using (Ajax.BeginForm(
-                            "Grade",
+                            "Upvote",
+                            "Tutorial",
                             new AjaxOptions
                             {
                                 UpdateTargetId = "result",
                                 InsertionMode = InsertionMode.Replace,
-                                HttpMethod = "post"
+                                HttpMethod = "post", 
                             }))
             {
-                 <input type = "submit"/>
-            }*@
-    </div>
+                 <input class="btn btn-primary" type="submit" value="Upvote"/>
+            }
+    </div>*@
 
 
 

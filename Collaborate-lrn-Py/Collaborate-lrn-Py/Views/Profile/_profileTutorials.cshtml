@@ -19,7 +19,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Published)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -42,6 +41,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li>@Html.ActionLink("Publish", "Publish", "Tutorials", new { id = item.ID }, null)</li>
+                    <li>@Html.ActionLink("Collaborate", "AddCollaborator", "Profile")</li>
                     <li>@Html.ActionLink("Details", "Details", "Tutorials", new { id=item.ID }, null)</li>
                     <li>@Html.ActionLink("Edit", "Edit", "Tutorials", new { id = item.ID }, null )</li>
                     <li>@Html.ActionLink("Delete", "Delete", "Tutorials", new { id = item.ID }, null)</li>
@@ -51,10 +51,10 @@
     </tr>
 }
 </table>
-<p>
+@*<p>
     @Html.ActionLink(" Collaborate", "AddCollaborator", "Profile", null, new { @class = "btn btn-primary glyphicon glyphicon-share" })
-</p>
+</p>*@
 <p>
-    @Html.ActionLink("Create a New Tutorial", "Create", "Tutorials", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(" ", "Create", "Tutorials", null, new { @class = "glyphicon glyphicon-plus btn btn-primary" })
 </p>
 

@@ -56,6 +56,15 @@ namespace Collaborate_lrn_Py.Controllers
             return View();
         }
 
+        public ActionResult Complete()
+        {
+            var currentUser = db.Users.Find(User.Identity.GetUserId());
+            db.Entry(currentUser).State = EntityState.Modified;
+            currentUser.Points += 20;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public ActionResult AddCollaborator(CollaborateViewModel collaborator)
         {
