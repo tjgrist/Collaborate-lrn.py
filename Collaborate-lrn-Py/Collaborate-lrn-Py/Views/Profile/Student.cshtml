@@ -3,7 +3,7 @@
 @{ 
     ViewBag.Title = "Student Profile";
 }
-<h3>Hi, @Model.UserName</h3>
+<h3>Hi, @Model.UserName <small>Here's your Dashboard</small></h3>
 
 <table class="table">
     <tr>
@@ -11,7 +11,7 @@
             @Html.DisplayNameFor(model => model.Points)
         </th>
         <td>
-            @Html.DisplayFor(model => model.Points)
+            <h4><stron>@Html.DisplayFor(model => model.Points)</stron></h4>
         </td>
     </tr>
 </table>
@@ -53,5 +53,5 @@
             </table>
         }
     }
-    <p>@Html.ActionLink("Create a Path", "Create", "Paths")</p>
+    <p>@Html.ActionLink("Create a Path", "Create", "Paths", null, new { @class = "btn btn-primary" })</p>
 
