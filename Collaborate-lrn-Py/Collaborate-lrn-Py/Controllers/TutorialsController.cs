@@ -215,7 +215,8 @@ namespace Collaborate_lrn_Py.Controllers
                 
             }
             return View();
-        }   
+        }
+        [Authorize]   
         public ActionResult UpVote(int? id)
         {
             if (id == null)
