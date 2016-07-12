@@ -3,17 +3,10 @@
 @{
     ViewBag.Title = Model.Name;
 }
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
 <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script>
-<script>
-    $(document).ready(function () {
-        $('#Answer').hide();
-        $('#answerbtn').click(function () {
-            $('#Answer').show();
-        });
-    });
-</script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/Scripts/react/react.min.js"></script>
 @*<script src="@Url.Content("~/Scripts/JSX/GoodJob.jsx")"></script>*@
@@ -60,10 +53,9 @@
         <div id="mycanvas"></div>
         <div id="result"></div>
     </div>
+    <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">See Answer</button>
 </div>
-<!-- Trigger the modal with a button -->
-
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
