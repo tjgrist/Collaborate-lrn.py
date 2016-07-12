@@ -16,6 +16,8 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         [Display(Name = "Instructions")]
         public string BodyText { get; set; }
+        [Display(Name = "Code Sample")]
+        public string CodeSample { get; set; }
 
         //consider adding a simple function that returns the user that creates the tutorial.
         public virtual ICollection<Quiz> Quizzes { get; set; }

@@ -59,6 +59,7 @@ namespace Collaborate_lrn_Py.Controllers
                     Description = model.Description,
                     Difficulty = model.Difficulty,
                     BodyText = model.BodyText,
+                    CodeSample = model.CodeSample,
                     CreationDate = DateTime.Now,
                     EducatorId = User.Identity.GetUserId()
                 }; 

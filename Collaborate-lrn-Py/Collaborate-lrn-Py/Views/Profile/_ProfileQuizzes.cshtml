@@ -4,12 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h3>Your Quizzes</h3>
-<table class="table">
+<h3>Your Quizzes <small>Teach</small></h3>
+<table class="table table-hover">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Educator.UserName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Tutorial.Title)
         </th>
@@ -25,9 +22,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Educator.UserName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Tutorial.Title)
         </td>
         <td>
@@ -37,14 +31,14 @@
             @Html.DisplayFor(modelItem => item.Goal)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", "Quiz", new { id=item.Id }, null) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", "Quiz", new { id=item.Id }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-primary" })
         </td>
     </tr>
 }
 
 </table>
 
-<p>@Html.ActionLink("Add a Quiz", "Create", "Quiz")</p>
+<p>@Html.ActionLink("Add a Quiz", "Create", "Quiz", null, new { @class = "btn btn-primary" })</p>
 <p>@Html.ActionLink("Linter", "Linter")</p>
