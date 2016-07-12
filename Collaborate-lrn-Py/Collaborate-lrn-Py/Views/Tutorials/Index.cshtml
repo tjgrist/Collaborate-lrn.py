@@ -4,34 +4,31 @@
     ViewBag.Title = "Tutorials on PyOrial";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Title <small>Learn</small></h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <h4>@ViewBag.Message</h4>
-<table class="table">
-    <tr>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Difficulty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th>Author</th>
-        <th></th>
-    </tr>
-
+<table class="table table-hover">
+    <thead class="thead-inverse">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Difficulty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>Author</th>
+            <th></th>
+        </tr>
+    </thead>
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -47,13 +44,10 @@
             @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Educator.UserName)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.ID })
+            @Html.ActionLink("View", "TakeTutorial", new { id=item.ID }, new { @class = "btn btn-primary" })
         </td>
     </tr>
 }

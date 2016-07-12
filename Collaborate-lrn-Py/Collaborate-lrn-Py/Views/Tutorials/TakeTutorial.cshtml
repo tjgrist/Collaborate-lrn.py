@@ -3,34 +3,34 @@
 @{
     ViewBag.Title = Model.ModelTutorial.Title;
 }
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
-<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Title <small>Tutorial</small></h2>
+<div class="container">
+    <div class="jumbotron">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ModelTutorial.BodyText)
+            </dt>
 
-<div>
-    <h4>Tutorial</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ModelTutorial.BodyText)
-        </dt>
+            <dd>
+                <pre>@Html.DisplayFor(model => model.ModelTutorial.BodyText)</pre>
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ModelTutorial.CodeSample)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModelTutorial.BodyText)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ModelTutorial.CodeSample)
-        </dt>
-
-        <dd>
-            <div style="width:300px">
-                <code>@Html.DisplayFor(model => model.ModelTutorial.CodeSample)</code>
-            </div>
-        </dd>
-    </dl>
+            <dd>
+                <div style="width:300px">
+                    <pre><code class="python">@Html.DisplayFor(model => model.ModelTutorial.CodeSample)</code></pre>
+                </div>
+            </dd>
+        </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<br />
 @{
     if (Model.ModelQuiz != null)
     {
