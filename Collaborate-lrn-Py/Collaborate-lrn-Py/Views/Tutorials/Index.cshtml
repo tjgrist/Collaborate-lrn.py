@@ -1,12 +1,22 @@
 ﻿@model IEnumerable<Collaborate_lrn_Py.Models.Tutorial>
 
 @{
-    ViewBag.Title = "Tutorials on PyOrial";
+    ViewBag.Title = "Tutorials";
 }
 
 <h2>@ViewBag.Title <small>Learn</small></h2>
 
 <h4>@ViewBag.Message</h4>
+@*<div align="right">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Title: @Html.TextBox("SearchString") <br />
+            <input type="submit" value="Filter" />
+        </p>
+    }*@
+    
+@*</div>*@
 <table class="table table-hover">
     <thead class="thead-inverse">
         <tr>

@@ -17,9 +17,15 @@ namespace Collaborate_lrn_Py.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tutorials
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var publishedTutorials = db.Tutorials.Where(x => x.Published == true).ToList();
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    var searchTutorials = db.Tutorials.Where(x => x.Title.Contains(searchString));
+            //    return View(searchTutorials);
+            //}
+            
             return View(publishedTutorials);
         }
 
