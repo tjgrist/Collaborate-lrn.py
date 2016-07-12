@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -29,7 +30,8 @@ namespace Collaborate_lrn_Py.Models
         [Display( Name = "Created:")]
         public DateTime CreationDate { get; set; }
 
-        public float? Rating { get; set; }
+        [DisplayName("Votes")]
+        public int? Rating { get; set; }
 
         public bool Published { get; set; }
 

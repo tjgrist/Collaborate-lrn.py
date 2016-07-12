@@ -467,6 +467,14 @@
     <Compile Include="Migrations\201607112134427_changedstartupprojectbacktonormal.Designer.cs">
       <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607121654456_changed float to int for rating.cs" />
+    <Compile Include="Migrations\201607121654456_changed float to int for rating.Designer.cs">
+      <DependentUpon>201607121654456_changed float to int for rating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607121657244_changed int to nullable in model.cs" />
+    <Compile Include="Migrations\201607121657244_changed int to nullable in model.Designer.cs">
+      <DependentUpon>201607121657244_changed int to nullable in model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -637,6 +645,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607112134427_changedstartupprojectbacktonormal.resx">
       <DependentUpon>201607112134427_changedstartupprojectbacktonormal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121654456_changed float to int for rating.resx">
+      <DependentUpon>201607121654456_changed float to int for rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607121657244_changed int to nullable in model.resx">
+      <DependentUpon>201607121657244_changed int to nullable in model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
