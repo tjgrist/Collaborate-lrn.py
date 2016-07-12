@@ -70,29 +70,27 @@
                 <pre><code class="python" id="show">@Html.DisplayFor(model => model.Answer)</code></pre>
             </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
         </div>
 
     </div>
 
 
     @*<script src="~/Scripts/browserpy.js" type="text/javascript"></script>*@
-    <div id="formSection">
-        @*<h4>@ViewBag.Message</h4>
+    @*<div id="formSection">
+        <h4>@ViewBag.Message</h4>
             @using (Ajax.BeginForm(
-                            "Grade",
+                            "Upvote",
+                            "Tutorial",
                             new AjaxOptions
                             {
                                 UpdateTargetId = "result",
                                 InsertionMode = InsertionMode.Replace,
-                                HttpMethod = "post"
+                                HttpMethod = "post", 
                             }))
             {
-                 <input type = "submit"/>
-            }*@
-    </div>
+                 <button class="btn btn-primary" type="submit" value="Upvote"/>
+            }
+    </div>*@
 
 
 
