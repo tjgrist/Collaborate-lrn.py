@@ -133,12 +133,50 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
 
+        //[HttpPost]
+        //public ActionResult AutoGrade(string m)
+        //{
+        //    if (Request.IsAjaxRequest())
+        //    {
+        //        ViewBag.Message = "AJAX!";
+        //        return PartialView("_Grade");
+        //    }
+        //    else
+        //    {
+        //        return View();
+        //    }
+        //}
+
         [HttpPost]
-        public PartialViewResult AutoGrade(string m)
+        public ActionResult AutoGrade(GradeViewModel model)
         {
-            ViewBag.Message = "Good Job!";
-            return PartialView("_Grade");
+            int? QuizId = Convert.ToInt32(model.expected);
+            if (QuizId != null)
+            {               
+                Quiz quizData = db.Quiz.First(x => x.Id == QuizId);
+                if (Request.IsAjaxRequest())
+                {
+                    if (model.output.ToString().Replace(" ", "") == quizData.ExpectedOutput.Replace(" ", ""))
+                    {
+                        ViewBag.Message = "That's right!";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Hm... Try again. "; 
+                        ViewBag.Output = model.output;
+                        ViewBag.Id = model.expected;
+                        ViewBag.QuizAnswer = quizData.ExpectedOutput;
+                    }
+                    return PartialView("_Grade");
+                }
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
+
 
         protected override void Dispose(bool disposing)
         {
