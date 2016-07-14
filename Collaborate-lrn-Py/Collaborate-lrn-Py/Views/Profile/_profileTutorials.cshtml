@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Collaborate_lrn_Py.Models.Tutorial>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
 <h3>Your Tutorials <small>Create</small></h3>
@@ -57,4 +57,12 @@
 <p>
     @Html.ActionLink(" ", "Create", "Tutorials", null, new { @class = "glyphicon glyphicon-plus btn btn-primary" })
 </p>
+<hr />
+
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+
 

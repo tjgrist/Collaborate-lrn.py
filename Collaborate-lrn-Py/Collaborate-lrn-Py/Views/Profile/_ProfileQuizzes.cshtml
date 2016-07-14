@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Collaborate_lrn_Py.Models.Quiz>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
 <h3>Your Quizzes <small>Teach</small></h3>
@@ -46,3 +46,8 @@
 
 <p>@Html.ActionLink(" ", "Create", "Quiz", null, new { @class = "glyphicon glyphicon-plus btn btn-primary" })</p>
 <p>@Html.ActionLink("Linter", "Linter")</p>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
