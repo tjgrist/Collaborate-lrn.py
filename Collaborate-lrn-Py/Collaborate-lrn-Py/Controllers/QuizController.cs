@@ -132,6 +132,14 @@ namespace Collaborate_lrn_Py.Controllers
             return RedirectToAction("Index");
         }
 
+
+        [HttpPost]
+        public PartialViewResult AutoGrade(string m)
+        {
+            ViewBag.Message = "Good Job!";
+            return PartialView("_Grade");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

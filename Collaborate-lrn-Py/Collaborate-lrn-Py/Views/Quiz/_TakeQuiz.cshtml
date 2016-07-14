@@ -75,21 +75,23 @@
 
 
     @*<script src="~/Scripts/browserpy.js" type="text/javascript"></script>*@
-    @*<div id="formSection">
-        <h4>@ViewBag.Message</h4>
+
+    <div id="formSection">
             @using (Ajax.BeginForm(
-                            "Upvote",
-                            "Tutorial",
+                            "AutoGrade",
+                            "Quiz",
+                            null,
                             new AjaxOptions
                             {
-                                UpdateTargetId = "result",
+                                UpdateTargetId = "ajax",
                                 InsertionMode = InsertionMode.Replace,
-                                HttpMethod = "post", 
-                            }))
+                                HttpMethod = "post",
+                            }, new { @class = "" }))
             {
-                 <input class="btn btn-primary" type="submit" value="Upvote"/>
+                 <input class="btn btn-info" type="submit" value="Check Code with AJAX"/>
             }
-    </div>*@
+    </div>
+    <div id="ajax" class="bg-default"></div>
 
 
 

@@ -596,6 +596,7 @@
     <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
     <Content Include="Views\Profile\Student.cshtml" />
     <Content Include="Views\Paths\Create.cshtml" />
+    <Content Include="Views\Quiz\_Grade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
