@@ -1,0 +1,110 @@
+﻿@model Collaborate_lrn_Py.Models.EducatorViewModel
+
+@using Microsoft.AspNet.Identity
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div align="right"><h2>@User.Identity.GetUserName()</h2>
+    <p>@Html.DisplayNameFor(model => model.Points):   @Model.Points</p>    
+</div>
+
+@{
+    <h3>Your Tutorials <small>Create</small></h3>
+    <br />
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Difficulty
+            </th>
+            <th>
+                Votes
+            </th>
+            <th>
+                Published
+            </th>
+        </tr>
+        @foreach (var item in Model.EducatorTutorials)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Publish", "Publish", "Tutorials", new { id = item.ID }, null)</li>
+                        <li>@Html.ActionLink("Collaborate", "AddCollaborator", "Profile")</li>
+                        <li>@Html.ActionLink("Details", "Details", "Tutorials", new { id = item.ID }, null)</li>
+                        <li>@Html.ActionLink("Edit", "Edit", "Tutorials", new { id = item.ID }, null)</li>
+                        <li>@Html.ActionLink("Delete", "Delete", "Tutorials", new { id = item.ID }, null)</li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        }
+    </table>
+    <p>
+        @Html.ActionLink(" ", "Create", "Tutorials", null, new { @class = "glyphicon glyphicon-plus btn btn-primary" })
+    </p>
+    <br />
+
+    @*<------------------------------------- Quizzes ----------------------------------->*@
+    <h3>Your Quizzes <small>Teach</small></h3>
+    <br />
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Tutorial 
+            </th>
+            <th>
+                Quiz Name
+            </th>
+            <th>
+                Goal
+            </th>
+        </tr>
+        @foreach (var item in Model.EducatorQuizzes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tutorial.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Goal)
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Details", "Details", "Tutorials", new { id = item.Id }, null)</li>
+                            <li>@Html.ActionLink("Edit", "Edit", "Tutorials", new { id = item.Id }, null)</li>
+                            <li>@Html.ActionLink("Delete", "Delete", "Tutorials", new { id = item.Id }, null)</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+        @Html.ActionLink(" ", "Create", "Quiz", null, new { @class = "glyphicon glyphicon-plus btn btn-primary" })
+    </p>
+}
+

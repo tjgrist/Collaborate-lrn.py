@@ -479,9 +479,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
     <Compile Include="Models\CollaborativeTutorials.cs" />
+    <Compile Include="Models\GradeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
+    <Compile Include="Models\EducatorViewModel.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Models\Tutorial.cs" />
@@ -538,6 +540,8 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\skulpt-stdlib.js" />
+    <Content Include="Scripts\skulpt.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -552,8 +556,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -582,14 +584,12 @@
     <Content Include="Views\Tutorials\Index.cshtml" />
     <Content Include="Views\Tutorials\Create.cshtml" />
     <Content Include="Views\Profile\Linter.cshtml" />
-    <Content Include="Views\Profile\_ProfileTutorials.cshtml" />
     <Content Include="Views\Shared\_CreateQuiz.cshtml" />
     <Content Include="Views\Quiz\Create.cshtml" />
     <Content Include="Views\Quiz\Index.cshtml" />
     <Content Include="Views\Quiz\_TakeQuiz.cshtml" />
     <Content Include="Views\Tutorials\TakeTutorial.cshtml" />
-    <Content Include="Views\Profile\_ProfileQuizzes.cshtml" />
-    <Content Include="Views\Profile\Profile.cshtml" />
+    <Content Include="Views\Profile\Educator.cshtml" />
     <Content Include="Views\Quiz\Edit.cshtml" />
     <Content Include="Views\Tutorials\_Grade.cshtml" />
     <Content Include="Scripts\JSX\GoodJob.jsx" />
@@ -598,6 +598,7 @@
     <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
     <Content Include="Views\Profile\Student.cshtml" />
     <Content Include="Views\Paths\Create.cshtml" />
+    <Content Include="Views\Quiz\_Grade.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

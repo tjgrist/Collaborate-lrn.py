@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
 using Microsoft.AspNet.Identity;
+using System.Diagnostics;
 
 namespace Collaborate_lrn_Py.Controllers
 {
@@ -131,6 +132,45 @@ namespace Collaborate_lrn_Py.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+        //[HttpPost]
+        //public ActionResult AutoGrade(string m)
+        //{
+        //    if (Request.IsAjaxRequest())
+        //    {
+        //        ViewBag.Message = "AJAX!";
+        //        return PartialView("_Grade");
+        //    }
+        //    else
+        //    {
+        //        return View();
+        //    }
+        //}
+
+        [HttpPost]
+        public ActionResult AutoGrade(GradeViewModel model)
+        {
+            int? QuizId = Convert.ToInt32(model.expected);
+            if (QuizId != null)
+            {               
+                Quiz quiz = db.Quiz.First(x => x.Id == QuizId);
+                    if (model.output.Trim() == quiz.ExpectedOutput.Trim())
+                    {
+                        ViewBag.Message = "Well done!";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Hm... Try again. "; 
+                        ViewBag.Output = model.output;
+                        ViewBag.Id = model.expected;
+                        ViewBag.QuizAnswer = quiz.ExpectedOutput;
+                    }
+                    return PartialView("_Grade");
+                }
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {
