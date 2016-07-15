@@ -483,6 +483,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
+    <Compile Include="Models\EducatorViewModel.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Models\Tutorial.cs" />
@@ -590,7 +591,7 @@
     <Content Include="Views\Quiz\_TakeQuiz.cshtml" />
     <Content Include="Views\Tutorials\TakeTutorial.cshtml" />
     <Content Include="Views\Profile\_ProfileQuizzes.cshtml" />
-    <Content Include="Views\Profile\Profile.cshtml" />
+    <Content Include="Views\Profile\Educator.cshtml" />
     <Content Include="Views\Quiz\Edit.cshtml" />
     <Content Include="Views\Tutorials\_Grade.cshtml" />
     <Content Include="Scripts\JSX\GoodJob.jsx" />
