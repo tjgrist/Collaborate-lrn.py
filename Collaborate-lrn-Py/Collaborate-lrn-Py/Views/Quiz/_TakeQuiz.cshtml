@@ -38,10 +38,11 @@
             <textarea id="yourcode" cols="80" rows="10">Write your code here.</textarea>
             <br />
             <button type="button" class="btn btn-primary" onclick="runit()">Run</button>
-            <button type="button" class="btn btn-primary" onclick="checkCode()">Check</button>
+            <button type="button" class="btn btn-primary" onclick="autoGrade()">Check</button>
         </form>
         <br />
         <pre id="output"></pre>
+        <pre id="codecheck"></pre>
         <!-- If you want turtle graphics include a canvas -->
         <div id="mycanvas"></div>
         <div id="result"></div>
@@ -93,12 +94,12 @@
     <div id="ajax" class="bg-default"></div>
     </div>
 <br />*@
-<div class="container text-center">
+@*<div class="container text-center">
     <button type="button" class="btn btn-primary" onclick="autoGrade()">Auto Grade</button>
     <br />
     <p id="p"></p>
     <div id="jajax" class="bg-default"></div>
-</div>
+</div>*@
 
 
 
@@ -112,33 +113,37 @@
     function autoGrade() {
         var userCode = $("#yourcode").val();
         var codeOutput = $("#output").html().toString();
-        console.log(typeof(codeOutput));
-        var id = @Model.Id.ToString();
-        console.log(typeof(id));
-        var request = $.ajax({
-            url: "@Url.Action("AutoGrade", "Quiz")",
-            method: "POST",
-            cache: false,
-            data: {
-                yourcode: userCode,
-                output: codeOutput,
-                expected: id
-            }
-        });
+        if (codeOutput === null || codeOutput === undefined){
+            console.log(codeOutput);
+            $("#codecheck").append("It looks like your code didn't print anything...").removeClass("bg-success").addClass("bg-danger")
+        }
+        else{
+            var id = @Model.Id.ToString();
+            var request = $.ajax({
+                url: "@Url.Action("AutoGrade", "Quiz")",
+                method: "POST",
+                cache: false,
+                data: {
+                    yourcode: userCode,
+                    output: codeOutput,
+                    expected: id
+                }
+            });
 
-        request.fail(function (jqXHR, textStatus, thrownError) {
-            console.log(xhr.responseText);
-            $("#jajax").html(thrownError + ", something went wrong during the processing of the request." + jqXHR.status);
-        });
+            request.fail(function (jqXHR, textStatus, thrownError) {
+                console.log(xhr.responseText);
+                $("#codecheck").html(thrownError + ", something went wrong during the processing of the request." + jqXHR.status);
+            });
 
-        request.done(function (data) {
-            if (data.toString().includes("Well")){
-                $("#jajax").text(data).removeClass("bg-danger").addClass("bg-success");
-            }
-            else{
-                $("#jajax").text(data).removeClass("bg-success").addClass("bg-danger");
-            }
-        });
+            request.done(function (data) {
+                if (data.toString().includes("Well")){
+                    $("#codecheck").text(data).removeClass("bg-danger").addClass("bg-success");
+                }
+                else{
+                    $("#codecheck").text(data).removeClass("bg-success").addClass("bg-danger");
+                }
+            });
+        }
     }
 </script>
     @*//}).done(function (data) {
