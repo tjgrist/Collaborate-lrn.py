@@ -112,8 +112,9 @@
     function autoGrade() {
         var userCode = $("#yourcode").val();
         var codeOutput = $("#output").html().toString();
-        console.log(codeOutput);
+        console.log(typeof(codeOutput));
         var id = @Model.Id.ToString();
+        console.log(typeof(id));
         var request = $.ajax({
             url: "@Url.Action("AutoGrade", "Quiz")",
             method: "POST",
@@ -131,9 +132,13 @@
         });
 
         request.done(function (data) {
-            $("#jajax").text(data);
+            if (data.toString().includes("Well")){
+                $("#jajax").text(data).removeClass("bg-danger").addClass("bg-success");
+            }
+            else{
+                $("#jajax").text(data).removeClass("bg-success").addClass("bg-danger");
+            }
         });
-
     }
 </script>
     @*//}).done(function (data) {

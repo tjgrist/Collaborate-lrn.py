@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
 using Microsoft.AspNet.Identity;
+using System.Diagnostics;
 
 namespace Collaborate_lrn_Py.Controllers
 {
@@ -153,28 +154,21 @@ namespace Collaborate_lrn_Py.Controllers
             int? QuizId = Convert.ToInt32(model.expected);
             if (QuizId != null)
             {               
-                Quiz quizData = db.Quiz.First(x => x.Id == QuizId);
-                if (Request.IsAjaxRequest())
-                {
-                    if (model.output.ToString().Replace(" ", "") == quizData.ExpectedOutput.Replace(" ", ""))
+                Quiz quiz = db.Quiz.First(x => x.Id == QuizId);
+                    if (model.output.Trim() == quiz.ExpectedOutput.Trim())
                     {
-                        ViewBag.Message = "That's right!";
+                        ViewBag.Message = "Well done!";
                     }
                     else
                     {
                         ViewBag.Message = "Hm... Try again. "; 
                         ViewBag.Output = model.output;
                         ViewBag.Id = model.expected;
-                        ViewBag.QuizAnswer = quizData.ExpectedOutput;
+                        ViewBag.QuizAnswer = quiz.ExpectedOutput;
                     }
                     return PartialView("_Grade");
                 }
-                return View();
-            }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
 
