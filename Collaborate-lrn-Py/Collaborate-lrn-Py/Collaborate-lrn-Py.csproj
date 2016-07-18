@@ -479,10 +479,30 @@
     <Compile Include="Migrations\201607181627049_added two fields to user model.Designer.cs">
       <DependentUpon>201607181627049_added two fields to user model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607181706045_user now has list of paths.cs" />
+    <Compile Include="Migrations\201607181706045_user now has list of paths.Designer.cs">
+      <DependentUpon>201607181706045_user now has list of paths.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607181730201_added collaborative tutorials dbset.cs" />
+    <Compile Include="Migrations\201607181730201_added collaborative tutorials dbset.Designer.cs">
+      <DependentUpon>201607181730201_added collaborative tutorials dbset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607181739497_collabtutorials to user model.cs" />
+    <Compile Include="Migrations\201607181739497_collabtutorials to user model.Designer.cs">
+      <DependentUpon>201607181739497_collabtutorials to user model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607181743009_rm virtual nav props many to many .cs" />
+    <Compile Include="Migrations\201607181743009_rm virtual nav props many to many .Designer.cs">
+      <DependentUpon>201607181743009_rm virtual nav props many to many .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607181811230_manytomany rl to collabtutorials.cs" />
+    <Compile Include="Migrations\201607181811230_manytomany rl to collabtutorials.Designer.cs">
+      <DependentUpon>201607181811230_manytomany rl to collabtutorials.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
-    <Compile Include="Models\CollaborativeTutorials.cs" />
+    <Compile Include="Models\CollaborativeTutorial.cs" />
     <Compile Include="Models\GradeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -608,6 +628,7 @@
     <Content Include="Views\Paths\Create.cshtml" />
     <Content Include="Views\Quiz\_Grade.cshtml" />
     <Content Include="Views\Quiz\Details.cshtml" />
+    <Content Include="Views\Profile\_CollabTutorials.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -664,6 +685,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607181627049_added two fields to user model.resx">
       <DependentUpon>201607181627049_added two fields to user model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181706045_user now has list of paths.resx">
+      <DependentUpon>201607181706045_user now has list of paths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181730201_added collaborative tutorials dbset.resx">
+      <DependentUpon>201607181730201_added collaborative tutorials dbset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181739497_collabtutorials to user model.resx">
+      <DependentUpon>201607181739497_collabtutorials to user model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181743009_rm virtual nav props many to many .resx">
+      <DependentUpon>201607181743009_rm virtual nav props many to many .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181811230_manytomany rl to collabtutorials.resx">
+      <DependentUpon>201607181811230_manytomany rl to collabtutorials.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

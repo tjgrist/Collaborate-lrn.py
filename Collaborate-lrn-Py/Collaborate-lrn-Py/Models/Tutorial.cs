@@ -40,8 +40,8 @@ namespace Collaborate_lrn_Py.Models
         public virtual string EducatorId { get; set; }
         public virtual ApplicationUser Educator { get; set; }
 
-        [Display(Name = "Collaborator")]
-        public virtual ICollection<ApplicationUser> Collaborators { get; set; }
+        //[Display(Name = "Collaborator")]
+        //public virtual ICollection<ApplicationUser> Collaborators { get; set; }
 
 
     }
