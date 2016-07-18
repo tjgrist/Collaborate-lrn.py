@@ -133,21 +133,6 @@ namespace Collaborate_lrn_Py.Controllers
             return RedirectToAction("Index");
         }
 
-
-        //[HttpPost]
-        //public ActionResult AutoGrade(string m)
-        //{
-        //    if (Request.IsAjaxRequest())
-        //    {
-        //        ViewBag.Message = "AJAX!";
-        //        return PartialView("_Grade");
-        //    }
-        //    else
-        //    {
-        //        return View();
-        //    }
-        //}
-
         [HttpPost]
         public ActionResult AutoGrade(GradeViewModel model)
         {

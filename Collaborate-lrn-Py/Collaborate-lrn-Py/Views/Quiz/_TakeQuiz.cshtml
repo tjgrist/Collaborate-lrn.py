@@ -50,7 +50,7 @@
     <!-- Trigger the modal with a button -->    
     <div style="display: inline-block">
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">See Answer</button>
-        <span>@Html.ActionLink(" ", "Complete", "Profile", null, new { @class = "btn btn-success glyphicon glyphicon-arrow-right" })</span>
+        <span>@Html.ActionLink(" ", "Complete", "Profile", null, new { @class = "btn btn-success glyphicon glyphicon-arrow-right", @datatoggle = "tooltip", @dataplacement = "top", @title = "Complete Tutorial" })</span>
     </div>
 </div>
 <div class="container">
@@ -131,12 +131,12 @@
             });
 
             request.fail(function (jqXHR, textStatus, thrownError) {
-                console.log(xhr.responseText);
-                $("#codecheck").html(thrownError + ", something went wrong during the processing of the request." + jqXHR.status);
+                console.log(thrownError);
+                $("#codecheck").html(thrownError + ": Something went wrong during the processing of the request. Try again.").removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(4000);
             });
 
             request.done(function (data) {
-                if (data.toString().includes("Well")){
+                if (data.toString().includes("done")){
                     $("#codecheck").text(data).removeClass("alert alert-danger").addClass("alert alert-success");
                 }
                 else{
@@ -174,25 +174,7 @@
         },
             function (err) {
                 console.log(err.toString());
-                $("#result").html(err.toString()).addClass("alert alert-danger").fadeOut(4000);
+                $("#result").html(err.toString()).removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(4000);
             });
     }
-    @*var checkCode = function (){
-        var output = document.getElementById("output").innerHTML;
-        console.log("Output: " + output.toString());
-        var correctOutput = "@Model.ExpectedOutput.ToString()";
-        console.log("Expected: " + correctOutput);
-        if (output.toString() === correctOutput.toString()) {
-            console.log("Correct output.")
-            $("#result").html("That's right!").removeClass("bg-danger").addClass("bg-success");
-        }
-        else if ($("#output").html() === correctOutput) {
-            console.log("That's right!");
-            $("#result").html("Well Done!").removeClass("bg-danger").addClass("bg-success");
-        }
-        else {
-            console.log("Incorrect output.")
-            $("#result").html("That's not quite right.").addClass("bg-danger");
-        }
-    }*@
 </script>

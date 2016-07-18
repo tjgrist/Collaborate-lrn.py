@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Collaborate_lrn_Py.Models
 {
@@ -21,7 +22,8 @@ namespace Collaborate_lrn_Py.Models
         public virtual ICollection<Path> Paths { get; set; }
 
         public int Points { get; set; }
-
+        [Display(Name = "Count of Completed Tutorials")]
+        public int CompletedTutorialsCount { get; set; }
 
     }
 

@@ -91,6 +91,10 @@ namespace Collaborate_lrn_Py.Controllers
         {
             return View();
         }
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
 
         protected override void Dispose(bool disposing)
         {

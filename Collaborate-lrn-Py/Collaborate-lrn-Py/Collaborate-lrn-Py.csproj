@@ -475,6 +475,10 @@
     <Compile Include="Migrations\201607121657244_changed int to nullable in model.Designer.cs">
       <DependentUpon>201607121657244_changed int to nullable in model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607181627049_added two fields to user model.cs" />
+    <Compile Include="Migrations\201607181627049_added two fields to user model.Designer.cs">
+      <DependentUpon>201607181627049_added two fields to user model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -499,6 +503,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapdef.css" />
     <Content Include="Content\bootstrapdef.min.css" />
+    <Content Include="Content\dashboard.min.css" />
+    <Content Include="Content\datepicker3.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -543,6 +550,7 @@
     <Content Include="Scripts\skulpt-stdlib.js" />
     <Content Include="Scripts\skulpt.min.js" />
     <Content Include="Scripts\_references.js" />
+    <None Include="Views\Profile\Dashboard.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -653,6 +661,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607121657244_changed int to nullable in model.resx">
       <DependentUpon>201607121657244_changed int to nullable in model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607181627049_added two fields to user model.resx">
+      <DependentUpon>201607181627049_added two fields to user model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
