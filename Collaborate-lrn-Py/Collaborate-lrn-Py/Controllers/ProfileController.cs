@@ -64,7 +64,8 @@ namespace Collaborate_lrn_Py.Controllers
         {
             var currentUser = db.Users.Find(User.Identity.GetUserId());
             db.Entry(currentUser).State = EntityState.Modified;
-            currentUser.Points += 20;
+            currentUser.Points += 5;
+            currentUser.CompletedTutorialsCount += 1;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

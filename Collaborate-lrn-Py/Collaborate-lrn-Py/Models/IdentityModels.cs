@@ -22,7 +22,7 @@ namespace Collaborate_lrn_Py.Models
         public virtual ICollection<Path> Paths { get; set; }
 
         public int Points { get; set; }
-        [Display(Name = "Count of Completed Tutorials")]
+        [Display(Name = "Completed Tutorials")]
         public int CompletedTutorialsCount { get; set; }
 
     }
