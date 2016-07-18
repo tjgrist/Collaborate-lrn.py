@@ -1,0 +1,68 @@
+﻿@model Collaborate_lrn_Py.Models.Quiz
+
+<div>
+    <h4>Quiz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Educator.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Educator.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tutorial.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tutorial.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instruction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instruction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Goal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Goal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedOutput)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedOutput)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
