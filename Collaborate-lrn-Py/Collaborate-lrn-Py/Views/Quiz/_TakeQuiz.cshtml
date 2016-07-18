@@ -42,7 +42,7 @@
         </form>
         <br />
         <pre id="output"></pre>
-        <pre id="codecheck"></pre>
+        <div id="codecheck"></div>
         <!-- If you want turtle graphics include a canvas -->
         <div id="mycanvas"></div>
         <div id="result"></div>
@@ -146,9 +146,6 @@
         }
     }
 </script>
-    @*//}).done(function (data) {
-    //        $("#jajax").text(data)
-    //    });*@
 
 <script>
     function outf(text) {
@@ -173,14 +170,14 @@
         });
         myPromise.then(function (mod) {
             console.log('success');
-            $("#result").html("That is valid code!").removeClass("bg-danger").addClass("bg-success");
+            $("#result").html("That is valid code!").removeClass("bg-danger").addClass("bg-success").fadeOut(3000);
         },
             function (err) {
                 console.log(err.toString());
-                $("#result").html(err.toString()).addClass("bg-danger");
+                $("#result").html(err.toString()).addClass("bg-danger").fadeOut(3000);
             });
     }
-    var checkCode = function (){
+    @*var checkCode = function (){
         var output = document.getElementById("output").innerHTML;
         console.log("Output: " + output.toString());
         var correctOutput = "@Model.ExpectedOutput.ToString()";
@@ -197,5 +194,5 @@
             console.log("Incorrect output.")
             $("#result").html("That's not quite right.").addClass("bg-danger");
         }
-    }
+    }*@
 </script>
