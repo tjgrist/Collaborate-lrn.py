@@ -81,14 +81,14 @@ namespace Collaborate_lrn_Py.Controllers
                 ApplicationUser user = db.Users.First(x => x.UserName == searchedCollaborator);
                 Tutorial tut = db.Tutorials.First(x => x.Title == collaborator.TutorialSelection);
                 //tut.Collaborators.Add(user);
-                CollaborativeTutorial coTut = new CollaborativeTutorial()
+                CollaborativeTutorial collaborativeTutorial = new CollaborativeTutorial()
                 {
                     Tutorial = tut,
                     TutorialId = tut.ID,
                 };
-                coTut.Collaborators.Add(user);
-                var c = coTut.Collaborators;
-                db.CollaborativeTutorials.Add(coTut);
+                collaborativeTutorial.Collaborators.Add(user);
+                var c = collaborativeTutorial.Collaborators;
+                db.CollaborativeTutorials.Add(collaborativeTutorial);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
