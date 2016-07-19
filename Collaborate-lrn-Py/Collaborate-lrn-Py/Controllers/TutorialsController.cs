@@ -45,7 +45,7 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Tutorials/Create
-        //[Authorize]
+        [Authorize(Roles = "Educator")]
         public ActionResult Create()
         {
             return View();
@@ -55,6 +55,7 @@ namespace Collaborate_lrn_Py.Controllers
         //[Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Educator")]
         public ActionResult Create(TutorialViewModel model)
         {
             if (ModelState.IsValid)
@@ -78,7 +79,7 @@ namespace Collaborate_lrn_Py.Controllers
             return View(model);
         }
 
-        // GET: Tutorials/Edit/5
+        [Authorize(Roles = "Educator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,6 +104,7 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Educator")]
         public ActionResult Edit(Tutorial tutorial)
         {
             if (ModelState.IsValid)
@@ -116,6 +118,7 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Tutorials/Delete/5
+        [Authorize(Roles = "Educator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -215,7 +218,7 @@ namespace Collaborate_lrn_Py.Controllers
             }
             return View();
         }
-        [Authorize]   
+        [Authorize(Roles = "Student")]   
         public ActionResult UpVote(int? id)
         {
             if (id == null)
