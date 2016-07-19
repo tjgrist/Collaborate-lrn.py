@@ -44,15 +44,12 @@
                 @Html.DisplayFor(modelItem => item.Published)
             </td>
             <td>
-                <div class="dropdown">
-                    <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Publish", "Publish", "Tutorials", new { id = item.ID }, new { @class = "bg-success" })</li>
-                        <li>@Html.ActionLink("Collaborate", "AddCollaborator", "Profile")</li>
-                        <li>@Html.ActionLink("Details", "Details", "Tutorials", new { id = item.ID }, new { @class = "bg-info" })</li>
-                        <li>@Html.ActionLink("Edit", "Edit", "Tutorials", new { id = item.ID }, new { @class = "bg-warning" })</li>
-                        <li>@Html.ActionLink("Delete", "Delete", "Tutorials", new { id = item.ID }, new { @class = "bg-danger" })</li>
-                    </ul>
+                <div align ="right">
+                    @Html.ActionLink(" ", "Publish", "Tutorials", new { id = item.ID }, new { @class = "btn btn-success glyphicon glyphicon-globe", @datatoggle = "tooltip", @dataplacement = "top", @title = "Publish" })
+                    @Html.ActionLink(" ", "AddCollaborator", "Profile", null, new { @class = "btn btn-default glyphicon glyphicon-share-alt" })
+                    @Html.ActionLink(" ", "Details", "Tutorials", new { id = item.ID }, new { @class = "btn btn-info glyphicon glyphicon-eye-open" })
+                    @Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.ID }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+                    @Html.ActionLink(" ", "Delete", "Tutorials", new { id = item.ID }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
                 </div>
             </td>
         </tr>
@@ -105,11 +102,11 @@
                         @Html.DisplayFor(modelItem => item.Tutorial.Published)
                     </td>
                     <td>
-                        <div class="dropdown">
+                        <div class="dropdown" align="right">
                             <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Details", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-info" })</li>
-                                <li>@Html.ActionLink("Edit", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-warning" })</li>
+                                <li>@Html.ActionLink(" ", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-info glyphicon glyphicon-eye-open" })</li>
+                                <li>@Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-warning glyphicon glyphicon-pencil" })</li>
                             </ul>
                         </div>
                     </td>
@@ -149,13 +146,10 @@
                     @Html.DisplayFor(modelItem => item.Goal)
                 </td>
                 <td>
-                    <div class="dropdown">
-                        <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Details", "Details", "Quiz", new { id = item.Id }, null)</li>
-                            <li>@Html.ActionLink("Edit", "Edit", "Quiz", new { id = item.Id }, null)</li>
-                            <li>@Html.ActionLink("Delete", "Delete", "Quiz", new { id = item.Id }, null)</li>
-                        </ul>
+                    <div align="right">
+                        @Html.ActionLink(" ", "Details", "Quiz", new { id = item.Id }, new { @class = "btn btn-info glyphicon glyphicon-eye-open" })
+                        @Html.ActionLink(" ", "Edit", "Quiz", new { id = item.Id }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+                        @Html.ActionLink(" ", "Delete", "Quiz", new { id = item.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
                     </div>
                 </td>
             </tr>

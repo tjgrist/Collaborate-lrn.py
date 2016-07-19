@@ -634,6 +634,7 @@
     <Content Include="Views\Quiz\Details.cshtml" />
     <Content Include="Views\Tutorials\Public.cshtml" />
     <Content Include="Views\Tutorials\_Tutorials.cshtml" />
+    <Content Include="Views\Profile\_Dash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
