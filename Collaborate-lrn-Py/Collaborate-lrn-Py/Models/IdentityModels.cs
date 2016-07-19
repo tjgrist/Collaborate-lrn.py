@@ -18,12 +18,14 @@ namespace Collaborate_lrn_Py.Models
             // Add custom user claims here
             return userIdentity;
         }
-
         public virtual ICollection<Path> Paths { get; set; }
-
+        //public virtual ICollection<Tutorial> CollabTutorials { get; set; }
+        public virtual ICollection<CollaborativeTutorial> Collaborations { get; set; }
         public int Points { get; set; }
         [Display(Name = "Completed Tutorials")]
         public int CompletedTutorialsCount { get; set; }
+
+        //public List<Tutorials> UpvotedTutorials { get; set; }
 
     }
 
@@ -43,6 +45,7 @@ namespace Collaborate_lrn_Py.Models
         public DbSet<Path> Paths { get; set; }
         public DbSet<Tutorial> Tutorials { get; set; }
         public DbSet<Quiz> Quiz { get; set; }
+        public DbSet<CollaborativeTutorial> CollaborativeTutorials { get; set; }
 
     }
 }

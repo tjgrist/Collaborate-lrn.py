@@ -27,7 +27,7 @@ namespace Collaborate_lrn_Py.Controllers
             else
             {
                 var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
-                educatorsTutorials.ForEach(x => currentUser.Points += (int)x.Rating);
+                educatorsTutorials.ForEach(x => currentUser.Points += (int)x.Votes);
                 var educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();
                 EducatorViewModel eduViewModel = new EducatorViewModel()
                 {
@@ -36,20 +36,32 @@ namespace Collaborate_lrn_Py.Controllers
                     Points = currentUser.Points
                 };
                 return View("Educator", eduViewModel);
-            }        
-        //    try
-        //    {
-        //        var collabTutorials = db.Tutorials.Select(y => y.Collaborators.Where(x => x.Id == currentUser.Id)).ToList(); 
-        //        //List<Tutorial> usercollabs = collabTutorials.Where(x => x.Collaborators.First(y => y.Id == currentUser.Id)).ToList();
-        //        if (collabTutorials != null)
-        //        {
-        //             PartialView("_CollaborativeTutorials", collabTutorials);
-        //        }
-        //    }
-        //    catch (NotSupportedException)
-        //    {
-        //        return View("Profile", educatorsTutorials);
-        //    }
+            }
+        }
+        public ActionResult ShowCollaborativeTutorials()
+        {
+            ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
+            //List<CollaborativeTutorial> v = db.CollaborativeTutorials.Where(x => x.CollaboratorId == currentUser.Id).ToList();
+            return View("_CollabTutorials");
+        }
+        public List<Tutorial> GetCollabTutorials()
+        {
+            ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
+            //try
+            //{
+            //    var users = db.Tutorials.Select(y => y.Collaborators.Where(x => x.Id == currentUser.Id)).ToList();
+            //    List<Tutorial> collabTutorials = users.Where(x => x.Select(y => y.).ToList();
+            //    if (collabTutorials != null)
+            //    {
+            //        return collabTutorials;
+            //    }
+            //    return collabTutorials;
+            //}
+            //catch (NotSupportedException)
+            //{
+            //    return new List<Tutorial>();
+            //}
+            return new List<Tutorial>();
         }
 
         public ActionResult AddCollaborator()
@@ -78,7 +90,15 @@ namespace Collaborate_lrn_Py.Controllers
             {
                 ApplicationUser user = db.Users.First(x => x.UserName == searchedCollaborator);
                 Tutorial tut = db.Tutorials.First(x => x.Title == collaborator.TutorialSelection);
-                tut.Collaborators.Add(user);
+                //tut.Collaborators.Add(user);
+                CollaborativeTutorial collaborativeTutorial = new CollaborativeTutorial()
+                {
+                    Tutorial = tut,
+                    TutorialId = tut.ID,
+                };
+                collaborativeTutorial.Collaborators.Add(user);
+                var c = collaborativeTutorial.Collaborators;
+                db.CollaborativeTutorials.Add(collaborativeTutorial);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
