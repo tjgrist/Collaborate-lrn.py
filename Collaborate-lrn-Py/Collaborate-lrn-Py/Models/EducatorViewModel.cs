@@ -9,6 +9,8 @@ namespace Collaborate_lrn_Py.Models
     public class EducatorViewModel
     {
         public List<Tutorial> EducatorTutorials { get; set; }
+        
+        public List<CollaborativeTutorial> CollaborativeTutorials { get; set; }
 
         public List<Quiz> EducatorQuizzes { get; set; }
 

@@ -19,20 +19,41 @@ namespace Collaborate_lrn_Py.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tutorials
-        public ActionResult Index(string searchString)
+        //searchterm null for Unit testing
+        public ActionResult Index(string searchTerm = null)
         {
-            var publishedTutorials = db.Tutorials.Where(x => x.Published == true).ToList();
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    var searchTutorials = db.Tutorials.Where(x => x.Title.Contains(searchString));
-            //    return View(searchTutorials);
-            //}
+            var publishedTutorials = db.Tutorials
+                .OrderByDescending(t => t.CreationDate)
+                .Where(x => x.Published == true)
+                .Take(10)
+                .ToList();
+
+            var searchTutorials = db.Tutorials
+                .OrderBy(x => x.CreationDate)
+                .Where(t => searchTerm == null || t.Title.StartsWith(searchTerm))
+                .Take(10);
+
+            if (Request.IsAjaxRequest()) 
+                return PartialView("_Tutorials", searchTutorials);
+
             if (isStudent())
             {
                 return View("Public", publishedTutorials);
             }
             return View(publishedTutorials);
         }
+        //Param Index method:
+        //public ActionResult Index(string message)
+        //{
+        //    ViewBag.Message = message;
+        //    var publishedTutorials = db.Tutorials.Where(x => x.Published == true).ToList();
+        //    if (isStudent())
+        //    {
+        //        return View("Public", publishedTutorials);
+        //    }
+        //    return View(publishedTutorials);
+        //}
+
 
         // GET: Tutorials/Details/5
         public ActionResult Details(int? id)
@@ -96,12 +117,25 @@ namespace Collaborate_lrn_Py.Controllers
             {
                 return HttpNotFound();
             }
-            if (tutorial.EducatorId == User.Identity.GetUserId())
+            if (tutorial.EducatorId == User.Identity.GetUserId() || CanEdit(id))
             {
                 return View(tutorial);
             }
             ViewBag.Message = "You cannot edit that tutorial.";
             return RedirectToAction("Index", ViewBag.Message);
+        }
+        private bool CanEdit(int? id)
+        {
+            var currentUser = db.Users.Find(User.Identity.GetUserId());
+            try
+            {
+                CollaborativeTutorial collabTut = db.CollaborativeTutorials.Find(id);
+                if (collabTut.Collaborators.Contains(currentUser))
+                    return true;
+                else
+                    return false;
+            }
+            catch (InvalidOperationException) { return false; }        
         }
 
         // POST: Tutorials/Edit/5

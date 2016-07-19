@@ -27,11 +27,12 @@ namespace Collaborate_lrn_Py.Controllers
             else
             {
                 var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
-                educatorsTutorials.ForEach(x => currentUser.Points += (int)x.Votes);
+                educatorsTutorials.ForEach(x => currentUser.Points += x.Votes);
                 var educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();
                 EducatorViewModel eduViewModel = new EducatorViewModel()
                 {
                     EducatorTutorials = educatorsTutorials,
+                    CollaborativeTutorials = GetCollabTutorials(),
                     EducatorQuizzes = educatorsQuizzes,
                     Points = currentUser.Points
                 };
@@ -44,24 +45,24 @@ namespace Collaborate_lrn_Py.Controllers
             //List<CollaborativeTutorial> v = db.CollaborativeTutorials.Where(x => x.CollaboratorId == currentUser.Id).ToList();
             return View("_CollabTutorials");
         }
-        public List<Tutorial> GetCollabTutorials()
+        private List<CollaborativeTutorial> GetCollabTutorials()
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
-            //try
-            //{
-            //    var users = db.Tutorials.Select(y => y.Collaborators.Where(x => x.Id == currentUser.Id)).ToList();
-            //    List<Tutorial> collabTutorials = users.Where(x => x.Select(y => y.).ToList();
-            //    if (collabTutorials != null)
-            //    {
-            //        return collabTutorials;
-            //    }
-            //    return collabTutorials;
-            //}
-            //catch (NotSupportedException)
-            //{
-            //    return new List<Tutorial>();
-            //}
-            return new List<Tutorial>();
+            try
+            {
+                var collaborationsList = currentUser.Collaborations.ToList();
+                var cbtuts = new List<CollaborativeTutorial>() { };
+                foreach (var item in collaborationsList)
+                {
+                    item.Tutorial = db.Tutorials.Find(item.TutorialId);
+                    cbtuts.Add(item);
+                }
+                return cbtuts;
+            }
+            catch (NotSupportedException)
+            {
+                return null;
+            }
         }
 
         public ActionResult AddCollaborator()
@@ -72,6 +73,33 @@ namespace Collaborate_lrn_Py.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AddCollaborator(CollaborateViewModel collaborate)
+        {
+            string searchedCollaborator = collaborate.InputCollaborator;
+            try
+            {
+                ApplicationUser searchedUser = db.Users.First(x => x.UserName == searchedCollaborator);
+                Tutorial tut = db.Tutorials.First(x => x.Title == collaborate.TutorialSelection);
+                CollaborativeTutorial collaborativeTutorial = new CollaborativeTutorial()
+                {
+                    Tutorial = tut,
+                    TutorialId = tut.ID,
+                };
+                collaborativeTutorial.Collaborators.Add(searchedUser);
+                searchedUser.Collaborations.Add(collaborativeTutorial);
+                db.Entry(searchedUser).State = EntityState.Modified;
+                db.CollaborativeTutorials.Add(collaborativeTutorial);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (InvalidOperationException)
+            {
+                return View(collaborate);
+            }
+        }
+
+        [Authorize(Roles = "Student")]
         public ActionResult Complete()
         {
             var currentUser = db.Users.Find(User.Identity.GetUserId());
@@ -80,32 +108,6 @@ namespace Collaborate_lrn_Py.Controllers
             currentUser.CompletedTutorialsCount += 1;
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult AddCollaborator(CollaborateViewModel collaborator)
-        {
-            string searchedCollaborator = collaborator.InputCollaborator;
-            try
-            {
-                ApplicationUser user = db.Users.First(x => x.UserName == searchedCollaborator);
-                Tutorial tut = db.Tutorials.First(x => x.Title == collaborator.TutorialSelection);
-                //tut.Collaborators.Add(user);
-                CollaborativeTutorial collaborativeTutorial = new CollaborativeTutorial()
-                {
-                    Tutorial = tut,
-                    TutorialId = tut.ID,
-                };
-                collaborativeTutorial.Collaborators.Add(user);
-                var c = collaborativeTutorial.Collaborators;
-                db.CollaborativeTutorials.Add(collaborativeTutorial);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch (InvalidOperationException)
-            {
-                return View(collaborator);
-            }
         }
 
         public ActionResult Linter()

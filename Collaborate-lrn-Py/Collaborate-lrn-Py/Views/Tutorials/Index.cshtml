@@ -6,66 +6,76 @@
 
 <h2>@ViewBag.Title <small>Learn</small></h2>
 
-<h4>@ViewBag.Message</h4>
-@*<div align="right">
-    @using (Html.BeginForm())
+<div align="right">
+    @using(Ajax.BeginForm(
+        new AjaxOptions
+        {
+            HttpMethod = "get",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "tutorials"
+        }))
     {
-        <p>
-            Title: @Html.TextBox("SearchString") <br />
-            <input type="submit" value="Filter" />
-        </p>
-    }*@
-    
-@*</div>*@
-<table class="table table-hover">
-    <thead class="thead-inverse">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Votes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Difficulty)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>Author</th>
-            <th></th>
-        </tr>
-    </thead>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Votes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Difficulty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Educator.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("View", "TakeTutorial", new { id=item.ID }, new { @class = "btn btn-primary" })
-        </td>
-    </tr>
-}
+    <p>
+        <input type="search" name="searchTerm"/>
+        <input type="submit" value="Search By Title" class="btn btn-info"/>
+    </p>
+    }
+</div>
 
-</table>
+@Html.Partial("_Tutorials", Model)
+@Scripts.Render("~/bundles/jquery")
+
+    @*<div id="tutorials" class="container-fluid">
+        <table class="table table-hover">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Votes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Difficulty)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreationDate)
+                    </th>
+                    <th>Author</th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Votes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Difficulty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Educator.UserName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View", "TakeTutorial", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 <span>
     @Html.ActionLink("Create New", "Create", "Tutorial", new { @class = "btn btn-primary" })
-</span>
+</span>*@

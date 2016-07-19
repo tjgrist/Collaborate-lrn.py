@@ -16,7 +16,7 @@
     <table class="table table-hover">
         <tr>
             <th>
-                Title
+               Title
             </th>
             <th>
                 Difficulty
@@ -62,6 +62,65 @@
         @Html.ActionLink(" ", "Create", "Tutorials", null, new { @class = "glyphicon glyphicon-plus btn btn-primary", @datatoggle = "tooltip", @dataplacement = "top", @title = "Add a Tutorial" })
     </p>
     <br />
+
+    @*<---------------------------------------Collaborative Tutorials----------------------->*@
+
+    <h3>Your Collaborative Tutorials <small>Collaborate</small></h3>
+        <br />
+        <table class="table table-hover">
+            <tr>
+
+                <th>
+                    Title
+                </th>
+                <th>
+                    Original Author
+                </th>
+                <th>
+                    Difficulty
+                </th>
+                <th>
+                    Votes
+                </th>
+                <th>
+                    Published
+                </th>
+            </tr>
+            @foreach (var item in Model.CollaborativeTutorials)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tutorial.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tutorial.Educator.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tutorial.Difficulty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tutorial.Votes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tutorial.Published)
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Details", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-info" })</li>
+                                <li>@Html.ActionLink("Edit", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-warning" })</li>
+                                <li>@Html.ActionLink("Delete", "Delete", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-danger" })</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+        <p>
+            @Html.ActionLink(" ", "Create", "Tutorials", null, new { @class = "glyphicon glyphicon-plus btn btn-primary", @datatoggle = "tooltip", @dataplacement = "top", @title = "Add a Tutorial" })
+        </p>
+        <br />
 
     @*<------------------------------------- Quizzes ----------------------------------->*@
     <h3>Your Code Challenges <small>Teach</small></h3>
