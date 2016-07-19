@@ -12,7 +12,7 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         public string Description { get; set; }
         [Required]
-        public string Difficulty { get; set; }
+        public string DifficultySelection { get; set; }
         [Required]
         [Display(Name = "Instructions")]
         public string BodyText { get; set; }

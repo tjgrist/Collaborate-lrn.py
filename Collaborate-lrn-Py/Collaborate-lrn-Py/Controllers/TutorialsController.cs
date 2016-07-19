@@ -53,6 +53,7 @@ namespace Collaborate_lrn_Py.Controllers
         [Authorize(Roles = "Educator")]
         public ActionResult Create()
         {
+            ViewData["DifficultySelection"] = new SelectList(Tutorial.difficulties);
             return View();
         }
 
@@ -69,7 +70,7 @@ namespace Collaborate_lrn_Py.Controllers
                 {
                     Title = model.Title,
                     Description = model.Description,
-                    Difficulty = model.Difficulty,
+                    Difficulty = model.DifficultySelection,
                     BodyText = model.BodyText,
                     CodeSample = model.CodeSample,
                     CreationDate = DateTime.Now,
@@ -80,7 +81,7 @@ namespace Collaborate_lrn_Py.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewData["DifficultySelection"] = new SelectList(Tutorial.difficulties);
             return View(model);
         }
 
