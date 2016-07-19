@@ -20,7 +20,7 @@ namespace Collaborate_lrn_Py.Controllers
 
         // GET: Tutorials
         //searchterm null for Unit testing
-        public ActionResult Index(string searchTerm = null)
+        public ActionResult Index(string searchTerm)
         {
             var publishedTutorials = db.Tutorials
                 .OrderByDescending(t => t.CreationDate)
@@ -42,18 +42,6 @@ namespace Collaborate_lrn_Py.Controllers
             }
             return View(publishedTutorials);
         }
-        //Param Index method:
-        //public ActionResult Index(string message)
-        //{
-        //    ViewBag.Message = message;
-        //    var publishedTutorials = db.Tutorials.Where(x => x.Published == true).ToList();
-        //    if (isStudent())
-        //    {
-        //        return View("Public", publishedTutorials);
-        //    }
-        //    return View(publishedTutorials);
-        //}
-
 
         // GET: Tutorials/Details/5
         public ActionResult Details(int? id)

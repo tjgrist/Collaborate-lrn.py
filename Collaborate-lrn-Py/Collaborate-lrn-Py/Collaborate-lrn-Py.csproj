@@ -628,12 +628,10 @@
     <Content Include="Views\Quiz\Edit.cshtml" />
     <Content Include="Scripts\JSX\GoodJob.jsx" />
     <Content Include="Views\Profile\AddCollaborator.cshtml" />
-    <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
     <Content Include="Views\Profile\Student.cshtml" />
     <Content Include="Views\Paths\Create.cshtml" />
     <Content Include="Views\Quiz\_Grade.cshtml" />
     <Content Include="Views\Quiz\Details.cshtml" />
-    <Content Include="Views\Profile\_CollabTutorials.cshtml" />
     <Content Include="Views\Tutorials\Public.cshtml" />
     <Content Include="Views\Tutorials\_Tutorials.cshtml" />
   </ItemGroup>
