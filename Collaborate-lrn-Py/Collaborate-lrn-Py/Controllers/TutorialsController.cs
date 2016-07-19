@@ -9,9 +9,11 @@ using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity.Validation;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Collaborate_lrn_Py.Controllers
 {
+    [Authorize]
     public class TutorialsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -25,7 +27,10 @@ namespace Collaborate_lrn_Py.Controllers
             //    var searchTutorials = db.Tutorials.Where(x => x.Title.Contains(searchString));
             //    return View(searchTutorials);
             //}
-            
+            if (isStudent())
+            {
+                return View("Public", publishedTutorials);
+            }
             return View(publishedTutorials);
         }
 
@@ -68,8 +73,8 @@ namespace Collaborate_lrn_Py.Controllers
                     BodyText = model.BodyText,
                     CodeSample = model.CodeSample,
                     CreationDate = DateTime.Now,
-                    EducatorId = User.Identity.GetUserId(),
-                    Votes = 0
+                    EducatorId = User.Identity.GetUserId()
+                    //Votes = 0
                 }; 
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();
@@ -246,6 +251,24 @@ namespace Collaborate_lrn_Py.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public bool isStudent()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Student")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

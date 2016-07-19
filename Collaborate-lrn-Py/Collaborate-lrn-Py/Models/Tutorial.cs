@@ -30,8 +30,7 @@ namespace Collaborate_lrn_Py.Models
         [Display( Name = "Created:")]
         public DateTime CreationDate { get; set; }
 
-        [DisplayName("Votes")]
-        public int? Votes { get; set; }
+        public int Votes { get; set; }
 
         public bool Published { get; set; }
 

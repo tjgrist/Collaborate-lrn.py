@@ -503,6 +503,10 @@
     <Compile Include="Migrations\201607191433330_rating = votes in tut.Designer.cs">
       <DependentUpon>201607191433330_rating = votes in tut.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607191451586_made votes non-null.cs" />
+    <Compile Include="Migrations\201607191451586_made votes non-null.Designer.cs">
+      <DependentUpon>201607191451586_made votes non-null.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -616,16 +620,13 @@
     <Content Include="Views\Tutorials\Index.cshtml" />
     <Content Include="Views\Tutorials\Create.cshtml" />
     <Content Include="Views\Profile\Linter.cshtml" />
-    <Content Include="Views\Shared\_CreateQuiz.cshtml" />
     <Content Include="Views\Quiz\Create.cshtml" />
     <Content Include="Views\Quiz\Index.cshtml" />
     <Content Include="Views\Quiz\_TakeQuiz.cshtml" />
     <Content Include="Views\Tutorials\TakeTutorial.cshtml" />
     <Content Include="Views\Profile\Educator.cshtml" />
     <Content Include="Views\Quiz\Edit.cshtml" />
-    <Content Include="Views\Tutorials\_Grade.cshtml" />
     <Content Include="Scripts\JSX\GoodJob.jsx" />
-    <Content Include="Views\Shared\_VoteNow.cshtml" />
     <Content Include="Views\Profile\AddCollaborator.cshtml" />
     <Content Include="Views\Profile\_CollaborativeTutorials.cshtml" />
     <Content Include="Views\Profile\Student.cshtml" />
@@ -633,6 +634,7 @@
     <Content Include="Views\Quiz\_Grade.cshtml" />
     <Content Include="Views\Quiz\Details.cshtml" />
     <Content Include="Views\Profile\_CollabTutorials.cshtml" />
+    <Content Include="Views\Tutorials\Public.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -707,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607191433330_rating = votes in tut.resx">
       <DependentUpon>201607191433330_rating = votes in tut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607191451586_made votes non-null.resx">
+      <DependentUpon>201607191451586_made votes non-null.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
