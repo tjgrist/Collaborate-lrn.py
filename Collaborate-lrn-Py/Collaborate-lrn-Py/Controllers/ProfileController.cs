@@ -27,7 +27,7 @@ namespace Collaborate_lrn_Py.Controllers
             else
             {
                 var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
-                educatorsTutorials.ForEach(x => currentUser.Points += (int)x.Rating);
+                educatorsTutorials.ForEach(x => currentUser.Points += (int)x.Votes);
                 var educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();
                 EducatorViewModel eduViewModel = new EducatorViewModel()
                 {

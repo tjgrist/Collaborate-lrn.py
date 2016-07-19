@@ -69,7 +69,7 @@ namespace Collaborate_lrn_Py.Controllers
                     CodeSample = model.CodeSample,
                     CreationDate = DateTime.Now,
                     EducatorId = User.Identity.GetUserId(),
-                    Rating = 0
+                    Votes = 0
                 }; 
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();
@@ -232,7 +232,7 @@ namespace Collaborate_lrn_Py.Controllers
             }
             if (tutorial != null)
             {
-                tutorial.Rating += 1;
+                tutorial.Votes += 1;
                 db.Entry(tutorial).State = EntityState.Modified;
                 db.SaveChanges();
             }

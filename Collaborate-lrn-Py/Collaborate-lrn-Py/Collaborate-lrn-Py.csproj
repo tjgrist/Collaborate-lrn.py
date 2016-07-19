@@ -499,6 +499,10 @@
     <Compile Include="Migrations\201607181811230_manytomany rl to collabtutorials.Designer.cs">
       <DependentUpon>201607181811230_manytomany rl to collabtutorials.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607191433330_rating = votes in tut.cs" />
+    <Compile Include="Migrations\201607191433330_rating = votes in tut.Designer.cs">
+      <DependentUpon>201607191433330_rating = votes in tut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -700,6 +704,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607181811230_manytomany rl to collabtutorials.resx">
       <DependentUpon>201607181811230_manytomany rl to collabtutorials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607191433330_rating = votes in tut.resx">
+      <DependentUpon>201607191433330_rating = votes in tut.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

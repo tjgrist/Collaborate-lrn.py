@@ -39,7 +39,7 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Quiz/Create
-        [Authorize]
+        [Authorize(Roles = "Educator")]
         public ActionResult Create()
         {
             var user = User.Identity.GetUserId();
@@ -53,6 +53,7 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Educator")]
         public ActionResult Create(QuizViewModel model)
         {
             var user = User.Identity.GetUserId();
@@ -77,7 +78,7 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
 
-        // GET: Quiz/Edit/5
+        [Authorize(Roles = "Educator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,6 +97,7 @@ namespace Collaborate_lrn_Py.Controllers
         // POST: Quiz/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Educator")]
         public ActionResult Edit(Quiz quiz)
         {
             if (ModelState.IsValid)
@@ -107,7 +109,7 @@ namespace Collaborate_lrn_Py.Controllers
             return View(quiz);
         }
 
-        // GET: Quiz/Delete/5
+        [Authorize(Roles = "Educator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -122,7 +124,7 @@ namespace Collaborate_lrn_Py.Controllers
             return View(quiz);
         }
 
-        // POST: Quiz/Delete/5
+        [Authorize(Roles = "Educator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -132,7 +134,7 @@ namespace Collaborate_lrn_Py.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        // [Authorize(Roles = "Student")]
         [HttpPost]
         public ActionResult AutoGrade(GradeViewModel model)
         {
