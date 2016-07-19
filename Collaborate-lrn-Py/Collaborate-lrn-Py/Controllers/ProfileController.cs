@@ -39,25 +39,19 @@ namespace Collaborate_lrn_Py.Controllers
                 return View("Educator", eduViewModel);
             }
         }
-        public ActionResult ShowCollaborativeTutorials()
-        {
-            ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
-            //List<CollaborativeTutorial> v = db.CollaborativeTutorials.Where(x => x.CollaboratorId == currentUser.Id).ToList();
-            return View("_CollabTutorials");
-        }
         private List<CollaborativeTutorial> GetCollabTutorials()
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
             try
             {
                 var collaborationsList = currentUser.Collaborations.ToList();
-                var cbtuts = new List<CollaborativeTutorial>() { };
+                var collabtuts = new List<CollaborativeTutorial>() { };
                 foreach (var item in collaborationsList)
                 {
                     item.Tutorial = db.Tutorials.Find(item.TutorialId);
-                    cbtuts.Add(item);
+                    collabtuts.Add(item);
                 }
-                return cbtuts;
+                return collabtuts;
             }
             catch (NotSupportedException)
             {

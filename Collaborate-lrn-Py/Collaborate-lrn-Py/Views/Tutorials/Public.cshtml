@@ -8,16 +8,21 @@
 <h2>@ViewBag.Title <small>Learn</small></h2>
 
 <h4>@ViewBag.Message</h4>
-@*<div align="right">
-    @using (Html.BeginForm())
+<div align="right">
+    @using (Ajax.BeginForm(
+                "Index",
+                "Tutorials",
+                new AjaxOptions
+                {
+                    HttpMethod = "get",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "tutorials"
+                }))
     {
-        <p>
-            Title: @Html.TextBox("SearchString") <br />
-            <input type="submit" value="Filter" />
-        </p>
-    }*@
-
-@*</div>*@
+        @Html.TextBox("searchTerm")
+        <input type="submit" class="btn btn-info" value="Search" />
+    }
+</div>
 <table class="table table-hover">
     <thead class="thead-inverse">
         <tr>
