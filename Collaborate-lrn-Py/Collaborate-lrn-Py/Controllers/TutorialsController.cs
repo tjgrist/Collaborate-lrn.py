@@ -9,23 +9,37 @@ using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity.Validation;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Collaborate_lrn_Py.Controllers
 {
+    [Authorize]
     public class TutorialsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Tutorials
-        public ActionResult Index(string searchString)
+        //searchterm null for Unit testing
+        public ActionResult Index(string searchTerm)
         {
-            var publishedTutorials = db.Tutorials.Where(x => x.Published == true).ToList();
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    var searchTutorials = db.Tutorials.Where(x => x.Title.Contains(searchString));
-            //    return View(searchTutorials);
-            //}
-            
+            var publishedTutorials = db.Tutorials
+                .OrderByDescending(t => t.CreationDate)
+                .Where(x => x.Published == true)
+                .Take(10)
+                .ToList();
+
+            var searchTutorials = db.Tutorials
+                .OrderBy(x => x.CreationDate)
+                .Where(t => searchTerm == null || t.Title.StartsWith(searchTerm))
+                .Take(10);
+
+            if (Request.IsAjaxRequest()) 
+                return PartialView("_Tutorials", searchTutorials);
+
+            if (isStudent())
+            {
+                return View("Public", publishedTutorials);
+            }
             return View(publishedTutorials);
         }
 
@@ -45,9 +59,10 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Tutorials/Create
-        //[Authorize]
+        [Authorize(Roles = "Educator")]
         public ActionResult Create()
         {
+            ViewData["DifficultySelection"] = new SelectList(Tutorial.difficulties);
             return View();
         }
 
@@ -55,6 +70,7 @@ namespace Collaborate_lrn_Py.Controllers
         //[Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Educator")]
         public ActionResult Create(TutorialViewModel model)
         {
             if (ModelState.IsValid)
@@ -63,22 +79,21 @@ namespace Collaborate_lrn_Py.Controllers
                 {
                     Title = model.Title,
                     Description = model.Description,
-                    Difficulty = model.Difficulty,
+                    Difficulty = model.DifficultySelection,
                     BodyText = model.BodyText,
                     CodeSample = model.CodeSample,
                     CreationDate = DateTime.Now,
-                    EducatorId = User.Identity.GetUserId(),
-                    Rating = 0
+                    EducatorId = User.Identity.GetUserId()
                 }; 
                 db.Tutorials.Add(tutorial);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewData["DifficultySelection"] = new SelectList(Tutorial.difficulties);
             return View(model);
         }
 
-        // GET: Tutorials/Edit/5
+        [Authorize(Roles = "Educator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,12 +105,25 @@ namespace Collaborate_lrn_Py.Controllers
             {
                 return HttpNotFound();
             }
-            if (tutorial.EducatorId == User.Identity.GetUserId())
+            if (tutorial.EducatorId == User.Identity.GetUserId() || CanEdit(id))
             {
                 return View(tutorial);
             }
             ViewBag.Message = "You cannot edit that tutorial.";
             return RedirectToAction("Index", ViewBag.Message);
+        }
+        private bool CanEdit(int? id)
+        {
+            var currentUser = db.Users.Find(User.Identity.GetUserId());
+            try
+            {
+                CollaborativeTutorial collabTut = db.CollaborativeTutorials.Find(id);
+                if (collabTut.Collaborators.Contains(currentUser))
+                    return true;
+                else
+                    return false;
+            }
+            catch (InvalidOperationException) { return false; }        
         }
 
         // POST: Tutorials/Edit/5
@@ -103,6 +131,7 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Educator")]
         public ActionResult Edit(Tutorial tutorial)
         {
             if (ModelState.IsValid)
@@ -116,6 +145,7 @@ namespace Collaborate_lrn_Py.Controllers
         }
 
         // GET: Tutorials/Delete/5
+        [Authorize(Roles = "Educator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -215,7 +245,7 @@ namespace Collaborate_lrn_Py.Controllers
             }
             return View();
         }
-        [Authorize]   
+        [Authorize(Roles = "Student")]   
         public ActionResult UpVote(int? id)
         {
             if (id == null)
@@ -229,7 +259,7 @@ namespace Collaborate_lrn_Py.Controllers
             }
             if (tutorial != null)
             {
-                tutorial.Rating += 1;
+                tutorial.Votes += 1;
                 db.Entry(tutorial).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -243,6 +273,24 @@ namespace Collaborate_lrn_Py.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public bool isStudent()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = User.Identity;
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+                var s = UserManager.GetRoles(user.GetUserId());
+                if (s[0].ToString() == "Student")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

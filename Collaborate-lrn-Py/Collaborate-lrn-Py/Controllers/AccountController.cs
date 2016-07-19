@@ -83,7 +83,7 @@ namespace Collaborate_lrn_Py.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "Profile");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -172,34 +172,6 @@ namespace Collaborate_lrn_Py.Controllers
             return View(model);
         }
 
-        //[Authorize]
-        //public ActionResult ChooseRole()
-        //{
-        //    ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name", "Educator");
-        //    IEnumerable<SelectListItem> roles = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
-        //    ViewData["Roles"] = roles;
-        //    return View();
-        //}
-
-        ////
-        //// POST: /Account/ChooseRole
-        //[HttpPost]
-        //[Authorize]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> ChooseRole(RegisterViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        await this.UserManager.AddToRoleAsync(User.Identity.GetUserId(), model.UserRoles);
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    ViewBag.Name = new SelectList(db.Roles.Where(x => !x.Name.Contains("Admin")).ToList(), "Name", "Name");
-            
-        //    // If we got this far, something failed, redisplay form
-        //    return View(model);
-        //}
-
-        //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
