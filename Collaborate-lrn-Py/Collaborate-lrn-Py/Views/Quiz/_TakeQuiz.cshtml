@@ -37,21 +37,20 @@
         <form>
             <textarea id="yourcode" cols="80" rows="10">Write your code here.</textarea>
             <br />
+            <div style="display:inline-block">
             <button type="button" class="btn btn-primary" onclick="runit()">Run</button>
             <button type="button" class="btn btn-primary" onclick="autoGrade()">Check</button>
+            <button type="button" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="modal tooltip" data-placement="top" title="See Answer" data-target="#myModal"></button>
+            <span>@Html.ActionLink(" ", "Complete", "Profile", null, new { @class = "btn btn-success glyphicon glyphicon-ok", @datatoggle = "tooltip", @dataplacement = "top", @title = "Complete Tutorial" })</span>
+            </div>
         </form>
         <br />
         <pre id="output"></pre>
         <div id="codecheck"></div>
-        <!-- If you want turtle graphics include a canvas -->
-        <div id="mycanvas"></div>
         <div id="result"></div>
     </div>
     <!-- Trigger the modal with a button -->    
-    <div style="display: inline-block">
-        <button type="button" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal"></button>
-        <span>@Html.ActionLink(" ", "Complete", "Profile", null, new { @class = "btn btn-success glyphicon glyphicon-arrow-right", @datatoggle = "tooltip", @dataplacement = "top", @title = "Complete Tutorial" })</span>
-    </div>
+
 </div>
 <div class="container">
 
@@ -72,6 +71,7 @@
         </div>
     </div>
 </div>
+<!--End Modal-->
 
 
 
