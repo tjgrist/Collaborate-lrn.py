@@ -1,7 +1,28 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Trebuchet MS';
 }
+pre{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    background-color: azure;
+}
+h5{
+    font-size: 18px;
+    font-weight: bold;
+    color:cadetblue;
+    font-weight:bold
+}
+.btn{
+    border-radius: 5px;
+}
+
+pre{
+    border-radius: 5px;
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -20,5 +41,5 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 75%;
 }

@@ -59,10 +59,11 @@ namespace Collaborate_lrn_Py.Controllers
                 Quiz quiz = new Quiz
                 {
                     TutorialId = db.Tutorials.First(x => x.Title == model.TutorialSelection).ID,
-                    Name = model.Name,
-                    Instruction = model.Instruction,
                     EducatorId = User.Identity.GetUserId(),
+                    Name = model.Name,
                     Goal = model.Goal,
+                    Instruction = model.Instruction,
+                    DisplayedCode = model.DisplayedCode,
                     ExpectedOutput = model.ExpectedOutput,
                     Answer = model.Answer
                 };
@@ -146,9 +147,6 @@ namespace Collaborate_lrn_Py.Controllers
                     else
                     {
                         ViewBag.Message = "Hm... Try again. "; 
-                        ViewBag.Output = model.output;
-                        ViewBag.Id = model.expected;
-                        ViewBag.QuizAnswer = quiz.ExpectedOutput;
                     }
                     return PartialView("_Grade");
                 }

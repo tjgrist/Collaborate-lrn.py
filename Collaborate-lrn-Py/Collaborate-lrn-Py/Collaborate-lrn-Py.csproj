@@ -507,6 +507,10 @@
     <Compile Include="Migrations\201607191451586_made votes non-null.Designer.cs">
       <DependentUpon>201607191451586_made votes non-null.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607202200285_added displayed code to quiz.cs" />
+    <Compile Include="Migrations\201607202200285_added displayed code to quiz.Designer.cs">
+      <DependentUpon>201607202200285_added displayed code to quiz.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -533,6 +537,7 @@
     <Content Include="Content\bootstrapdef.min.css" />
     <Content Include="Content\dashboard.min.css" />
     <Content Include="Content\datepicker3.css" />
+    <Content Include="Content\layout.css" />
     <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -551,6 +556,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\TakeTutorial.css" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
@@ -635,6 +641,7 @@
     <Content Include="Views\Tutorials\Public.cshtml" />
     <Content Include="Views\Tutorials\_Tutorials.cshtml" />
     <Content Include="Views\Profile\_Dash.cshtml" />
+    <Content Include="Views\Shared\_ProfileLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -712,6 +719,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607191451586_made votes non-null.resx">
       <DependentUpon>201607191451586_made votes non-null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607202200285_added displayed code to quiz.resx">
+      <DependentUpon>201607202200285_added displayed code to quiz.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

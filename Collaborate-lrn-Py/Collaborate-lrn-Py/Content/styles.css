@@ -135,6 +135,7 @@ fieldset[disabled] .btn-default.active {
 	background-color: #e9ecf2;
 	border-color: #e9ecf2;
 	color: #1b3548;
+    border-radius: 18px;
 }
 
 .btn-primary,
@@ -160,6 +161,7 @@ fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
 	background-color: #30a5ff;
 	border-color: #30a5ff;
+    border-radius: 18px;
 }
 
 .btn-success,
@@ -185,6 +187,7 @@ fieldset[disabled] .btn-success:active,
 fieldset[disabled] .btn-success.active {
 	background-color: #8ad919;
 	border-color: #8ad919;
+    border-radius: 18px;
 }
 
 .btn-warning,
@@ -210,6 +213,7 @@ fieldset[disabled] .btn-warning:active,
 fieldset[disabled] .btn-warning.active {
 	background-color: #ffb53e;
 	border-color: #ffb53e;
+        border-radius: 18px;
 }
 
 .btn-danger,
@@ -235,6 +239,7 @@ fieldset[disabled] .btn-danger:active,
 fieldset[disabled] .btn-danger.active {
 	background-color: #f9243f;
 	border-color: #f9243f;
+        border-radius: 18px;
 }
 
 /*Backgrounds*/

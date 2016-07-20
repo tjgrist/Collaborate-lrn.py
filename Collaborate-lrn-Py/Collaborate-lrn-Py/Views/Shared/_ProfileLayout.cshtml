@@ -1,0 +1,74 @@
+﻿@*@model Collaborate_lrn_Py.Models.ApplicationUser*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("PyOrial", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Tutorials", "Index", "Tutorials")</li>
+                    <li>@Html.ActionLink("Paths", "Index", "Paths")</li>
+                    <li>@Html.ActionLink("Community", "Index", "Community")</li>
+                    <li>@Html.ActionLink("Code Challenges", "Index", "Quiz")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div id="wrapper container">
+        <div class="col-md-1" style="max-height:800px">
+            <div id="sidebar-wrapper" style="">
+                <ul class="nav sidebar-nav" style="">
+                    <li class="sidebar-brand">
+                        <span>@Html.ActionLink("PyOrial", "Index", "Home")</span>
+                    </li>
+                    <li>
+                        <span>@Html.ActionLink("Dashboard", "Index", "Profile")</span>
+                    </li>
+                    <li>
+                        <span>@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
+                    </li>
+                    <li>
+                        <span>@Html.ActionLink("Paths", "Index", "Paths")</span>
+                    </li>
+                    <li>
+                        <span>@Html.ActionLink("Community", "Index", "Community")</span>
+                    </li>
+                    <li>
+                        <span>@Html.ActionLink("Challenges", "Index", "Quiz")</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    <div class="" style="margin:0px 120px 0px 140px">
+        @RenderBody()
+        <br />
+        <footer></footer>
+    </div>
+</div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/static/skulpt-stdlib.js" type="text/javascript"></script> 
+</body>
+</html>

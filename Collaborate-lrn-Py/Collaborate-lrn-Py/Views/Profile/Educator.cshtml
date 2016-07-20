@@ -3,7 +3,7 @@
 @using Microsoft.AspNet.Identity
 
 @{ 
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 
 <div align="right"><h2>@User.Identity.GetUserName()</h2>
@@ -102,12 +102,9 @@
                         @Html.DisplayFor(modelItem => item.Tutorial.Published)
                     </td>
                     <td>
-                        <div class="dropdown" align="right">
-                            <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink(" ", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-info glyphicon glyphicon-eye-open" })</li>
-                                <li>@Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-warning glyphicon glyphicon-pencil" })</li>
-                            </ul>
+                        <div align="right">
+                            @Html.ActionLink(" ", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "btn btn-info glyphicon glyphicon-eye-open" })
+                            @Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
                         </div>
                     </td>
                 </tr>
@@ -161,4 +158,14 @@
 }
 <script src="~/Scripts/jquery-2.2.4.min.js"></script>
 
+<!---Dropdown list -->
+@*<td>
+    <div class="dropdown" align="right">
+        <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink(" ", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-info glyphicon glyphicon-eye-open" })</li>
+            <li>@Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-warning glyphicon glyphicon-pencil" })</li>
+        </ul>
+    </div>
+</td>*@
 

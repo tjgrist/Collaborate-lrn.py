@@ -9,14 +9,18 @@ namespace Collaborate_lrn_Py.Models
     public class TutorialViewModel
     {
         public string Title { get; set; }
+
         [Required]
         public string Description { get; set; }
+
         [Required]
         [Display(Name = "Difficulty")]
         public string DifficultySelection { get; set; }
+
         [Required]
         [Display(Name = "Instructions")]
         public string BodyText { get; set; }
+
         [Display(Name = "Code Sample")]
         public string CodeSample { get; set; }
 

@@ -67,10 +67,13 @@
                 @Html.DisplayFor(modelItem => item.Educator.UserName)
             </td>
             <td>
-                @Html.ActionLink("View", "TakeTutorial", new { id = item.ID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Take", "TakeTutorial", new { id = item.ID }, new { @class = "btn btn-defualt" })
             </td>
             <td>
                 @Html.ActionLink(" ", "UpVote", "Tutorials", new { id = item.ID }, new { @class = "glyphicon glyphicon-arrow-up btn btn-primary" })
+            </td>
+            <td>
+                @Html.ActionLink(" ", "AddToPath", "Paths", new { id = item.ID }, new { @class = "glyphicon glyphicon-plus btn btn-success" })
             </td>
         </tr>
     }
