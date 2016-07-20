@@ -41,8 +41,6 @@ namespace Collaborate_lrn_Py.Models
 
         public static List<string> difficulties = new List<string>() { "Easy", "Medium", "Difficult", "Very Difficult" };
 
-        //[Display(Name = "Collaborator")]
-        //public virtual ICollection<ApplicationUser> Collaborators { get; set; }
 
 
     }

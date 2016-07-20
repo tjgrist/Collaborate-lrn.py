@@ -11,6 +11,11 @@
             <p style="font-size:medium">@Html.DisplayFor(model => model.Goal)</p>
         </div>
     </div>
+    @*<div class="col-md-3">
+        <div class="jumbotron">
+            <h2>Try It</h2> 
+        </div>
+    </div>*@
     <div class="col-md-9">
         <div class="jumbotron">
             <div>
@@ -21,13 +26,12 @@
     </div>
 </div>
 <!-- Run Python in the browser here -->
-<h2>Try It</h2>   
-    <div class="row">
+  
+<div class="row">
     <div class="col-md-8">
-        <div class="jumbotron">
-            
+        <div class="jumbotron">           
             <form>
-                <textarea id="yourcode" placeholder="#Write your code here."></textarea>@*@Html.DisplayFor(model => model.DisplayedCode) place me in textarea*@
+                <textarea id="yourcode" placeholder="#Write your code here.">@Html.DisplayFor(model => model.DisplayedCode)</textarea>
                 <br /><br />
                 <div align="center">
                     <button type="button" class="btn btn-primary" onclick="runit()">Run</button>

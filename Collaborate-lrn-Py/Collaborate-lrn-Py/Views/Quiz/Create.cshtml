@@ -35,6 +35,13 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(m => m.DisplayedCode, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.DisplayedCode, new { @class = "form-control", @rows = 12 })
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(m => m.ExpectedOutput, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextAreaFor(m => m.ExpectedOutput, new { @class = "form-control" })

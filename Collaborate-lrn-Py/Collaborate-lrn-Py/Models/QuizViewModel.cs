@@ -15,7 +15,10 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         public string Goal { get; set; }
 
-        [Display(Name = "What should the output of the user's code be?")]
+        [Display(Name = "Code for the Student to Edit")]
+        public string DisplayedCode { get; set; }
+
+        [Display(Name = "Expected output of the student's code be?")]
         public string ExpectedOutput { get; set; }
 
         [Display(Name = "Example Answer")]

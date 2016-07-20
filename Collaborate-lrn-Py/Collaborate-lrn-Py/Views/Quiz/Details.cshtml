@@ -33,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Instruction)
+            <pre>@Html.DisplayFor(model => model.Instruction)</pre>
         </dd>
 
         <dt>
@@ -43,21 +43,19 @@
         <dd>
             @Html.DisplayFor(model => model.Goal)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayedCode)
+        </dt>
 
+        <dd>
+            <pre>@Html.DisplayFor(model => model.DisplayedCode)</pre>
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ExpectedOutput)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ExpectedOutput)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Answer)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Answer)
         </dd>
 
     </dl>

@@ -18,10 +18,12 @@ namespace Collaborate_lrn_Py.Models
 
         public string Goal { get; set; }
 
+        [Display(Name = "Code for the Student to Edit")]
+        public string DisplayedCode { get; set; }
+
         [Display(Name = "Desired output of Student's code:")]
         public string ExpectedOutput { get; set; }
 
-        [Display(Name = "Example Answer")]
         public string Answer { get; set; }
 
         [ForeignKey("Educator")]
