@@ -25,7 +25,7 @@ namespace Collaborate_lrn_Py.Models
         [Display(Name = "Completed Tutorials")]
         public int CompletedTutorialsCount { get; set; }
 
-        //public List<Tutorials> UpvotedTutorials { get; set; }
+        //public List<int> UpvotedTutorialIDs { get; set; }
 
     }
 
