@@ -3,7 +3,17 @@
 @{
     ViewBag.Title = Model.Name;
 }
-
+<style>
+    textarea{
+        max-width: 100%;
+        width: 100%;
+        height: 250px;
+        border: 2px solid deepskyblue;
+        background-color: #060606;
+        opacity: 0.5;
+        color: white;
+    }
+</style>
 <h2>@ViewBag.Title <small>Code Challenge</small></h2>
 <div class="row">
     <div class="col-md-3">
@@ -21,16 +31,16 @@
         </div>
     </div>
 </div>
-
 <!-- Run Python in the browser here -->
 <h2>Try It</h2>   
     <div class="row">
     <div class="col-md-8">
         <div class="jumbotron">
+            
             <form>
-                <textarea id="yourcode" cols="80" rows="10">Write your code here.</textarea>
+                <textarea id="yourcode" placeholder="Write your code here."></textarea>@*@Html.DisplayFor(model => model.DisplayedCode) place me in textarea*@
                 <br /><br />
-                <div style="display:inline-block" align="center">
+                <div style="display:inline-block">
                     <button type="button" class="btn btn-primary" onclick="runit()">Run</button>
                     <button type="button" class="btn btn-primary" onclick="autoGrade()">Check</button>
                     <button type="button" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal"></button>
