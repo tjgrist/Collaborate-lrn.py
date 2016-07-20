@@ -83,8 +83,8 @@
     function autoGrade() {
         var userCode = $("#yourcode").val();
         var codeOutput = $("#output").html().toString();
-        if (codeOutput === null || codeOutput === undefined){
-            console.log("it looks like you didn't add any code..." + codeOutput);
+        if (typeof codeOutput === "undefined" || codeOutput === null){
+            console.log("It looks like you didn't add any code..." + codeOutput);
             $("#codecheck").append("It looks like your code didn't print anything...").removeClass("alert alert-success").addClass("alert alert-danger")
         }
         else{
@@ -102,7 +102,7 @@
 
             request.fail(function (jqXHR, textStatus, thrownError) {
                 console.log(thrownError);
-                $("#codecheck").html(thrownError + ": Something went wrong during the processing of the request. Try again.").removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(4000);
+                $("#codecheck").html("Could not compile and check code. Try again.").removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(5000);
             });
 
             request.done(function (data) {

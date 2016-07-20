@@ -146,9 +146,6 @@ namespace Collaborate_lrn_Py.Controllers
                     else
                     {
                         ViewBag.Message = "Hm... Try again. "; 
-                        ViewBag.Output = model.output;
-                        ViewBag.Id = model.expected;
-                        ViewBag.QuizAnswer = quiz.ExpectedOutput;
                     }
                     return PartialView("_Grade");
                 }
