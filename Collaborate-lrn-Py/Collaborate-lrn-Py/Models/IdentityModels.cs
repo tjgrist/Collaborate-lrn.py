@@ -19,9 +19,9 @@ namespace Collaborate_lrn_Py.Models
             return userIdentity;
         }
         public virtual ICollection<Path> Paths { get; set; }
-        //public virtual ICollection<Tutorial> CollabTutorials { get; set; }
         public virtual ICollection<CollaborativeTutorial> Collaborations { get; set; }
         public int Points { get; set; }
+
         [Display(Name = "Completed Tutorials")]
         public int CompletedTutorialsCount { get; set; }
 
