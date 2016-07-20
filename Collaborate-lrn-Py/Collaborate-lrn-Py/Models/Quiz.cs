@@ -13,6 +13,7 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Instructions")]
         public string Instruction { get; set; }
 
         public string Goal { get; set; }
