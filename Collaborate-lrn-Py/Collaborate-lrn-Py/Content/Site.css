@@ -15,6 +15,14 @@ h5{
     color:cadetblue;
     font-weight:bold
 }
+.btn{
+    border-radius: 5px;
+}
+
+pre{
+    border-radius: 5px;
+}
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
