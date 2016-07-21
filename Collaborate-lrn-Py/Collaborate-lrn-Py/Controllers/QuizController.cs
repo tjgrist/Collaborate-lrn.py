@@ -64,6 +64,7 @@ namespace Collaborate_lrn_Py.Controllers
                     Goal = model.Goal,
                     Instruction = model.Instruction,
                     DisplayedCode = model.DisplayedCode,
+                    ExpectedInput = model.ExpectedInput,
                     ExpectedOutput = model.ExpectedOutput,
                     Answer = model.Answer
                 };
