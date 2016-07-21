@@ -193,7 +193,7 @@ namespace Collaborate_lrn_Py.Controllers
                         tutorial.Published = true;
                         db.Entry(tutorial).State = EntityState.Modified;
                         db.SaveChanges();
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index", "Profile");
                     }
                     catch (DbEntityValidationException dbEx)
                     {

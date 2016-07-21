@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Collaborate_lrn_Py.Controllers
 {
@@ -45,10 +46,12 @@ namespace Collaborate_lrn_Py.Controllers
         // POST: Paths/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PathName,Rating,CreatorId")] Path path)
+        public ActionResult Create([Bind(Include = "Id,PathName,Votes,CreatorId")] Path path)
         {
             if (ModelState.IsValid)
             {
+                path.Creator = db.Users.Find(User.Identity.GetUserId());
+                path.CreatorId = User.Identity.GetUserId();
                 db.Paths.Add(path);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -56,7 +59,51 @@ namespace Collaborate_lrn_Py.Controllers
 
             return View(path);
         }
+        
+        public ActionResult AddTutorialToPath(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Tutorial tutorial = db.Tutorials.Find(id);
+            if (tutorial == null)
+            {
+                return HttpNotFound();
+            }
+            if (tutorial != null)
+            {
+                try
+                {
+                    var currentUser = db.Users.Find(User.Identity.GetUserId());
+                    ViewData["PathSelection"] = new SelectList(currentUser.Paths.ToList(), "PathName", "PathName");
+                    PathViewModel pathModel = new PathViewModel() { TutorialId = tutorial.ID};
+                    return View(pathModel);
+                }
+                catch (InvalidOperationException)
+                {
+                    return View();
+                }
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddTutorialToPath([Bind(Include = "TutorialId,PathSelection")] PathViewModel model)
+        {
+            var currentUser = db.Users.Find(User.Identity.GetUserId());
+            if (ModelState.IsValid)
+            {
+                Path selectedPath = currentUser.Paths.First(x => x.PathName == model.PathSelection);
+                Tutorial tutorial = db.Tutorials.First(x => x.ID == model.TutorialId);
+                selectedPath.Tutorials.Add(tutorial);
+                db.Entry(currentUser).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Profile");
+            }            
+            ViewData["PathSelection"] = new SelectList(currentUser.Paths.ToList(), "PathName", "PathName");
+            return View(model);
 
+        }
         // GET: Paths/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -78,7 +125,7 @@ namespace Collaborate_lrn_Py.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,PathName,Rating,CreatorId")] Path path)
+        public ActionResult Edit([Bind(Include = "Id,PathName,Votes,CreatorId")] Path path)
         {
             if (ModelState.IsValid)
             {

@@ -19,9 +19,10 @@
         </td>
     </tr>
 </table>
+<h4></h4>
 @foreach (var i in Model.Paths)
     {
-   <table class="table">i.PathName
+   <table class="table">
         <tr>
             <th>
                 @Html.DisplayNameFor(m => i.PathName)
@@ -31,6 +32,7 @@
             </td>
         </tr>
        </table>
+       <h4>Tutorials</h4>
         foreach (var x in i.Tutorials)
         {
             <table class="table">
