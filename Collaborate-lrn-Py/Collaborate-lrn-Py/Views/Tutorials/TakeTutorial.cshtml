@@ -4,8 +4,12 @@
     ViewBag.Title = Model.ModelTutorial.Title;
 }
 <link href="~/Content/TakeTutorial.css" rel="stylesheet" />
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+@*<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>*@
+
+<link rel="stylesheet" href="~/Content/obsidian.css">
+<script src="~/Scripts/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <div class="container-fluid">
@@ -21,7 +25,7 @@
             <div class="jumbotron">
                 <div>
                     <h5>@Html.DisplayNameFor(model => model.ModelTutorial.CodeSample)</h5>
-                    <pre><code class="python">@Html.DisplayFor(model => model.ModelTutorial.CodeSample)</code></pre>
+                    <pre class="pycode"><code class="python">@Html.DisplayFor(model => model.ModelTutorial.CodeSample)</code></pre>
                 </div>
             </div>
         </div>

@@ -511,6 +511,18 @@
     <Compile Include="Migrations\201607202200285_added displayed code to quiz.Designer.cs">
       <DependentUpon>201607202200285_added displayed code to quiz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607211459250_added expected input field to quiz model .cs" />
+    <Compile Include="Migrations\201607211459250_added expected input field to quiz model .Designer.cs">
+      <DependentUpon>201607211459250_added expected input field to quiz model .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607212012283_changed rating to votes in paths model.cs" />
+    <Compile Include="Migrations\201607212012283_changed rating to votes in paths model.Designer.cs">
+      <DependentUpon>201607212012283_changed rating to votes in paths model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607212230337_added published field to paths model .cs" />
+    <Compile Include="Migrations\201607212230337_added published field to paths model .Designer.cs">
+      <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -520,6 +532,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
     <Compile Include="Models\EducatorViewModel.cs" />
+    <Compile Include="Models\PathViewModel.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Models\Tutorial.cs" />
@@ -535,10 +548,20 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapdef.css" />
     <Content Include="Content\bootstrapdef.min.css" />
+    <Content Include="Content\dark.css" />
+    <Content Include="Content\darkula.css" />
     <Content Include="Content\dashboard.min.css" />
     <Content Include="Content\datepicker3.css" />
+    <Content Include="Content\default.css" />
+    <Content Include="Content\dracula.css" />
+    <Content Include="Content\github-gist.css" />
     <Content Include="Content\layout.css" />
+    <Content Include="Content\monokai-sublime.css" />
+    <Content Include="Content\monokai.css" />
+    <Content Include="Content\obsidian.css" />
+    <Content Include="Content\solarized-dark.css" />
     <Content Include="Content\styles.css" />
+    <Content Include="Content\xcode.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -558,6 +581,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\TakeTutorial.css" />
     <None Include="Scripts\jquery-2.2.4.intellisense.js" />
+    <Content Include="Scripts\highlight.pack.js" />
     <Content Include="Scripts\jquery-2.2.4.js" />
     <Content Include="Scripts\jquery-2.2.4.min.js" />
     <Content Include="Scripts\jquery-2.2.4.min.map" />
@@ -584,6 +608,11 @@
     <Content Include="Scripts\skulpt-stdlib.js" />
     <Content Include="Scripts\skulpt.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Paths\Index.cshtml" />
+    <Content Include="Views\Paths\AddTutorialToPath.cshtml" />
+    <Content Include="Views\Paths\Edit.cshtml" />
+    <Content Include="Views\Paths\Delete.cshtml" />
+    <Content Include="Views\Paths\Details.cshtml" />
     <None Include="Views\Profile\Dashboard.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -722,6 +751,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607202200285_added displayed code to quiz.resx">
       <DependentUpon>201607202200285_added displayed code to quiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607211459250_added expected input field to quiz model .resx">
+      <DependentUpon>201607211459250_added expected input field to quiz model .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607212012283_changed rating to votes in paths model.resx">
+      <DependentUpon>201607212012283_changed rating to votes in paths model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607212230337_added published field to paths model .resx">
+      <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

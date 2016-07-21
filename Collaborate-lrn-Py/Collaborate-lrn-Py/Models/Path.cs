@@ -13,7 +13,9 @@ namespace Collaborate_lrn_Py.Models
         [Required]
         [Display(Name = "Path")]
         public string PathName { get; set; }
-        public float Rating { get; set; }
+
+        public bool Published { get; set; }
+        public int Votes { get; set; }
 
         public virtual ICollection<Tutorial> Tutorials { get; set; }
 

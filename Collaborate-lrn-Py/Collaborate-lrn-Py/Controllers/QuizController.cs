@@ -64,6 +64,7 @@ namespace Collaborate_lrn_Py.Controllers
                     Goal = model.Goal,
                     Instruction = model.Instruction,
                     DisplayedCode = model.DisplayedCode,
+                    ExpectedInput = model.ExpectedInput,
                     ExpectedOutput = model.ExpectedOutput,
                     Answer = model.Answer
                 };
@@ -136,21 +137,64 @@ namespace Collaborate_lrn_Py.Controllers
         [HttpPost]
         public ActionResult AutoGrade(GradeViewModel model)
         {
+
             int? QuizId = Convert.ToInt32(model.expected);
             if (QuizId != null)
-            {               
+            {
                 Quiz quiz = db.Quiz.First(x => x.Id == QuizId);
-                    if (model.output.Trim() == quiz.ExpectedOutput.Trim())
+
+                //Debug.WriteLine("your code: " + model.yourcode + "L: " + model.yourcode.Length);
+                //Debug.WriteLine("Ouput: " + model.output.ToString().Trim());
+                //Debug.WriteLine("expected: " + quiz.ExpectedOutput.Trim());
+                //var newyourcode = model.yourcode.Trim().Replace(" ", "");
+                //Debug.WriteLine("your code trimmed: " + newyourcode + newyourcode.Length);
+                //var replacequizexp = quiz.ExpectedInput.Trim().Replace(" ", "");
+                //Debug.WriteLine("the quiz expected: " + replacequizexp + "..." + replacequizexp.Length);
+                //Debug.WriteLine(newyourcode.Equals(replacequizexp));
+                //Debug.WriteLine(model.output.Trim().Equals(quiz.ExpectedOutput));
+                try
+                {
+                    string output = model.output.ToString().Trim();
+                    //if (output.Equals(quiz.ExpectedOutput) && model.yourcode.Length.Equals(18))
+                    //{
+                    //    ViewBag.Message = "Nice try, but you cannot simply print the proper output.";
+                    //}
+                    if (output.Equals(quiz.ExpectedOutput) && model.yourcode.Length > quiz.ExpectedOutput.Length + 10)
                     {
                         ViewBag.Message = "Well done!";
                     }
                     else
                     {
-                        ViewBag.Message = "Hm... Try again. "; 
+                        ViewBag.Message = "Something may be wrong with your input. Try again.";
                     }
-                    return PartialView("_Grade");
                 }
+                catch (NullReferenceException e)
+                {
+                    ViewBag.Message = e.Message + " It looks like the output of your code was empty.";
+                }
+                return PartialView("_Grade");
+            }
             return View();
+        }
+
+        //could use .split at new line and spaces and iterate thru to match each substring 
+        //could use to charArray() and do something similar
+        //could check multiple times
+
+        private bool CheckOutput(string output, Quiz quiz, string yourcode)
+        {
+            if (output.Equals(quiz.ExpectedOutput) && yourcode.Length == quiz.ExpectedOutput.Length + 9)
+            {
+                return false;
+            }
+            if (output.Equals(quiz.ExpectedOutput) && yourcode.Length > quiz.ExpectedOutput.Length + 10) //&& output.Length > quiz.ExpectedOutput.Length + 10
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 

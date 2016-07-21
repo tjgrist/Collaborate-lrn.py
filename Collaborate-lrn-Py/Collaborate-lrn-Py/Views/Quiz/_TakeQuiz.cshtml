@@ -11,11 +11,7 @@
             <p style="font-size:medium">@Html.DisplayFor(model => model.Goal)</p>
         </div>
     </div>
-    @*<div class="col-md-3">
-        <div class="jumbotron">
-            <h2>Try It</h2> 
-        </div>
-    </div>*@
+<!------------------------------------------------------------------------------------->
     <div class="col-md-9">
         <div class="jumbotron">
             <div>
@@ -67,7 +63,7 @@
                 <h4 class="modal-title">@Html.DisplayNameFor(model => model.Answer)</h4>
             </div>
             <div class="modal-body">
-                <pre><code class="python" id="show">@Html.DisplayFor(model => model.Answer)</code></pre>
+                <pre class="pycode"><code class="python" id="show">@Html.DisplayFor(model => model.Answer)</code></pre>
             </div>
         </div>
     </div>
@@ -92,7 +88,7 @@
             $("#codecheck").append("It looks like your code didn't print anything...").removeClass("alert alert-success").addClass("alert alert-danger")
         }
         else{
-            var id = @Model.Id.ToString();
+            var quizId = @Model.Id.ToString();
             var request = $.ajax({
                 url: "@Url.Action("AutoGrade", "Quiz")",
                 method: "POST",
@@ -100,13 +96,15 @@
                 data: {
                     yourcode: userCode,
                     output: codeOutput,
-                    expected: id
+                    expected: quizId
                 }
             });
 
             request.fail(function (jqXHR, textStatus, thrownError) {
                 console.log(thrownError);
-                $("#codecheck").html("Could not compile and check code. Try again.").removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(5000);
+                $("#codecheck").html("Could not compile and check code. Try again.").removeClass("alert alert-success").addClass("alert alert-danger");
+                setTimeOut(function(){ location.reload(); }, 3000);
+                location.reload();
             });
 
             request.done(function (data) {
@@ -115,6 +113,8 @@
                 }
                 else{
                     $("#codecheck").text(data).removeClass("alert alert-success").addClass("alert alert-danger");
+                    setTimeOut(function(){ location.reload(); }, 3000);
+                    location.reload();
                 }
             });
         }
@@ -145,10 +145,12 @@
         myPromise.then(function (mod) {
             console.log('success');
             $("#result").html("That is valid code!").removeClass("alert alert-danger").addClass("alert alert-success").fadeOut(5000);
+            $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");;
         },
             function (err) {
                 console.log(err.toString());
                 $("#result").html(err.toString()).removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(5000);
+                $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");
             });
     }
 </script>

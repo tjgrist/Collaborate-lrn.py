@@ -193,7 +193,7 @@ namespace Collaborate_lrn_Py.Controllers
                         tutorial.Published = true;
                         db.Entry(tutorial).State = EntityState.Modified;
                         db.SaveChanges();
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index", "Profile");
                     }
                     catch (DbEntityValidationException dbEx)
                     {
@@ -239,9 +239,7 @@ namespace Collaborate_lrn_Py.Controllers
                     ViewBag.Message = "There doesn't seem to be a quiz associated with this tutorial yet.";
                     model.ModelQuiz = null;
                     return View(model);
-                }
-
-                
+                }               
             }
             return View();
         }

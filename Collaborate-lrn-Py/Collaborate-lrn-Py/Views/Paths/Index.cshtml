@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Collaborate_lrn_Py.Models.Path>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Creator.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PathName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Votes)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creator.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PathName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Votes)
+        </td>
+        <td>
+            <div align="right">
+                @Html.ActionLink("View", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-default" })
+                @Html.ActionLink(" ", "UpVote", "Paths", new { id = item.Id }, new { @class = "btn btn-primary glyphicon glyphicon-arrow-up" })
+            </div>
+        </td>
+    </tr>
+}
+
+</table>
+<div align="right">
+    @Html.ActionLink("Create New", "Create", null, htmlAttributes: new { @class = "btn btn-default" })
+</div>
