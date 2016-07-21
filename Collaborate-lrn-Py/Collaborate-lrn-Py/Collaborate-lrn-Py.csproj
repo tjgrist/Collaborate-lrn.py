@@ -511,6 +511,10 @@
     <Compile Include="Migrations\201607202200285_added displayed code to quiz.Designer.cs">
       <DependentUpon>201607202200285_added displayed code to quiz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607211459250_added expected input field to quiz model .cs" />
+    <Compile Include="Migrations\201607211459250_added expected input field to quiz model .Designer.cs">
+      <DependentUpon>201607211459250_added expected input field to quiz model .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -722,6 +726,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607202200285_added displayed code to quiz.resx">
       <DependentUpon>201607202200285_added displayed code to quiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607211459250_added expected input field to quiz model .resx">
+      <DependentUpon>201607211459250_added expected input field to quiz model .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
