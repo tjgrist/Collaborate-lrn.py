@@ -92,7 +92,7 @@
             $("#codecheck").append("It looks like your code didn't print anything...").removeClass("alert alert-success").addClass("alert alert-danger")
         }
         else{
-            var id = @Model.Id.ToString();
+            var quizId = @Model.Id.ToString();
             var request = $.ajax({
                 url: "@Url.Action("AutoGrade", "Quiz")",
                 method: "POST",
@@ -100,13 +100,15 @@
                 data: {
                     yourcode: userCode,
                     output: codeOutput,
-                    expected: id
+                    expected: quizId
                 }
             });
 
             request.fail(function (jqXHR, textStatus, thrownError) {
                 console.log(thrownError);
-                $("#codecheck").html("Could not compile and check code. Try again.").removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(5000);
+                $("#codecheck").html("Could not compile and check code. Try again.").removeClass("alert alert-success").addClass("alert alert-danger");
+                window.setTimeOut(function(){ location.reload(); }, 4000);
+                location.reload();
             });
 
             request.done(function (data) {
@@ -115,6 +117,8 @@
                 }
                 else{
                     $("#codecheck").text(data).removeClass("alert alert-success").addClass("alert alert-danger");
+                    window.setTimeOut(function(){ location.reload(); }, 4000);
+                    location.reload();
                 }
             });
         }
