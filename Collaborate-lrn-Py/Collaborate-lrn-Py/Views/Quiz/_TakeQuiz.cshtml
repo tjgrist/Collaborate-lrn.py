@@ -11,11 +11,7 @@
             <p style="font-size:medium">@Html.DisplayFor(model => model.Goal)</p>
         </div>
     </div>
-    @*<div class="col-md-3">
-        <div class="jumbotron">
-            <h2>Try It</h2> 
-        </div>
-    </div>*@
+<!------------------------------------------------------------------------------------->
     <div class="col-md-9">
         <div class="jumbotron">
             <div>
@@ -31,7 +27,7 @@
     <div class="col-md-8">
         <div class="jumbotron">           
             <form>
-                <textarea id="yourcode" placeholder="#Write your code here.">@Html.DisplayFor(model => model.DisplayedCode)</textarea>
+                <textarea id="yourcode" placeholder="#Write your code here." class="python">@Html.DisplayFor(model => model.DisplayedCode)</textarea>
                 <br /><br />
                 <div align="center">
                     <button type="button" class="btn btn-primary" onclick="runit()">Run</button>
@@ -67,7 +63,7 @@
                 <h4 class="modal-title">@Html.DisplayNameFor(model => model.Answer)</h4>
             </div>
             <div class="modal-body">
-                <pre><code class="python" id="show">@Html.DisplayFor(model => model.Answer)</code></pre>
+                <pre class="pycode"><code class="python" id="show">@Html.DisplayFor(model => model.Answer)</code></pre>
             </div>
         </div>
     </div>
