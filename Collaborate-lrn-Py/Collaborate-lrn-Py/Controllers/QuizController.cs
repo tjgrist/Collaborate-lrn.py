@@ -154,8 +154,12 @@ namespace Collaborate_lrn_Py.Controllers
                 //Debug.WriteLine(model.output.Trim().Equals(quiz.ExpectedOutput));
                 try
                 {
-                    string userOutput = model.output.ToString().Trim();
-                    if (CheckOutput(userOutput, quiz, model.yourcode))
+                    string output = model.output.ToString().Trim();
+                    //if (output.Equals(quiz.ExpectedOutput) && model.yourcode.Length.Equals(18))
+                    //{
+                    //    ViewBag.Message = "Nice try, but you cannot simply print the proper output.";
+                    //}
+                    if (output.Equals(quiz.ExpectedOutput) && model.yourcode.Length > quiz.ExpectedOutput.Length + 10)
                     {
                         ViewBag.Message = "Well done!";
                     }
@@ -166,7 +170,7 @@ namespace Collaborate_lrn_Py.Controllers
                 }
                 catch (NullReferenceException e)
                 {
-                    ViewBag.Message = e.Message + ". It looks like the output of your code was empty.";
+                    ViewBag.Message = e.Message + " It looks like the output of your code was empty.";
                 }
                 return PartialView("_Grade");
             }
@@ -179,6 +183,10 @@ namespace Collaborate_lrn_Py.Controllers
 
         private bool CheckOutput(string output, Quiz quiz, string yourcode)
         {
+            if (output.Equals(quiz.ExpectedOutput) && yourcode.Length == quiz.ExpectedOutput.Length + 9)
+            {
+                return false;
+            }
             if (output.Equals(quiz.ExpectedOutput) && yourcode.Length > quiz.ExpectedOutput.Length + 10) //&& output.Length > quiz.ExpectedOutput.Length + 10
             {
                 return true;

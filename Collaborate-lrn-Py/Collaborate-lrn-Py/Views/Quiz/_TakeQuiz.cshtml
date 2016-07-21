@@ -107,7 +107,7 @@
             request.fail(function (jqXHR, textStatus, thrownError) {
                 console.log(thrownError);
                 $("#codecheck").html("Could not compile and check code. Try again.").removeClass("alert alert-success").addClass("alert alert-danger");
-                window.setTimeOut(function(){ location.reload(); }, 4000);
+                setTimeOut(function(){ location.reload(); }, 3000);
                 location.reload();
             });
 
@@ -117,7 +117,7 @@
                 }
                 else{
                     $("#codecheck").text(data).removeClass("alert alert-success").addClass("alert alert-danger");
-                    window.setTimeOut(function(){ location.reload(); }, 4000);
+                    setTimeOut(function(){ location.reload(); }, 3000);
                     location.reload();
                 }
             });
@@ -149,10 +149,12 @@
         myPromise.then(function (mod) {
             console.log('success');
             $("#result").html("That is valid code!").removeClass("alert alert-danger").addClass("alert alert-success").fadeOut(5000);
+            $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");;
         },
             function (err) {
                 console.log(err.toString());
                 $("#result").html(err.toString()).removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(5000);
+                $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");
             });
     }
 </script>
