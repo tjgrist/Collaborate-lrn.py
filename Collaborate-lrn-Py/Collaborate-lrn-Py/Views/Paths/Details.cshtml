@@ -1,0 +1,36 @@
+﻿@model Collaborate_lrn_Py.Models.Path
+
+<div>
+    <h4>Path</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Creator.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creator.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PathName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PathName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Votes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Votes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

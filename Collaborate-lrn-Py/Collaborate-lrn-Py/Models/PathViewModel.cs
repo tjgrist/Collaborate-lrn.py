@@ -11,5 +11,6 @@ namespace Collaborate_lrn_Py.Models
         public string PathSelection { get; set; }
 
         public int TutorialId { get; set; }
+
     }
 }

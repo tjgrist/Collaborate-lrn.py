@@ -519,6 +519,10 @@
     <Compile Include="Migrations\201607212012283_changed rating to votes in paths model.Designer.cs">
       <DependentUpon>201607212012283_changed rating to votes in paths model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607212230337_added published field to paths model .cs" />
+    <Compile Include="Migrations\201607212230337_added published field to paths model .Designer.cs">
+      <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -606,6 +610,9 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Paths\Index.cshtml" />
     <Content Include="Views\Paths\AddTutorialToPath.cshtml" />
+    <Content Include="Views\Paths\Edit.cshtml" />
+    <Content Include="Views\Paths\Delete.cshtml" />
+    <Content Include="Views\Paths\Details.cshtml" />
     <None Include="Views\Profile\Dashboard.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -750,6 +757,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607212012283_changed rating to votes in paths model.resx">
       <DependentUpon>201607212012283_changed rating to votes in paths model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607212230337_added published field to paths model .resx">
+      <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

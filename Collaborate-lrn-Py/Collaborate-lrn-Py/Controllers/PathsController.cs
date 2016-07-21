@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Collaborate_lrn_Py.Models;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity.Validation;
 
 namespace Collaborate_lrn_Py.Controllers
 {
@@ -18,8 +19,8 @@ namespace Collaborate_lrn_Py.Controllers
         // GET: Paths
         public ActionResult Index()
         {
-            var paths = db.Paths.Include(p => p.Creator);
-            return View(paths.ToList());
+            var paths = db.Paths.Where(p => p.Published == true).ToList();
+            return View(paths);
         }
 
         // GET: Paths/Details/5
@@ -104,6 +105,69 @@ namespace Collaborate_lrn_Py.Controllers
             return View(model);
 
         }
+
+        public ActionResult Publish(int? id)
+        {
+            //need to make sure somewhere it's the proper publisher
+            using (var db = new ApplicationDbContext())
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Path path = db.Paths.Find(id);
+                if (path == null)
+                {
+                    return HttpNotFound();
+                }
+                if (path != null)
+                {
+                    try
+                    {
+                        path.Published = true;
+                        db.Entry(path).State = EntityState.Modified;
+                        db.SaveChanges();
+                        return RedirectToAction("Index", "Profile");
+                    }
+                    catch (DbEntityValidationException dbEx)
+                    {
+                        foreach (var eve in dbEx.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+                        throw;
+                    }
+                }
+            }
+            return RedirectToAction("Profile", "Profiles");
+        }
+
+        public ActionResult UpVote(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Path path = db.Paths.Find(id);
+            if (path == null)
+            {
+                return HttpNotFound();
+            }
+            if (path != null)
+            {
+                path.Votes += 1;
+                db.Entry(path).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
         // GET: Paths/Edit/5
         public ActionResult Edit(int? id)
         {

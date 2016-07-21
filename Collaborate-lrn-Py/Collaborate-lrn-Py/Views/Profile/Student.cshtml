@@ -1,63 +1,62 @@
 ﻿@model Collaborate_lrn_Py.Models.ApplicationUser
 
-@{ 
+@{
     ViewBag.Title = "Student Profile";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
-<h3>Here's your Dashboard</h3>
-<div align="right"><h2>@Model.UserName </h2>
-    <p>@Html.DisplayNameFor(model => model.Points): <strong>@Html.DisplayFor(model => model.Points)</strong></p> 
-    <p>@Html.DisplayNameFor(model => model.CompletedTutorialsCount): <strong>@Html.DisplayFor(model => model.CompletedTutorialsCount) </strong></p>   
-</div>
 
-<table class="table">
-    <tr>
-        <th>
-           
-        </th>
-        <td>
-            <h4></h4>
-        </td>
-    </tr>
-</table>
-<h4></h4>
-@foreach (var i in Model.Paths)
-    {
-   <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(m => i.PathName)
-            </th>
-            <td>
-                @Html.DisplayFor(m => i.PathName)
-            </td>
-        </tr>
-       </table>
-       <h4>Tutorials</h4>
-        foreach (var x in i.Tutorials)
-        {
+    <div class="row">
+    <div class="col-md-8">
+        @foreach (var i in Model.Paths)
+            {
             <table class="table">
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(m => x.Title)
-                    </th>
                     <td>
-                        @Html.DisplayFor(m => x.Title)
-                    </td>
-                    <th>
-                        @Html.DisplayNameFor(m => x.Description)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(m => x.Description)
-                    </td>
-                    <th>
-                        @Html.DisplayNameFor(m => x.CodeSample)
-                    </th>
-                    <td>
-                        @Html.DisplayFor(m => x.CodeSample)
-                    </td>
+                        <div align="center">
+                            <h3>@Html.DisplayFor(m => i.PathName)</h3>
+                            <h5>
+                                @Html.DisplayNameFor(m => i.Published): @Html.DisplayFor(m => i.Published)
+                                @Html.DisplayNameFor(m => i.Votes): @Html.DisplayFor(m => i.Votes)
+                                <span align="right" style="padding-left:2em"> @Html.ActionLink(" ", "Publish", "Paths", new { id = i.Id }, new { @class = "btn btn-success glyphicon glyphicon-globe" })</span>
+                            </h5>
+                        </div>
                 </tr>
             </table>
+                <h4>Tutorials</h4>
+            foreach (var x in i.Tutorials)
+            {
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(m => x.Title)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(m => x.Title)
+                        </td>
+                        <th>
+                            @Html.DisplayNameFor(m => x.Description)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(m => x.Description)
+                        </td>
+                    </tr>
+                </table>
+            }
         }
-    }
-    <p>@Html.ActionLink("Create a Path", "Create", "Paths", null, new { @class = "btn btn-primary" })</p>
+    </div>
+    <div class="col-md-3">
+        <div align="right">
+            <h2>@Model.UserName </h2>
+            <p>@Html.DisplayNameFor(model => model.Points): <strong>@Html.DisplayFor(model => model.Points)</strong></p>
+            <p>@Html.DisplayNameFor(model => model.CompletedTutorialsCount): <strong>@Html.DisplayFor(model => model.CompletedTutorialsCount) </strong></p>
+            <p>@Html.ActionLink("Create a Path", "Create", "Paths", null, new { @class = "btn btn-primary" })</p>
+        </div>
+    </div>
+        <div class="col-md-3" style="padding:50px;color:deepskyblue" align="right">
+            <div>
+                <p>This is your Dashboard. Here you'll find links to create custom paths that you can publish publicly when you think it's a good sequence of tutorials.</p>
+            </div>
+        </div>
+</div>
 
+<!--------------------------------------------------------------------------------------->
