@@ -1,47 +1,33 @@
 ﻿@model Collaborate_lrn_Py.Models.Path
 
-<div>
-    <h4>Path</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Creator.UserName)
-        </dt>
+<div class="container">
 
-        <dd>
-            @Html.DisplayFor(model => model.Creator.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PathName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PathName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Votes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Votes)
-        </dd>
-
-    </dl>
-    <div class="row">
-    @foreach(var item in Model.Tutorials)
-    {
-        <div class="col-md-3">
-            <h4>@Html.DisplayFor(model => item.Title)<small></small></h4>
-            <p>@Html.DisplayFor(model => item.Description)</p>
-            <p>@Html.DisplayNameFor(model => item.Votes): @Html.DisplayFor(model => item.Votes)</p>
-            <div>@Html.ActionLink(" View", "Details", "Tutorials", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-eye-open" })</div>
+    <div class="container">
+        <div class="row text-center">
+            <h3>@Model.PathName</h3>
+            <p>Created by: @Model.Creator.UserName</p>
+            <p>@Html.DisplayNameFor(model => model.Votes): @Html.DisplayFor(model => model.Votes)</p>
         </div>
-    }
     </div>
+    <br /><br />
+
+
+    <div class="row">
+        @foreach (var item in Model.Tutorials)
+        {
+                <div class="col-md-3" style="">
+                    <h4>@Html.DisplayFor(model => item.Title)<small></small></h4>
+                    <p>@Html.DisplayFor(model => item.Description)</p>
+                    <p>@Html.DisplayNameFor(model => item.Votes): @Html.DisplayFor(model => item.Votes)</p>
+                    <div>@Html.ActionLink(" View", "Details", "Tutorials", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-eye-open" })</div>
+                </div>
+        }
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <p>
+        @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default glyphicon glyphicon-arrow-left" })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
