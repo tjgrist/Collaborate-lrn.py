@@ -1,21 +1,50 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Tutorial Hub";
 }
+<link rel="stylesheet" href="~/Content/obsidian.css">
+<script src="~/Scripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<style>
+    .bgimg{
+        background-image: url('../images/collaborate.jpg');
+    }
+    h4{
+      color:darkslategrey;
+    }
+</style>
+<div class="container-fluid text-center bg-default">
+    <div class="row bg-success">
+        <h4>Create</h4>
+        <p>Create custom tutorials and code challenges. Publish them when they're ready.</p>
+    </div>
+    <div class="row bg-primary"> 
+            <h4>Collaborate</h4>
+            <p>
+                Add collaborators to tutorials and code challenges. Customize your workflow and collaborate to synchronize students'
+                learning experiences.
+            </p>
 
-<div class="container-fluid text-center bg-info">
-    <h1>PyOrial</h1>
-    <p class="lead"></p>
+    </div>
+    <div class="row bgimg">
     
-</div>
-
-<div class="row">
-    <div class="col-md-4"><h3 align="center">Create</h3>
-
     </div>
-    <div class="col-md-4"><h3 align="center">Collaborate</h3>
-
+    <div class="row bg-info">
+        <h4>Learn</h4>
+        <p>
+            Learn from the best tutorials. Practice code challenges and receive immediate feedback. Vote on the quality of tutorials
+            code challenges. Create your own custom tutorial Paths and make them public.
+        </p>
+        <div align="center" style="margin-left:32%;margin-right:32%">
+            <div align="left"><pre style="background-color: #282b2e"><code class="python">def Greet(name):
+    print("Welcome to Tutorial Hub, {}.".format(name))
+                   
+Greet("@User.Identity.GetUserName()")
+                
+#Welcome to Tutorial Hub, @User.Identity.GetUserName(). 
+            </code></pre>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4"><h3 align="center">Learn</h3>
-
-    </div>
-</div>
+</div>   

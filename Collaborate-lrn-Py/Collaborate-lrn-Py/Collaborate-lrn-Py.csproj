@@ -566,6 +566,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\collaborate.jpg" />
+    <Content Include="images\python.png" />
     <Content Include="images\whitestar.gif" />
     <Content Include="images\yellowstar.gif" />
     <Content Include="Scripts\bootstrap.js" />

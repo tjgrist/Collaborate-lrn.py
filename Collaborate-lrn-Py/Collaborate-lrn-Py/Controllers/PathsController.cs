@@ -52,7 +52,7 @@ namespace Collaborate_lrn_Py.Controllers
             if (ModelState.IsValid)
             {
                 path.Creator = db.Users.Find(User.Identity.GetUserId());
-                path.CreatorId = User.Identity.GetUserId();
+                path.CreatorId = path.Creator.Id;
                 db.Paths.Add(path);
                 db.SaveChanges();
                 return RedirectToAction("Index");
