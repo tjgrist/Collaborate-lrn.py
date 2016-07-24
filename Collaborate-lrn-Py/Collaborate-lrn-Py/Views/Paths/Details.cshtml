@@ -29,6 +29,17 @@
         </dd>
 
     </dl>
+    <div class="row">
+    @foreach(var item in Model.Tutorials)
+    {
+        <div class="col-md-3">
+            <h4>@Html.DisplayFor(model => item.Title)<small></small></h4>
+            <p>@Html.DisplayFor(model => item.Description)</p>
+            <p>@Html.DisplayNameFor(model => item.Votes): @Html.DisplayFor(model => item.Votes)</p>
+            <div>@Html.ActionLink(" View", "Details", "Tutorials", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-eye-open" })</div>
+        </div>
+    }
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
