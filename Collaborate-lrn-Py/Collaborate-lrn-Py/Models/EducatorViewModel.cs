@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Collaborate_lrn_Py.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,5 +18,6 @@ namespace Collaborate_lrn_Py.Models
 
         [Display(Name = "Educator Score")]
         public int Points { get; set; }
+
     }
 }

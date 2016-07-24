@@ -5,10 +5,13 @@
 @{
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
+<link rel="stylesheet" href="~/Content/obsidian.css">
+<script src="~/Scripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
     <div class="row">
         <div class="col-md-8">
-            <h3>Your Tutorials <small>Create</small></h3>
+            <h3>Create. <small>Manage your Tutorials</small></h3>
             <br />
             <table class="table table-hover">
                 <tr>
@@ -59,7 +62,7 @@
 
 
             @*<------------------------------------- Quizzes/Code challenges ----------------------------------->*@
-            <h3>Your Code Challenges <small>Teach</small></h3>
+            <h3>Teach. <small>Manage your Code Challenges</small></h3>
             <br />
             <table class="table table-hover">
                 <tr>
@@ -101,7 +104,7 @@
 
             @*<---------------------------------------Collaborative Tutorials----------------------->*@
 
-            <h3>Your Collaborative Tutorials <small>Collaborate</small></h3>
+            <h3>Collaborate. <small>Edit tutorials you're collaborating on</small></h3>
             <br />
             <table class="table table-hover">
                 <tr>
@@ -154,10 +157,30 @@
             </p>
             <br />
         </div>
+
         <div class="col-md-3">
             <div align="right">
                 <h2>@User.Identity.GetUserName()</h2>
                 <p>@Html.DisplayNameFor(model => model.Points):   @Model.Points</p>
+            </div>
+        </div>
+
+        <div class="col-md-3" style="padding:50px;color:deepskyblue" align="right">
+            <div>
+                <p>This is your Dashboard. Here you can create and publish tutorials and code challenges, add collaborators to your projects,
+                see how your projects are being rated by users, and more.</p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div align="left">
+                <pre style="background-color: #282b2e"><code class="python">def Greet(name):
+    print("Welcome to Tutorial Hub, {}.".format(name))
+                   
+Greet("@User.Identity.GetUserName()")
+                
+#Welcome to Tutorial Hub, @User.Identity.GetUserName().  
+            </code></pre>
             </div>
         </div>
     </div>
