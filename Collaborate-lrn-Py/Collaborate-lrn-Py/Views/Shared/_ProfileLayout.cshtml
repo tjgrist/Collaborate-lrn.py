@@ -1,5 +1,7 @@
-﻿@*@model Collaborate_lrn_Py.Models.ApplicationUser*@
-
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
 <!DOCTYPE html>
 
 <html>
@@ -19,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("PyOrial", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Tutorial Hub", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -32,12 +34,12 @@
             </div>
         </div>
     </div>
-    <div id="wrapper container">
+    <div id="wrapper container-fluid">
         <div class="col-md-1" style="max-height:800px">
             <div id="sidebar-wrapper" style="">
                 <ul class="nav sidebar-nav" style="">
                     <li class="sidebar-brand">
-                        <span>@Html.ActionLink("PyOrial", "Index", "Home")</span>
+                        <span>@Html.ActionLink("Tutorial Hub", "Index", "Home")</span>
                     </li>
                     <li>
                         <span>@Html.ActionLink("Dashboard", "Index", "Profile")</span>
@@ -58,7 +60,7 @@
             </div>
         </div>
 
-    <div class="" style="margin:0px 120px 0px 140px">
+    <div class="" style="margin:0px 10px 0px 150px">
         @RenderBody()
         <br />
         <footer></footer>
