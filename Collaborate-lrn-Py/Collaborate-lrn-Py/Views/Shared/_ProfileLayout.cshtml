@@ -11,6 +11,11 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .sidebartext{
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -35,26 +40,26 @@
         </div>
     </div>
     <div id="wrapper container-fluid">
-        <div class="col-md-1" style="max-height:800px">
-            <div id="sidebar-wrapper" style="">
-                <ul class="nav sidebar-nav" style="">
+        <div class="container col-md-1" style="min-height:1000px;background-color:#df691a;color: #fff">
+            <div id="sidebar-wrapper" style="color: #fff">
+                <ul class="nav sidebar-nav" style="color: #fff">
                     <li class="sidebar-brand">
-                        <span>@Html.ActionLink("Tutorial Hub", "Index", "Home")</span>
+                        <span class="sidebartext">@Html.ActionLink("Tutorial Hub", "Index", "Home")</span>
                     </li>
                     <li>
-                        <span>@Html.ActionLink("Dashboard", "Index", "Profile")</span>
+                        <span class="sidebartext">@Html.ActionLink("Dashboard", "Index", "Profile")</span>
                     </li>
                     <li>
-                        <span>@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
+                        <span class="sidebartext">@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
                     </li>
                     <li>
-                        <span>@Html.ActionLink("Paths", "Index", "Paths")</span>
+                        <span class="sidebartext">@Html.ActionLink("Paths", "Index", "Paths")</span>
                     </li>
                     <li>
-                        <span>@Html.ActionLink("Community", "Index", "Community")</span>
+                        <span class="sidebartext">@Html.ActionLink("Community", "Index", "Community")</span>
                     </li>
                     <li>
-                        <span>@Html.ActionLink("Challenges", "Index", "Quiz")</span>
+                        <span class="sidebartext">@Html.ActionLink("Challenges", "Index", "Quiz")</span>
                     </li>
                 </ul>
             </div>

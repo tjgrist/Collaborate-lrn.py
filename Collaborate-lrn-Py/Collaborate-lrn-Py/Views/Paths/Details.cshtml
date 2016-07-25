@@ -19,7 +19,10 @@
                     <h4>@Html.DisplayFor(model => item.Title)<small></small></h4>
                     <p>@Html.DisplayFor(model => item.Description)</p>
                     <p>@Html.DisplayNameFor(model => item.Votes): @Html.DisplayFor(model => item.Votes)</p>
-                    <div>@Html.ActionLink(" View", "Details", "Tutorials", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-primary glyphicon glyphicon-eye-open" })</div>
+                    <a href="@Url.Action("TakeTutorial", "Tutorials", new { id = item.ID })" class="btn btn-info">
+                        View
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    </a>
                 </div>
         }
     </div>
@@ -27,7 +30,10 @@
     <br />
     <br />
     <br />
-    <p>
-        @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default glyphicon glyphicon-arrow-left" })
-    </p>
+    <div class="text-center">
+        <a href="@Url.Action("Index", "Paths")" class="btn btn-default">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+        </a>
+        <span></span>
+    </div>
 </div>

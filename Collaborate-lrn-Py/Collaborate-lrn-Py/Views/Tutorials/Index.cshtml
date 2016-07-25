@@ -4,23 +4,33 @@
     ViewBag.Title = "Tutorials";
 }
 
-<h2>@ViewBag.Title. <small>Teach.</small></h2>
-
-<div align="right">
-    @using(Ajax.BeginForm(
-        "Index",
-        "Tutorials",
-        new AjaxOptions
-        {
-            HttpMethod = "get",
-            InsertionMode = InsertionMode.Replace,
-            UpdateTargetId = "tutorials"
-        }))
-    {
-        @Html.TextBox("searchTerm")
-        <input type="submit" class="btn btn-info" value="Search" /> 
-    }
+<div class="row">
+    <div>
+        <h2>
+            @ViewBag.Title. <small>Teach.</small>
+        <span>
+            @Html.ActionLink(" ", "Create", "Tutorial", new { @class = "btn btn-success glyphicon glyphicon-plus" })
+        </span>
+        <span align="right">
+            @using (Ajax.BeginForm(
+                    "Index",
+                    "Tutorials",
+                    new AjaxOptions
+                    {
+                        HttpMethod = "get",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "tutorials"
+                    }))
+            {
+                @Html.TextBox("searchTerm")
+                <input type="submit" class="btn btn-info" value="Search" />
+            }
+        </span>
+    </h2>
 </div>
+</div>
+<br/>
+
 
 @Html.Partial("_Tutorials", Model)
 

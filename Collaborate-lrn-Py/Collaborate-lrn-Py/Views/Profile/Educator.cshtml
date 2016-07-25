@@ -8,169 +8,155 @@
 <link rel="stylesheet" href="~/Content/obsidian.css">
 <script src="~/Scripts/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
+<style>
+    .tobold{
+        font-weight:bold;
+    }
+</style>
     <div class="row">
-        <div class="col-md-8">
-            <h3>Create. <small>Manage your Tutorials</small></h3>
-            <br />
-            @*<div class="col-md-4">
-                <div>
-                <h5>@Model.EducatorTutorials[0].Title</h5>
-                <p>@Model.EducatorTutorials[0].Votes</p>
-                <p>@Model.EducatorTutorials[0].Educator.UserName</p>
-            <div class="dropdown" align="right">
-                <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                    <li>@Html.ActionLink(" ", "Details", "Tutorials", null, new { @class = "bg-info glyphicon glyphicon-eye-open" })</li>
-                    <li>@Html.ActionLink(" ", "Edit", "Tutorials", null, new { @class = "bg-warning glyphicon glyphicon-pencil" })</li>
-                </ul>
-            </div>
-                    </div>
-            </div>*@
-            <table class="table table-hover">
-                <tr>
-                    <th>
-                        Title
-                    </th>
-                    <th>
-                        Difficulty
-                    </th>
-                    <th>
-                        Votes
-                    </th>
-                    <th>
-                        Published
-                    </th>
-                </tr>
+        <div class="col-md-8" style="background-color:#4e5d6c">
+            <div>
+                <h3 align="center">Create. <small>Manage your Tutorials</small></h3>
+                <br />
                 @foreach (var item in Model.EducatorTutorials)
             {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Difficulty)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Votes)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Published)
-                        </td>
-                        <td>
-                            <div align="right">
-                                @Html.ActionLink(" ", "Publish", "Tutorials", new { id = item.ID }, new { @class = "btn btn-success glyphicon glyphicon-globe", @datatoggle = "tooltip", @dataplacement = "top", @title = "Publish" })
-                                @Html.ActionLink(" ", "AddCollaborator", "Profile", null, new { @class = "btn btn-default glyphicon glyphicon-share-alt" })
-                                @Html.ActionLink(" ", "Details", "Tutorials", new { id = item.ID }, new { @class = "btn btn-info glyphicon glyphicon-eye-open" })
-                                @Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.ID }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-                                @Html.ActionLink(" ", "Delete", "Tutorials", new { id = item.ID }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                    <div class="col-md-4">
+                        <div>
+                            <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                            <div>
+                                <p><span class="tobold">@Html.DisplayNameFor(modelItem => item.Votes):</span> @Html.DisplayFor(modelItem => item.Votes)</p>
+                                <p><span class="tobold">@Html.DisplayNameFor(modelItem => item.Published):</span> @Html.DisplayFor(modelItem => item.Published)</p>
+                                <p>
+                                    @Html.DisplayFor(modelItem => item.Difficulty) <div class="dropdown" >
+                                        <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="@Url.Action("Publish", "Tutorials", new { id = item.ID })" class="bg-success">
+                                                    Publish
+                                                    <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("AddCollaborator", "Profile", new { id = item.ID })" class="bg-default">
+                                                    Collaborate
+                                                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Details", "Tutorials", new { id = item.ID })" class="bg-info">
+                                                    View
+                                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Edit", "Tutorials", new { id = item.ID })" class="bg-warning">
+                                                    Edit
+                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Delete", "Tutorials", new { id = item.ID })" class="bg-danger">
+                                                    Remove
+                                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </p>
                             </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                 }
-            </table>
-            <p>
-                @Html.ActionLink(" ", "Create", "Tutorials", null, new { @class = "glyphicon glyphicon-plus btn btn-primary", @datatoggle = "tooltip", @dataplacement = "top", @title = "Add a Tutorial" })
-            </p>
+            </div>
+                    <a href="@Url.Action("Create", "Tutorials")" class="btn btn-success" style="">
+                        Add a Tutorial
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
             <br />
 
-
-            @*<------------------------------------- Quizzes/Code challenges ----------------------------------->*@
-            <h3>Teach. <small>Manage your Code Challenges</small></h3>
-            <br />
-            <table class="table table-hover">
-                <tr>
-                    <th>
-                        Challenge Name
-                    </th>
-                    <th>
-                        Tutorial
-                    </th>
-                    <th>
-                        Goal
-                    </th>
-                </tr>
+            @*<------------------------------------- Quizzes/Code challenges ----------------------------------->*@        
+            <div style="padding-top:9em;">
+                <h3 align="center">Teach. <small>Manage your Code Challenges</small></h3>
+                <br />
                 @foreach (var item in Model.EducatorQuizzes)
-            {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tutorial.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Goal)
-                        </td>
-                        <td>
-                            <div align="right">
-                                @Html.ActionLink(" ", "Details", "Quiz", new { id = item.Id }, new { @class = "btn btn-info glyphicon glyphicon-eye-open" })
-                                @Html.ActionLink(" ", "Edit", "Quiz", new { id = item.Id }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-                                @Html.ActionLink(" ", "Delete", "Quiz", new { id = item.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                {
+                    <div class="col-md-4">
+                        <div>
+                            <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                            <div>
+                                <p><span class="tobold">@Html.DisplayNameFor(modelItem => item.Tutorial):</span> @Html.DisplayFor(modelItem => item.Tutorial.Title)</p>
+                                <p>@Html.DisplayFor(modelItem => item.Goal)</p>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="@Url.Action("Details", "Quiz", new { id = item.Id })" class="bg-info">
+                                                View
+                                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Edit", "Quiz", new { id = item.Id })" class="bg-warning">
+                                                Edit
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Delete", "Quiz", new { id = item.Id })" class="bg-danger">
+                                                Remove
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                 }
-            </table>
-            <p>
-                @Html.ActionLink(" ", "Create", "Quiz", null, new { @class = "glyphicon glyphicon-plus btn btn-primary", @datatoggle = "tooltip", @dataplacement = "top", @title = "Add a Code Challenge" })
-            </p>
-
-            @*<---------------------------------------Collaborative Tutorials----------------------->*@
-
-            <h3>Collaborate. <small>Edit tutorials you're collaborating on</small></h3>
+                
+            </div>
+                <a href="@Url.Action("Create", "Quiz")" class="btn btn-success">
+                    Add a Challenge
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
             <br />
-            <table class="table table-hover">
-                <tr>
 
-                    <th>
-                        Title
-                    </th>
-                    <th>
-                        Original Author
-                    </th>
-                    <th>
-                        Difficulty
-                    </th>
-                    <th>
-                        Votes
-                    </th>
-                    <th>
-                        Published
-                    </th>
-                </tr>
-                @foreach (var item in Model.CollaborativeTutorials)
-            {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tutorial.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tutorial.Educator.UserName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tutorial.Difficulty)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tutorial.Votes)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tutorial.Published)
-                        </td>
-                        <td>
-                            <div align="right">
-                                @Html.ActionLink(" ", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "btn btn-info glyphicon glyphicon-eye-open" })
-                                @Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+                @*<---------------------------------------Collaborative Tutorials----------------------->*@
+                <div style="padding-top:9em;">
+                    <h3 align="center">Collaborate. <small>Edit tutorials you're collaborating on</small></h3>
+                    <br />
+                    @foreach (var item in Model.CollaborativeTutorials)
+                    {
+                        <div class="col-md-4" style="padding-bottom:2em">
+                            <div>
+                                <h4>@Html.DisplayFor(modelItem => item.Tutorial.Title)</h4>
+                                <div>
+                                    <p><span class="tobold">@Html.DisplayNameFor(modelItem => item.Tutorial):</span> @Html.DisplayFor(modelItem => item.Tutorial.Title)</p>
+                                    <p><span class="tobold">Original Author: </span>@Html.DisplayFor(modelItem => item.Tutorial.Educator.UserName)</p>
+                                    <div class="dropdown" >
+                                        <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a href="@Url.Action("Details", "Tutorials", new { id = item.Id })" class="bg-info">
+                                                    View
+                                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Edit", "Tutorials", new { id = item.Id })" class="bg-warning">
+                                                    Edit
+                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
-                        </td>
-                    </tr>
-                }
-            </table>
-            <p>
-                @Html.ActionLink(" ", "Create", "Tutorials", null, new { @class = "glyphicon glyphicon-plus btn btn-primary", @datatoggle = "tooltip", @dataplacement = "top", @title = "Add a Tutorial" })
-            </p>
-            <br />
-        </div>
+                        </div>
+                    }
+                    <br />
+                </div>
+            </div>
 
         <div class="col-md-3">
             <div align="right">
@@ -204,13 +190,41 @@ Greet("@User.Identity.GetUserName()")
 
 
     <!---Dropdown list -->
-    @*<td>
-            <div class="dropdown" align="right">
-                <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
-                <ul class="dropdown-menu">
-                    <li>@Html.ActionLink(" ", "Details", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-info glyphicon glyphicon-eye-open" })</li>
-                    <li>@Html.ActionLink(" ", "Edit", "Tutorials", new { id = item.TutorialId }, new { @class = "bg-warning glyphicon glyphicon-pencil" })</li>
-                </ul>
-            </div>
-        </td>*@
+ 
+    @*<div class="dropdown" align="right">
+        <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="@Url.Action("AddTutorialToPath", "Paths", new { id = item.ID })" class="btn btn-success">
+                Add to Path
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("AddTutorialToPath", "Paths", new { id = item.ID })" class="btn btn-success">
+                Add to Path
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("AddTutorialToPath", "Paths", new { id = item.ID })" class="btn btn-success">
+                    Add to Path
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("AddTutorialToPath", "Paths", new { id = item.ID })" class="btn btn-success">
+                    Add to Path
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("AddTutorialToPath", "Paths", new { id = item.ID })" class="btn btn-success">
+                    Add to Path
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </li>
+        </ul>
+    </div>*@
+  
 
