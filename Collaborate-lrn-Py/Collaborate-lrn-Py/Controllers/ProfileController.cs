@@ -20,6 +20,10 @@ namespace Collaborate_lrn_Py.Controllers
         public ActionResult Index()
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
+            if (currentUser.LearningPathModel == null)
+            {
+                currentUser.LearningPathModel = new LearningPathModel();
+            }
             if (isStudent())
             {
                 return View("Student", currentUser);

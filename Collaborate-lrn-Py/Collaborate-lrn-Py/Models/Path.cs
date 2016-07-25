@@ -22,5 +22,6 @@ namespace Collaborate_lrn_Py.Models
         [ForeignKey("Creator")]
         public virtual string CreatorId { get; set; }
         public virtual ApplicationUser Creator { get; set; }
+
     }
 }

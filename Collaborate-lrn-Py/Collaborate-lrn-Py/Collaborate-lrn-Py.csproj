@@ -523,12 +523,17 @@
     <Compile Include="Migrations\201607212230337_added published field to paths model .Designer.cs">
       <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607252300475_learning path model.cs" />
+    <Compile Include="Migrations\201607252300475_learning path model.Designer.cs">
+      <DependentUpon>201607252300475_learning path model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
     <Compile Include="Models\CollaborativeTutorial.cs" />
     <Compile Include="Models\GradeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LearningPathModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
     <Compile Include="Models\EducatorViewModel.cs" />
@@ -762,6 +767,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607212230337_added published field to paths model .resx">
       <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607252300475_learning path model.resx">
+      <DependentUpon>201607252300475_learning path model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

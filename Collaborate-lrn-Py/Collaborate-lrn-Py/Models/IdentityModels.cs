@@ -8,7 +8,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Collaborate_lrn_Py.Models
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -25,6 +24,7 @@ namespace Collaborate_lrn_Py.Models
         [Display(Name = "Completed Tutorials")]
         public int CompletedTutorialsCount { get; set; }
 
+        public virtual LearningPathModel LearningPathModel { get; set; }
         //public List<int> UpvotedTutorialIDs { get; set; }
 
     }
@@ -46,6 +46,7 @@ namespace Collaborate_lrn_Py.Models
         public DbSet<Tutorial> Tutorials { get; set; }
         public DbSet<Quiz> Quiz { get; set; }
         public DbSet<CollaborativeTutorial> CollaborativeTutorials { get; set; }
+        public DbSet<LearningPathModel> LearningPaths { get; set; }
 
     }
 }

@@ -14,17 +14,18 @@
 </style>
 
     <div class="row">
-    <div class="col-md-8" style="background-color:#4e5d6c">
-        <h2 class="text-center">Paths. <small>Customize learning</small></h2>
-        @foreach (var i in Model.Paths)
+        <div class="col-md-8" style="background-color:#4e5d6c">
+            <h2 class="text-center">Paths. <small>Customize learning</small></h2>
+            @foreach (var i in Model.Paths)
             {
-            <table class="table">
-                <tr>
-                    <td><hr />
-                        <div align="center">
-                            <h3>@Html.DisplayFor(m => i.PathName)</h3>
-                            <div>
+                <table class="table">
+                    <tr>
+                        <td>
+                            <hr />
+                            <div align="center">
+                                <h3>@Html.DisplayFor(m => i.PathName)</h3>
                                 <div>
+                                    <div>
                                         <span class="padbtn">@Html.DisplayNameFor(m => i.Published): @Html.DisplayFor(m => i.Published)</span>
                                         <span class="padbtn">@Html.DisplayNameFor(m => i.Votes): @Html.DisplayFor(m => i.Votes)</span>
                                         <span class="padbtn">
@@ -45,34 +46,75 @@
                                                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                             </a>
                                         </span>
-                                        <span class="padbtn">     
-                                          
+                                        <span class="padbtn">
+
                                             <a href="@Url.Action("Delete", "Paths", new { id = i.Id })" class="btn btn-danger">
                                                 Remove
                                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                             </a>
                                         </span>
+                                    </div>
                                 </div>
+                                <br />
+                                <h5>Tutorials:</h5>
                             </div>
-                            <br />
-                            <h5>Tutorials:</h5>
-                        </div>
-                </tr>
-            </table>
+                    </tr>
+                </table>
 
-            foreach (var item in i.Tutorials)
-            {
-                <div class="col-md-4">
-                    <div class="">
-                        <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
-                        <p>@Html.DisplayFor(m => item.Description)</p>
-                        <p><span style="font-weight:bold">@Html.DisplayNameFor(model => item.Votes):</span> @Html.DisplayFor(modelItem => item.Votes)</p>
+                foreach (var item in i.Tutorials)
+                {
+                    <div class="col-md-4">
+                        <div class="">
+                            <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                            <p>@Html.DisplayFor(m => item.Description)</p>
+                            <p><span style="font-weight:bold">@Html.DisplayNameFor(model => item.Votes):</span> @Html.DisplayFor(modelItem => item.Votes)</p>
+                        </div>
+                        <br /><br />
                     </div>
-                    <br /><br />
-                </div>
+                }
             }
-        }
-    </div>
+
+            @foreach (var item in Model.LearningPathModel.LearningPaths)
+            {
+                <table class="table">
+                    <tr>
+                        <td>
+                            <hr />
+                            <div align="center">
+                                <h3>@Html.DisplayFor(m => item.PathName)</h3>
+                                <div>
+                                    <div>
+                                        <span class="padbtn">@Html.DisplayNameFor(m => item.Creator): @Html.DisplayFor(m => item.Creator.UserName)</span>
+                                        <span class="padbtn">@Html.DisplayNameFor(m => item.Votes): @Html.DisplayFor(m => item.Votes)</span>
+                                        <span class="padbtn">
+                                            <a href="@Url.Action("Details", "Paths", new { id = item.Id })" class="btn btn-info">
+                                                View
+                                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <br />
+                                <h5>Tutorials:</h5>
+                            </div>
+                    </tr>
+                </table>
+
+                foreach (var i in item.Tutorials)
+                {
+                    <div class="col-md-4">
+                        <div class="">
+                            <h4>@Html.DisplayFor(modelItem => i.Title)</h4>
+                            <p>@Html.DisplayFor(m => i.Description)</p>
+                            <p><span style="font-weight:bold">@Html.DisplayNameFor(model => i.Votes):</span> @Html.DisplayFor(modelItem => i.Votes)</p>
+                        </div>
+                        <br /><br />
+                    </div>
+                }
+            }
+        </div>
+
+
 
 
     <div class="col-md-3">
