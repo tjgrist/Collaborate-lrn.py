@@ -36,20 +36,40 @@ namespace Collaborate_lrn_Py.Controllers
             }
             else
             {
-               
                 var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
                 educatorsTutorials.ForEach(x => currentUser.Points += x.Votes);
                 var educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();
+                List<CollaborativeTutorial> acttt = GetAddedCollaboratorsList(educatorsTutorials);
                 EducatorViewModel eduViewModel = new EducatorViewModel()
                 {
                     EducatorTutorials = educatorsTutorials,
                     CollaborativeTutorials = GetCollabTutorials(),
                     EducatorQuizzes = educatorsQuizzes,
                     Points = currentUser.Points,
-                    PopularTutorials = popularTutorials
-                };
+                    PopularTutorials = popularTutorials,
+                    AddedCollaboratorsToTheseTutorials = acttt
+                };                
                 return View("Educator", eduViewModel);
             }
+        }
+
+        private List<CollaborativeTutorial> GetAddedCollaboratorsList(List<Tutorial> tuts)
+        {
+            List<CollaborativeTutorial> returnThisList = new List<CollaborativeTutorial>();
+            foreach (Tutorial t in tuts)
+            {
+                try
+                {
+                    var queryItem = db.CollaborativeTutorials.First(x => x.TutorialId == t.ID);
+                    if (queryItem != null)
+                    {
+                        returnThisList.Add(queryItem);
+                    };
+                }
+                catch (InvalidOperationException) {}
+            }
+            return returnThisList;
+            
         }
         private List<CollaborativeTutorial> GetCollabTutorials()
         {
@@ -63,6 +83,7 @@ namespace Collaborate_lrn_Py.Controllers
                     item.Tutorial = db.Tutorials.Find(item.TutorialId);
                     collabtuts.Add(item);
                 }
+                var c = collabtuts.Where(x => x.Collaborators.Count > 0).ToList();
                 return collabtuts;
             }
             catch (NotSupportedException)
