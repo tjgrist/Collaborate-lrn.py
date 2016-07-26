@@ -650,6 +650,8 @@
     <Content Include="Views\Paths\Delete.cshtml" />
     <Content Include="Views\Paths\Details.cshtml" />
     <Content Include="Views\CollaborativeTutorial\Collaborate.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Profile\Dashboard.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
