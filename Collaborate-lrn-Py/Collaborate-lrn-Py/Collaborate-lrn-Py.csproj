@@ -552,6 +552,10 @@
     <Compile Include="Migrations\201607262033556_rm bool in tut model.Designer.cs">
       <DependentUpon>201607262033556_rm bool in tut model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607262215174_add notification migrations.cs" />
+    <Compile Include="Migrations\201607262215174_add notification migrations.Designer.cs">
+      <DependentUpon>201607262215174_add notification migrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -820,6 +824,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607262033556_rm bool in tut model.resx">
       <DependentUpon>201607262033556_rm bool in tut model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607262215174_add notification migrations.resx">
+      <DependentUpon>201607262215174_add notification migrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
