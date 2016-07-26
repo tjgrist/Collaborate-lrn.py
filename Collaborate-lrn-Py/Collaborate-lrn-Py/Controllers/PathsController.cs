@@ -52,13 +52,39 @@ namespace Collaborate_lrn_Py.Controllers
             if (ModelState.IsValid)
             {
                 path.Creator = db.Users.Find(User.Identity.GetUserId());
-                path.CreatorId = User.Identity.GetUserId();
+                path.CreatorId = path.Creator.Id;
                 db.Paths.Add(path);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(path);
+        }
+
+        public ActionResult AddToUsersPaths(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Path path = db.Paths.Find(id);
+            if (path == null)
+            {
+                return HttpNotFound();
+            }
+            if (path != null)
+            {
+                var currentUser = db.Users.Find(User.Identity.GetUserId());
+                if (currentUser.LearningPathModel == null)
+                {
+                    currentUser.LearningPathModel = new LearningPathModel();
+                    db.SaveChanges();
+                }
+                currentUser.LearningPathModel.LearningPaths.Add(path);
+                //db.LearningPaths.Add()
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
         
         public ActionResult AddTutorialToPath(int? id)

@@ -406,6 +406,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CollaborativeTutorialController.cs" />
     <Compile Include="Controllers\PathsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -523,18 +524,54 @@
     <Compile Include="Migrations\201607212230337_added published field to paths model .Designer.cs">
       <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607252300475_learning path model.cs" />
+    <Compile Include="Migrations\201607252300475_learning path model.Designer.cs">
+      <DependentUpon>201607252300475_learning path model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607261708009_collaborate with comments.cs" />
+    <Compile Include="Migrations\201607261708009_collaborate with comments.Designer.cs">
+      <DependentUpon>201607261708009_collaborate with comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607261738415_added new comment field.cs" />
+    <Compile Include="Migrations\201607261738415_added new comment field.Designer.cs">
+      <DependentUpon>201607261738415_added new comment field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607261813096_added dt to comment.cs" />
+    <Compile Include="Migrations\201607261813096_added dt to comment.Designer.cs">
+      <DependentUpon>201607261813096_added dt to comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607262009553_addedcollaborator bool tut model.cs" />
+    <Compile Include="Migrations\201607262009553_addedcollaborator bool tut model.Designer.cs">
+      <DependentUpon>201607262009553_addedcollaborator bool tut model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607262011074_addedCollab bool now nullable.cs" />
+    <Compile Include="Migrations\201607262011074_addedCollab bool now nullable.Designer.cs">
+      <DependentUpon>201607262011074_addedCollab bool now nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607262033556_rm bool in tut model.cs" />
+    <Compile Include="Migrations\201607262033556_rm bool in tut model.Designer.cs">
+      <DependentUpon>201607262033556_rm bool in tut model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607262215174_add notification migrations.cs" />
+    <Compile Include="Migrations\201607262215174_add notification migrations.Designer.cs">
+      <DependentUpon>201607262215174_add notification migrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
     <Compile Include="Models\CollaborativeTutorial.cs" />
+    <Compile Include="Models\CollaborativeTutorialViewModel.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\GradeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LearningPathModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Path.cs" />
     <Compile Include="Models\EducatorViewModel.cs" />
     <Compile Include="Models\PathViewModel.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
+    <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\Tutorial.cs" />
     <Compile Include="Models\TutorialViewModel.cs" />
     <Compile Include="Models\TutQuizViewModel.cs" />
@@ -559,6 +596,7 @@
     <Content Include="Content\monokai-sublime.css" />
     <Content Include="Content\monokai.css" />
     <Content Include="Content\obsidian.css" />
+    <Content Include="Content\profile.css" />
     <Content Include="Content\solarized-dark.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\xcode.css" />
@@ -566,6 +604,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\collaborate.jpg" />
+    <Content Include="images\python.png" />
     <Content Include="images\whitestar.gif" />
     <Content Include="images\yellowstar.gif" />
     <Content Include="Scripts\bootstrap.js" />
@@ -613,6 +653,9 @@
     <Content Include="Views\Paths\Edit.cshtml" />
     <Content Include="Views\Paths\Delete.cshtml" />
     <Content Include="Views\Paths\Details.cshtml" />
+    <Content Include="Views\CollaborativeTutorial\Collaborate.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
     <None Include="Views\Profile\Dashboard.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -760,6 +803,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607212230337_added published field to paths model .resx">
       <DependentUpon>201607212230337_added published field to paths model .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607252300475_learning path model.resx">
+      <DependentUpon>201607252300475_learning path model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261708009_collaborate with comments.resx">
+      <DependentUpon>201607261708009_collaborate with comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261738415_added new comment field.resx">
+      <DependentUpon>201607261738415_added new comment field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261813096_added dt to comment.resx">
+      <DependentUpon>201607261813096_added dt to comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607262009553_addedcollaborator bool tut model.resx">
+      <DependentUpon>201607262009553_addedcollaborator bool tut model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607262011074_addedCollab bool now nullable.resx">
+      <DependentUpon>201607262011074_addedCollab bool now nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607262033556_rm bool in tut model.resx">
+      <DependentUpon>201607262033556_rm bool in tut model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607262215174_add notification migrations.resx">
+      <DependentUpon>201607262215174_add notification migrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

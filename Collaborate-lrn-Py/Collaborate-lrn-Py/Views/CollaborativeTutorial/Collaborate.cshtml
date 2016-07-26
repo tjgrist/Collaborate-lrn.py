@@ -1,0 +1,123 @@
+﻿@model Collaborate_lrn_Py.Models.CollaborativeTutorial
+
+@{ 
+    ViewBag.Title = "Collaborate";
+}
+<link rel="stylesheet" href="~/Content/TakeTutorial.css" />
+<link rel="stylesheet" href="~/Content/obsidian.css">
+<script src="~/Scripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <h4>@Model.Tutorial.Title</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Original Author:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tutorial.Educator.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tutorial.CreationDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tutorial.CreationDate)
+                </dd>
+                <dt>
+                    Collaborators:
+                </dt>
+
+                <dd>
+                    @foreach (var c in Model.Collaborators)
+                    {
+                        <p>@Html.DisplayFor(x => c.UserName)</p>
+                    }
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tutorial.Votes)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tutorial.Votes)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tutorial.Description)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Tutorial.Description)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tutorial.BodyText)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tutorial.BodyText)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="col-md-3">
+            <h5>
+                @Html.DisplayNameFor(model => model.Tutorial.CodeSample)
+            </h5>
+
+            <div>
+                <pre class="pycode"><code class="python">@Html.DisplayFor(model => model.Tutorial.CodeSample)</code></pre>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="col-md-9">
+        <div>
+            @foreach (var c in Model.Comments)
+            {
+                <div class="comment">
+                    <p>@Html.DisplayFor(x => c.UserName)</p>
+                    <p>@Html.DisplayFor(x => c.TimeStamp)</p>
+                    <div style="background-color:#282b2e"><pre style="background-color:#282b2e;color:aliceblue">@Html.DisplayFor(x => c.Text)</pre></div>
+                    <p>@Html.ActionLink(" ", "DeleteComment", new { id = c.Id, ctId = Model.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })</p>
+                </div>
+            }
+        </div>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.TutorialId)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.newComment, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.newComment, new { htmlAttributes = new { @class = "form-control", @rows = 10 } })
+                        @Html.ValidationMessageFor(model => model.newComment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add Comment" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-3 text-center">
+        <p>
+            @Html.ActionLink("Preview", "TakeTutorial", "Tutorials", new { id = Model.TutorialId }, new { @class = "btn btn-info" })
+        </p>
+        <p>
+            @Html.ActionLink("Edit", "Edit", "Tutorials", new { id = Model.TutorialId }, new { @class = "btn btn-warning" })
+        </p>
+    </div>
+
+</div>

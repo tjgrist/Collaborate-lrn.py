@@ -110,15 +110,16 @@ namespace Collaborate_lrn_Py.Controllers
                 return View(tutorial);
             }
             ViewBag.Message = "You cannot edit that tutorial.";
-            return RedirectToAction("Index", ViewBag.Message);
+            return RedirectToAction("Index");
         }
         private bool CanEdit(int? id)
         {
             var currentUser = db.Users.Find(User.Identity.GetUserId());
             try
             {
-                CollaborativeTutorial collabTut = db.CollaborativeTutorials.Find(id);
-                if (collabTut.Collaborators.Contains(currentUser))
+                CollaborativeTutorial collab = currentUser.Collaborations.First(x => x.TutorialId == id);
+                CollaborativeTutorial collabTut = db.CollaborativeTutorials.First(x => x.TutorialId == id);
+                if (collabTut.Collaborators.Contains(currentUser) || collab != null)
                     return true;
                 else
                     return false;

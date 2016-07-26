@@ -3,38 +3,23 @@
     ViewBag.Title = "Available Code Challenges";
 }
 <h2>@ViewBag.Title</h2>
-<table class="table table-hover">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Tutorial.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Goal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Educator)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tutorial.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Goal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Educator.UserName)
-        </td>
-    </tr>
-}
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="">
+                    <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
+                    <p><span style="font-weight:bold">@Html.DisplayNameFor(model => model.Tutorial.Title)</span> @Html.DisplayFor(modelItem => item.Tutorial.Title)</p>
+                    <p><span style="font-weight:bold">Author:</span> @Html.DisplayFor(modelItem => item.Educator.UserName)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Goal)</p>
+                    <span>@Html.ActionLink("Take it", "TakeTutorial", "Tutorials", new { id = item.TutorialId }, new { @class = "btn btn-primary" })</span>
+                </div>
+                <br /><br />
+            </div>
+        }
+    </div>
+</div>
 
-</table>
+@Scripts.Render("~/bundles/jquery")

@@ -15,14 +15,14 @@ namespace Collaborate_lrn_Py.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Thanks!";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "tjgrst@gmail.com";
 
             return View();
         }

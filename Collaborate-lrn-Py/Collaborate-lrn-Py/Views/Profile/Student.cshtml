@@ -1,62 +1,153 @@
-﻿@model Collaborate_lrn_Py.Models.ApplicationUser
+﻿@model Collaborate_lrn_Py.Models.StudentViewModel
 
 @{
     ViewBag.Title = "Student Profile";
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
+<link rel="stylesheet" href="~/Content/obsidian.css"/>
+<link rel="stylesheet" href="~/Content/profile.css" />
+<script src="~/Scripts/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<style>
+    .padbtn{
+        padding-left:1em;
+    }
+</style>
 
     <div class="row">
-    <div class="col-md-8">
-        @foreach (var i in Model.Paths)
-            {
-            <table class="table">
-                <tr>
-                    <td>
-                        <div align="center">
-                            <h3>@Html.DisplayFor(m => i.PathName)</h3>
-                            <h5>
-                                @Html.DisplayNameFor(m => i.Published): @Html.DisplayFor(m => i.Published)
-                                @Html.DisplayNameFor(m => i.Votes): @Html.DisplayFor(m => i.Votes)
-                                <span align="right" style="padding-left:2em"> @Html.ActionLink(" ", "Publish", "Paths", new { id = i.Id }, new { @class = "btn btn-success glyphicon glyphicon-globe" })</span>
-                            </h5>
-                        </div>
-                </tr>
-            </table>
-                <h4>Tutorials</h4>
-            foreach (var x in i.Tutorials)
+        <div class="col-md-8" style="background-color:#4e5d6c">
+            <h2 class="text-center">Paths. <small>Customize learning</small></h2>
+            @foreach (var i in Model.CurrentUser.Paths)
             {
                 <table class="table">
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(m => x.Title)
-                        </th>
                         <td>
-                            @Html.DisplayFor(m => x.Title)
-                        </td>
-                        <th>
-                            @Html.DisplayNameFor(m => x.Description)
-                        </th>
-                        <td>
-                            @Html.DisplayFor(m => x.Description)
-                        </td>
+                            <hr />
+                            <div align="center">
+                                <h3>@Html.DisplayFor(m => i.PathName)</h3>
+                                <div>
+                                    <div>
+                                        <span class="padbtn">@Html.DisplayNameFor(m => i.Published): @Html.DisplayFor(m => i.Published)</span>
+                                        <span class="padbtn">@Html.DisplayNameFor(m => i.Votes): @Html.DisplayFor(m => i.Votes)</span>
+                                        <span class="padbtn">
+                                            <a href="@Url.Action("Publish", "Paths", new { id = i.Id })" class="btn btn-success">
+                                                Publish
+                                                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                                            </a>
+                                        </span>
+                                        <span class="padbtn">
+                                            <a href="@Url.Action("Details", "Paths", new { id = i.Id })" class="btn btn-info">
+                                                View
+                                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                            </a>
+                                        </span>
+                                        <span class="padbtn">
+                                            <a href="@Url.Action("Edit", "Paths", new { id = i.Id })" class="btn btn-warning">
+                                                Edit
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </a>
+                                        </span>
+                                        <span class="padbtn">
+
+                                            <a href="@Url.Action("Delete", "Paths", new { id = i.Id })" class="btn btn-danger">
+                                                Remove
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <br />
+                                <h5>Tutorials:</h5>
+                            </div>
                     </tr>
                 </table>
+
+                foreach (var item in i.Tutorials)
+                {
+                    <div class="col-md-4">
+                        <div class="">
+                            <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                            <p>@Html.DisplayFor(m => item.Description)</p>
+                            <p><span style="font-weight:bold">@Html.DisplayNameFor(model => item.Votes):</span> @Html.DisplayFor(modelItem => item.Votes)</p>
+                        </div>
+                        <br /><br />
+                    </div>
+                }
             }
-        }
-    </div>
-    <div class="col-md-3">
+
+            <h2 class="text-center" style="padding-top:7em">Paths You're Taking</h2>
+            <hr />
+            @foreach (var item in Model.CurrentUser.LearningPathModel.LearningPaths)
+            {
+                <div class="col-md-4">
+                    <div class="">
+                        <h4>@Html.DisplayFor(modelItem => item.PathName)</h4>
+                        <p>Creator: @Html.DisplayFor(m => item.Creator.UserName)</p>
+                        <p><span style="font-weight:bold">@Html.DisplayNameFor(model => item.Votes):</span> @Html.DisplayFor(modelItem => item.Votes)</p>
+                        <span class="">
+                            <a href="@Url.Action("Details", "Paths", new { id = item.Id })" class="btn btn-info">
+                                View
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            </a>
+                        </span>
+                    </div>
+                    <br /><br />
+                </div>
+            }
+        </div>
+
+
+
+
+    <div class="col-md-3 profile" style="">
         <div align="right">
-            <h2>@Model.UserName </h2>
-            <p>@Html.DisplayNameFor(model => model.Points): <strong>@Html.DisplayFor(model => model.Points)</strong></p>
-            <p>@Html.DisplayNameFor(model => model.CompletedTutorialsCount): <strong>@Html.DisplayFor(model => model.CompletedTutorialsCount) </strong></p>
-            <p>@Html.ActionLink("Create a Path", "Create", "Paths", null, new { @class = "btn btn-primary" })</p>
+            <h2>@Model.CurrentUser.UserName </h2>
+            <p>@Html.DisplayNameFor(model => model.CurrentUser.Points): <strong>@Html.DisplayFor(model => model.CurrentUser.Points)</strong></p>
+            <p>@Html.DisplayNameFor(model => model.CurrentUser.CompletedTutorialsCount): <strong>@Html.DisplayFor(model => model.CurrentUser.CompletedTutorialsCount) </strong></p>
         </div>
     </div>
-        <div class="col-md-3" style="padding:50px;color:deepskyblue" align="right">
+    <div class="col-md-3 profile" style="padding:30px;" align="right" >
+        <div >
+            <a href="@Url.Action("Create", "Paths")" class="btn btn-primary">
+                Create a Path
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+
+        <div class="col-md-3 profile" style="padding:30px;color:deepskyblue;" align="right">
             <div>
-                <p>This is your Dashboard. Here you'll find links to create custom paths that you can publish publicly when you think it's a good sequence of tutorials.</p>
+                <p>This is your Dashboard. Here you'll find links to create custom paths that you can publish 
+                publicly when they're ready.</p>
             </div>
         </div>
+        <div class="col-md-3 profile" style="padding:30px;">
+                <div align="left">
+                    <pre style="background-color: #282b2e"><code class="python">def Greet(name):
+    print("Welcome to Tutorial Hub, {}.".format(name))
+                   
+Greet("@Model.CurrentUser.UserName")
+                
+#Welcome to Tutorial Hub, @Model.CurrentUser.UserName. 
+            </code></pre>
+                </div>
+            </div>
+
+        <div class="col-md-3 profile" style="padding:30px;height:1000px;" align="center">
+            <div>
+                <h2>@Html.DisplayNameFor(model => model.PopularTutorials)</h2>
+                <ul class="nav">
+                    @foreach (var i in Model.PopularTutorials)
+                    {
+                        <li>
+                            @Html.DisplayFor(x => i.Title)<span class="badge"> @Html.DisplayFor(x => i.Votes)</span>
+                            <p></p>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
 </div>
 
 <!--------------------------------------------------------------------------------------->
