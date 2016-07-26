@@ -20,17 +20,23 @@ namespace Collaborate_lrn_Py.Controllers
         public ActionResult Index()
         {
             ApplicationUser currentUser = db.Users.Find(User.Identity.GetUserId());
+            var popularTutorials = db.Tutorials.OrderByDescending(x => x.Votes).Take(5).ToList();
             if (currentUser.LearningPathModel == null)
             {
                 currentUser.LearningPathModel = new LearningPathModel();
             }
             if (isStudent())
             {
-                return View("Student", currentUser);
+                StudentViewModel studentVM = new StudentViewModel
+                {
+                    CurrentUser = currentUser,
+                    PopularTutorials = popularTutorials
+                };
+                return View("Student", studentVM);
             }
             else
             {
-                var popularTutorials = db.Tutorials.OrderByDescending(x => x.Votes).Take(5).ToList();
+               
                 var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
                 educatorsTutorials.ForEach(x => currentUser.Points += x.Votes);
                 var educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();

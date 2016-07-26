@@ -406,6 +406,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CollaborativeTutorialController.cs" />
     <Compile Include="Controllers\PathsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -527,10 +528,24 @@
     <Compile Include="Migrations\201607252300475_learning path model.Designer.cs">
       <DependentUpon>201607252300475_learning path model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607261708009_collaborate with comments.cs" />
+    <Compile Include="Migrations\201607261708009_collaborate with comments.Designer.cs">
+      <DependentUpon>201607261708009_collaborate with comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607261738415_added new comment field.cs" />
+    <Compile Include="Migrations\201607261738415_added new comment field.Designer.cs">
+      <DependentUpon>201607261738415_added new comment field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607261813096_added dt to comment.cs" />
+    <Compile Include="Migrations\201607261813096_added dt to comment.Designer.cs">
+      <DependentUpon>201607261813096_added dt to comment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
     <Compile Include="Models\CollaborativeTutorial.cs" />
+    <Compile Include="Models\CollaborativeTutorialViewModel.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\GradeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LearningPathModel.cs" />
@@ -540,6 +555,7 @@
     <Compile Include="Models\PathViewModel.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
+    <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\Tutorial.cs" />
     <Compile Include="Models\TutorialViewModel.cs" />
     <Compile Include="Models\TutQuizViewModel.cs" />
@@ -621,6 +637,7 @@
     <Content Include="Views\Paths\Edit.cshtml" />
     <Content Include="Views\Paths\Delete.cshtml" />
     <Content Include="Views\Paths\Details.cshtml" />
+    <Content Include="Views\CollaborativeTutorial\Collaborate.cshtml" />
     <None Include="Views\Profile\Dashboard.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -771,6 +788,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607252300475_learning path model.resx">
       <DependentUpon>201607252300475_learning path model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261708009_collaborate with comments.resx">
+      <DependentUpon>201607261708009_collaborate with comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261738415_added new comment field.resx">
+      <DependentUpon>201607261738415_added new comment field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607261813096_added dt to comment.resx">
+      <DependentUpon>201607261813096_added dt to comment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

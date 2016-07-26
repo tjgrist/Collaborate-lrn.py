@@ -47,6 +47,7 @@ namespace Collaborate_lrn_Py.Models
         public DbSet<Quiz> Quiz { get; set; }
         public DbSet<CollaborativeTutorial> CollaborativeTutorials { get; set; }
         public DbSet<LearningPathModel> LearningPaths { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
     }
 }
