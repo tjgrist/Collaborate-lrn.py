@@ -84,7 +84,7 @@ namespace Collaborate_lrn_Py.Controllers
                 //db.LearningPaths.Add()
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", "Profile", null);
+            return RedirectToAction("Index");
         }
         
         public ActionResult AddTutorialToPath(int? id)

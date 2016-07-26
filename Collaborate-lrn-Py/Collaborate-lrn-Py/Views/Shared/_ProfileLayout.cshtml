@@ -14,6 +14,11 @@
     <style>
         .sidebartext{
             color: #fff;
+            text-decoration: none;
+            text-decoration-color: #fff;
+        }
+        .sbi{
+            padding: 15px;
         }
     </style>
 </head>
@@ -40,25 +45,22 @@
         </div>
     </div>
     <div id="wrapper container-fluid">
-        <div class="container col-md-1" style="min-height:1000px;background-color:#df691a;color: #fff">
-            <div id="sidebar-wrapper" style="color: #fff">
-                <ul class="nav sidebar-nav" style="color: #fff">
-                    <li class="sidebar-brand">
-                        <span class="sidebartext">@Html.ActionLink("Tutorial Hub", "Index", "Home")</span>
-                    </li>
-                    <li>
+        <div class="container col-md-1" style="height:70em;background-color:#282b2e;">
+            <div id="sidebar-wrapper" >
+                <ul class="nav sidebar-nav">
+                    <li class="sbi" >
                         <span class="sidebartext">@Html.ActionLink("Dashboard", "Index", "Profile")</span>
                     </li>
-                    <li>
+                    <li class="sbi">
                         <span class="sidebartext">@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
                     </li>
-                    <li>
+                    <li class="sbi">
                         <span class="sidebartext">@Html.ActionLink("Paths", "Index", "Paths")</span>
                     </li>
-                    <li>
+                    <li class="sbi">
                         <span class="sidebartext">@Html.ActionLink("Community", "Index", "Community")</span>
                     </li>
-                    <li>
+                    <li class="sbi">
                         <span class="sidebartext">@Html.ActionLink("Challenges", "Index", "Quiz")</span>
                     </li>
                 </ul>
@@ -68,7 +70,29 @@
     <div class="" style="margin:0px 10px 0px 150px">
         @RenderBody()
         <br />
-        <footer></footer>
+        <footer>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="col-md-3">
+                        <ul>
+                            <li>@Html.ActionLink("Dashboard", "Index", "Profile")</li>
+                            <li>@Html.ActionLink("Tutorials", "Index", "Tutorials")</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li>@Html.ActionLink("Paths", "Index", "Paths")</li>
+                            <li>@Html.ActionLink("Community", "Index", "Community")</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li>@Html.ActionLink("Challenges", "Index", "Quiz")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
 
