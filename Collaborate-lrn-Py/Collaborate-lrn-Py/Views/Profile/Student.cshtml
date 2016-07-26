@@ -4,7 +4,8 @@
     ViewBag.Title = "Student Profile";
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
-<link rel="stylesheet" href="~/Content/obsidian.css">
+<link rel="stylesheet" href="~/Content/obsidian.css"/>
+<link rel="stylesheet" href="~/Content/profile.css" />
 <script src="~/Scripts/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <style>
@@ -117,14 +118,14 @@
 
 
 
-    <div class="col-md-3">
+    <div class="col-md-3" style="background-color:#282b2e;">
         <div align="right">
             <h2>@Model.UserName </h2>
             <p>@Html.DisplayNameFor(model => model.Points): <strong>@Html.DisplayFor(model => model.Points)</strong></p>
             <p>@Html.DisplayNameFor(model => model.CompletedTutorialsCount): <strong>@Html.DisplayFor(model => model.CompletedTutorialsCount) </strong></p>
         </div>
     </div>
-    <div class="col-md-3" style="padding:30px" align="right" >
+    <div class="col-md-3 profile" style="padding:30px;" align="right" >
         <div >
             <a href="@Url.Action("Create", "Paths")" class="btn btn-primary">
                 Create a Path
@@ -133,13 +134,13 @@
         </div>
     </div>
 
-        <div class="col-md-3" style="padding:30px;color:deepskyblue" align="right">
+        <div class="col-md-3 profile" style="padding:30px;color:deepskyblue;" align="right">
             <div>
                 <p>This is your Dashboard. Here you'll find links to create custom paths that you can publish 
                 publicly when they're ready.</p>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 profile" style="height:50em">
                 <div align="left">
                     <pre style="background-color: #282b2e"><code class="python">def Greet(name):
     print("Welcome to Tutorial Hub, {}.".format(name))

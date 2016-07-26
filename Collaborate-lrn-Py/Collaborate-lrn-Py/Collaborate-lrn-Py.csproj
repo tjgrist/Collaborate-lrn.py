@@ -564,6 +564,7 @@
     <Content Include="Content\monokai-sublime.css" />
     <Content Include="Content\monokai.css" />
     <Content Include="Content\obsidian.css" />
+    <Content Include="Content\profile.css" />
     <Content Include="Content\solarized-dark.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\xcode.css" />
