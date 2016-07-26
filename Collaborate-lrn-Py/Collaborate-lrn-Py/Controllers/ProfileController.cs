@@ -30,6 +30,7 @@ namespace Collaborate_lrn_Py.Controllers
             }
             else
             {
+                var popularTutorials = db.Tutorials.OrderByDescending(x => x.Votes).Take(5).ToList();
                 var educatorsTutorials = db.Tutorials.Where(x => x.EducatorId == currentUser.Id).ToList();
                 educatorsTutorials.ForEach(x => currentUser.Points += x.Votes);
                 var educatorsQuizzes = db.Quiz.Where(x => x.EducatorId == currentUser.Id).ToList();
@@ -38,7 +39,8 @@ namespace Collaborate_lrn_Py.Controllers
                     EducatorTutorials = educatorsTutorials,
                     CollaborativeTutorials = GetCollabTutorials(),
                     EducatorQuizzes = educatorsQuizzes,
-                    Points = currentUser.Points
+                    Points = currentUser.Points,
+                    PopularTutorials = popularTutorials
                 };
                 return View("Educator", eduViewModel);
             }

@@ -19,5 +19,8 @@ namespace Collaborate_lrn_Py.Models
         [Display(Name = "Educator Score")]
         public int Points { get; set; }
 
+        [Display(Name = "Popular Tutorials")]
+        public ICollection<Tutorial> PopularTutorials { get; set; }
+
     }
 }

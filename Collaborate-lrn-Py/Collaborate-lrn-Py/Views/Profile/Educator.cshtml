@@ -184,6 +184,21 @@ Greet("@User.Identity.GetUserName()")
             </code></pre>
             </div>
         </div>
+
+        <div class="col-md-3 profile" style="padding:50px;" align="center">
+            <div>
+                <h2>@Html.DisplayNameFor(model => model.PopularTutorials)</h2>
+                <ul class="nav">
+                @foreach (var i in Model.PopularTutorials)
+                {
+                    <li>@Html.DisplayFor(x => i.Title)<span class="badge"> @Html.DisplayFor(x => i.Votes)</span>
+                        <p></p>
+                    </li>
+                }
+                </ul>
+            </div>
+        </div>
+
     </div>
 
     <script src="~/Scripts/jquery-2.2.4.min.js"></script>
