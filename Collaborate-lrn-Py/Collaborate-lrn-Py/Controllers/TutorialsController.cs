@@ -32,7 +32,10 @@ namespace Collaborate_lrn_Py.Controllers
                 .OrderBy(x => x.CreationDate)
                 .Where(t => searchTerm == null || t.Title.StartsWith(searchTerm))
                 .Take(10);
-
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                publishedTutorials = publishedTutorials.Where(t => t.Title.Contains(searchTerm)).ToList();
+            }
             if (Request.IsAjaxRequest()) 
                 return PartialView("_Tutorials", searchTutorials);
 
@@ -141,7 +144,7 @@ namespace Collaborate_lrn_Py.Controllers
                 db.Entry(tutorial).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewBag.Message = "You edited your Tutorial! Make sure to re-publish it.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Profile", null);
             }
             ViewData["Difficulty"] = new SelectList(Tutorial.difficulties);
             return View(tutorial);

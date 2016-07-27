@@ -8,7 +8,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.PathSelection, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.DropDownList("PathSelection")
+            @Html.DropDownList("PathSelection", null, htmlAttributes: new { @style = "color:black" })
         </div>
     </div>
 
