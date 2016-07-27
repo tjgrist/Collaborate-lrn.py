@@ -1,3 +1,13 @@
 ﻿.profile{
-    background-color:#282b2e;
+    background-color:inherit;
+    padding: 20px 100px 20px 0px;
 }
+    .tobold{
+        font-weight:bold;
+    }
+       .padbtn{
+        padding-left:1em;
+    }
+       .badge{
+           background-color:#282b2e;
+       }

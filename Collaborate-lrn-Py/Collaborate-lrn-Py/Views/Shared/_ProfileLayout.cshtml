@@ -23,6 +23,29 @@
         footer{
             margin:0em 20em 0em 20em;
         }
+        .wrapper
+    {
+        min-height:100%;
+        width:100%;
+        position:relative;
+        display:inline-block;
+    }
+    .sidebar
+    {
+        top:0px;
+        left:0px;
+        bottom:0px;
+        position:absolute;
+        float: left;
+    }
+    .content
+    {
+        min-height:500px;
+        width:90%;
+        position:relative;
+        background-color:#4e5d6c;
+        float: right;
+        }
     </style>
 </head>
 <body>
@@ -47,37 +70,41 @@
             </div>
         </div>
     </div>
-    <div id="wrapper container-fluid" style="padding-left:1em">
-        <div class="container col-md-1" style="height:845px;background-color:#282b2e;">
-            <div id="sidebar-wrapper" >
-                <ul class="nav sidebar-nav">
-                    <li class="sbi" >
-                        <span class="sidebartext">@Html.ActionLink("Dashboard", "Index", "Profile")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Paths", "Index", "Paths")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Community", "Index", "Community")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Challenges", "Index", "Quiz")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("About", "About", "Home")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Contact", "Contact", "Home")</span>
-                    </li>
-                </ul>
-            </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul class="nav sidebar-nav">
+                <li class="sbi">
+                    <span class="sidebartext">@Html.ActionLink("Dashboard", "Index", "Profile")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sidebartext">@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sidebartext">@Html.ActionLink("Paths", "Index", "Paths")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sidebartext">@Html.ActionLink("Community", "Index", "Community")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sidebartext">@Html.ActionLink("Challenges", "Index", "Quiz")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sidebartext">@Html.ActionLink("About", "About", "Home")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sidebartext">@Html.ActionLink("Contact", "Contact", "Home")</span>
+                </li>
+            </ul>
         </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="rightsidebar">
 
-    <div class="" style="margin:0px 10px 0px 1em;padding-left:1em">
-        @RenderBody()
+        </div>
+    </div>
+    <div >
+
         <br />
         <footer>
             <div class="row " >
@@ -108,7 +135,6 @@
                 </div>
             </div>
         </footer>
-    </div>
 </div>
 
     @Scripts.Render("~/bundles/jquery")
