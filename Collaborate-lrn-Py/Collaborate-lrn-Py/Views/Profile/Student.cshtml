@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <h2 class="text-center">Paths. <small>Customize learning</small></h2>
+            <h2 class="text-center tobold">Paths. <small>Customize learning</small></h2>
             @foreach (var i in Model.CurrentUser.Paths)
             {
                 <table class="table">
@@ -69,7 +69,7 @@
                 }
             }
 
-            <h2 class="text-center" style="padding-top:7em">Paths You're Taking</h2>
+            <h2 class="text-center tobold" style="padding-top:7em">Paths You're Taking</h2>
             <hr />
             @foreach (var item in Model.CurrentUser.LearningPathModel.LearningPaths)
             {
@@ -95,14 +95,14 @@
 
     <div class="col-md-4 profile" >
         <div align="right">
-            <h2>@Model.CurrentUser.UserName </h2>
+            <h2 class="tobold">@Model.CurrentUser.UserName </h2>
             <p>@Html.DisplayNameFor(model => model.CurrentUser.Points): <strong>@Html.DisplayFor(model => model.CurrentUser.Points)</strong></p>
             <p>@Html.DisplayNameFor(model => model.CurrentUser.CompletedTutorialsCount): <strong>@Html.DisplayFor(model => model.CurrentUser.CompletedTutorialsCount) </strong></p>
         </div>
     </div>
     <div class="col-md-4 profile" align="right" >
         <div >
-            <a href="@Url.Action("Create", "Paths")" class="btn btn-primary">
+            <a href="@Url.Action("Create", "Paths")" class="btn btn-success">
                 Create a Path
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>

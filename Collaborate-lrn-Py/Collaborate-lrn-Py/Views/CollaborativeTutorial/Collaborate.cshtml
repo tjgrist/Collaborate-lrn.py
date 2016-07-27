@@ -89,7 +89,7 @@
                     <p>@Html.DisplayFor(x => c.UserName)</p>
                     <p>@Html.DisplayFor(x => c.TimeStamp)</p>
                     <div style="background-color:#282b2e"><pre style="background-color:#282b2e;color:aliceblue">@Html.DisplayFor(x => c.Text)</pre></div>
-                    <p>@Html.ActionLink(" ", "DeleteComment", new { id = c.Id, ctId = Model.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })</p>
+                    <p>@Html.ActionLink(" ", "DeleteComment", new { id = c.Id, ctId = Model.Id }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })</p>
                 </div>
             }
         </div>
