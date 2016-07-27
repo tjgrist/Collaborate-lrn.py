@@ -96,6 +96,7 @@ namespace Collaborate_lrn_Py.Controllers
         [Authorize(Roles = "Educator")]
         public ActionResult Edit(int? id)
         {
+            ViewData["Difficulty"] = new SelectList(Tutorial.difficulties);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,7 +111,7 @@ namespace Collaborate_lrn_Py.Controllers
                 return View(tutorial);
             }
             ViewBag.Message = "You cannot edit that tutorial.";
-            return RedirectToAction("Index");
+            return View("Error");
         }
         private bool CanEdit(int? id)
         {
@@ -142,6 +143,7 @@ namespace Collaborate_lrn_Py.Controllers
                 ViewBag.Message = "You edited your Tutorial! Make sure to re-publish it.";
                 return RedirectToAction("Index");
             }
+            ViewData["Difficulty"] = new SelectList(Tutorial.difficulties);
             return View(tutorial);
         }
 

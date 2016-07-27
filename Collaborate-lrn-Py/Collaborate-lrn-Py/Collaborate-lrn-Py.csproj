@@ -714,6 +714,7 @@
     <Content Include="Views\Tutorials\_Tutorials.cshtml" />
     <Content Include="Views\Profile\_Dash.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
+    <Content Include="Views\Tutorials\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

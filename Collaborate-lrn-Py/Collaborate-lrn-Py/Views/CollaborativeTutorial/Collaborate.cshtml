@@ -37,22 +37,30 @@
                     {
                         <p>@Html.DisplayFor(x => c.UserName)</p>
                     }
+
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.Tutorial.Votes)
+                    @Html.DisplayNameFor(model => model.Tutorial.Difficulty):
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Tutorial.Difficulty)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tutorial.Votes):
                 </dt>
 
                 <dd>
                     @Html.DisplayFor(model => model.Tutorial.Votes)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.Tutorial.Description)
+                    @Html.DisplayNameFor(model => model.Tutorial.Description):
                 </dt>
                 <dd>
                     @Html.DisplayFor(model => model.Tutorial.Description)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.Tutorial.BodyText)
+                    @Html.DisplayNameFor(model => model.Tutorial.BodyText):
                 </dt>
 
                 <dd>

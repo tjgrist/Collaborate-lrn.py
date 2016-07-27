@@ -31,9 +31,11 @@
                 <br /><br />
                 <div align="center">
                     <button type="button" class="btn btn-primary" onclick="runit()">Run</button>
-                    <button type="button" class="btn btn-primary" onclick="autoGrade()">Check</button>
+                    <button type="button" class="btn btn-warning" onclick="autoGrade()">Check</button>
                     <button type="button" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal"></button>
-                    <span>@Html.ActionLink(" ", "Complete", "Profile", null, new { @class = "btn btn-success glyphicon glyphicon-ok", @datatoggle = "tooltip", @dataplacement = "top", @title = "Complete Tutorial" })</span>
+                    <a href="@Url.Action("Complete", "Profile", null)" class="btn btn-success">
+                        Complete <span class="glyphicon glyphicon-ok"></span>
+                    </a>
                 </div>
             </form>
         </div>
@@ -144,12 +146,12 @@
         });
         myPromise.then(function (mod) {
             console.log('success');
-            $("#result").html("That is valid code!").removeClass("alert alert-danger").addClass("alert alert-success").fadeOut(5000);
+            $("#result").html("Your code looks good. Is it the right answer?").removeClass("alert alert-danger").addClass("alert alert-default").fadeOut(5000);
             $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");;
         },
             function (err) {
                 console.log(err.toString());
-                $("#result").html(err.toString()).removeClass("alert alert-success").addClass("alert alert-danger").fadeOut(5000);
+                $("#result").html(err.toString()).removeClass("alert alert-default").addClass("alert alert-danger").fadeOut(5000);
                 $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");
             });
     }

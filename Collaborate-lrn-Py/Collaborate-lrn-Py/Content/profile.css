@@ -1,6 +1,6 @@
 ﻿.profile{
     background-color:inherit;
-    padding: 20px 100px 20px 0px;
+    padding: 20px 100px 20px 0;
 }
     .tobold{
         font-weight:bold;
@@ -9,5 +9,9 @@
         padding-left:1em;
     }
        .badge{
+           background-color:#282b2e;
+       }
+
+       .dropdown-menu{
            background-color:#282b2e;
        }
