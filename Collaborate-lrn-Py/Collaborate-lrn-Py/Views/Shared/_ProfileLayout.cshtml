@@ -11,22 +11,64 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/profile.css" />
     <style>
-        .sidebartext{
-            color: #fff;
-            text-decoration: none;
-            text-decoration-color: #fff;
+    .col-md-3:hover, .col-md-4:hover{
+        background-color: #485563;
+    }
+    .sbi{
+        color: #ebebeb;
+        text-decoration: none;
+        padding-top:2em;
+    }
+    footer{
+        margin:0em 20em 0em 20em;
+    }
+    .footerul{
+        list-style:none;
+    }
+    .wrapper
+    {
+        min-height:100%;
+        width:100%;
+        position:relative;
+        display:inline-block;
+    }
+    .sidebar
+    {
+        top:0px;
+        left:0px;
+        bottom:0px;
+        position:absolute;
+        float: left;
+        color: #ebebeb;
+    }
+    .content
+    {
+        opacity: 0.9;
+        min-height:500px;
+        width:90%;
+        position:relative;
+        background-color:#4e5d6c;
+        float: right;
+        margin-right:1em;
         }
-        .sbi{
-            padding: 15px;
-        }
-        footer{
-            margin:0em 20em 0em 20em;
-        }
+    .custom-nav li span{
+        color:#ebebeb;
+        list-style:none;
+
+    }
+    li{
+        text-decoration: none;
+        color: #ebebeb;
+    }
+    /*.nav.navbar-nav li a {
+    color: blue;
+}*/
     </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,69 +88,79 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
-    <div id="wrapper container-fluid" style="padding-left:1em">
-        <div class="container col-md-1" style="height:845px;background-color:#282b2e;">
-            <div id="sidebar-wrapper" >
-                <ul class="nav sidebar-nav">
-                    <li class="sbi" >
-                        <span class="sidebartext">@Html.ActionLink("Dashboard", "Index", "Profile")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Paths", "Index", "Paths")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Community", "Index", "Community")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Challenges", "Index", "Quiz")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("About", "About", "Home")</span>
-                    </li>
-                    <li class="sbi">
-                        <span class="sidebartext">@Html.ActionLink("Contact", "Contact", "Home")</span>
-                    </li>
-                </ul>
-            </div>
+    </nav>
+    @*<nav class="navbar" role="navigation">
+        <div class="container">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> About</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-briefcase"></span> Portfolio</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> R&eacute;sum&eacute;</a></li>
+            </ul>
         </div>
+    </nav>*@
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul class="custom-nav">
+                <li class="sbi">
+                    <span class="sbi">@Html.ActionLink("Dashboard", "Index", "Profile")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sbi">@Html.ActionLink("About", "About", "Home")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sbi">@Html.ActionLink("Contact", "Contact", "Home")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sbi">@Html.ActionLink("Tutorials", "Index", "Tutorials")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sbi">@Html.ActionLink("Paths", "Index", "Paths")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sbi">@Html.ActionLink("Community", "Index", "Community")</span>
+                </li>
+                <li class="sbi">
+                    <span class="sbi">@Html.ActionLink("Challenges", "Index", "Quiz")</span>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    <div >
 
-    <div class="" style="margin:0px 10px 0px 1em;padding-left:1em">
-        @RenderBody()
         <br />
         <footer>
-            <div class="row " >
-                <div class="col-md-9 ">
-                    <div class="col-md-3 ">
-                        <ul>
+            <div class="row" >
+                <div class="col-md-9">
+                    @*<div class="col-md-3">
+                        <ul class="footerul">
                             <li>@Html.ActionLink("Dashboard", "Index", "Profile")</li>
                             <li>@Html.ActionLink("Tutorials", "Index", "Tutorials")</li>
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <ul>
+                        <ul class="footerul">
                             <li>@Html.ActionLink("Paths", "Index", "Paths")</li>
                             <li>@Html.ActionLink("Community", "Index", "Community")</li>
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <ul>
+                        <ul class="footerul">
                             <li>@Html.ActionLink("Challenges", "Index", "Quiz")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <ul>
+                        <ul class="footerul">
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </footer>
-    </div>
 </div>
 
     @Scripts.Render("~/bundles/jquery")

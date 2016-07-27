@@ -9,15 +9,15 @@
 <link rel="stylesheet" href="~/Content/profile.css"/>
 <script src="~/Scripts/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<style>
-    .tobold{
-        font-weight:bold;
-    }
-</style>
     <div class="row">
-        <div class="col-md-8" style="background-color:#4e5d6c">
+        <div class="col-md-8">
             <div>
-                <h3 align="center">Create. <small>Manage your Tutorials</small></h3>
+                <h3 align="center">Create. <small>Manage your Tutorials</small>
+                    <a href="@Url.Action("Create", "Tutorials")" class="btn btn-success" style="">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                </h3>
+                
                 <hr />
                 <br />
                 @foreach (var item in Model.EducatorTutorials)
@@ -33,31 +33,31 @@
                                         <button class="btn btn-primary glyphicon glyphicon-menu-hamburger" type="button" data-toggle="dropdown"></button>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="@Url.Action("Publish", "Tutorials", new { id = item.ID })" class="bg-success">
+                                                <a href="@Url.Action("Publish", "Tutorials", new { id = item.ID })" class="">
                                                     Publish
                                                     <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("AddCollaborator", "Profile", new { id = item.ID })" class="bg-default">
+                                                <a href="@Url.Action("AddCollaborator", "Profile", new { id = item.ID })" class="">
                                                     Collaborate
                                                     <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("Details", "Tutorials", new { id = item.ID })" class="bg-info">
-                                                    View
+                                                <a href="@Url.Action("TakeTutorial", "Tutorials", new { id = item.ID })" class="">
+                                                    Preview
                                                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("Edit", "Tutorials", new { id = item.ID })" class="bg-warning">
+                                                <a href="@Url.Action("Edit", "Tutorials", new { id = item.ID })" class="">
                                                     Edit
                                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="@Url.Action("Delete", "Tutorials", new { id = item.ID })" class="bg-danger">
+                                                <a href="@Url.Action("Delete", "Tutorials", new { id = item.ID })" class="">
                                                     Remove
                                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                                 </a>
@@ -71,15 +71,15 @@
                     </div>
                 }
             </div>
-                    <a href="@Url.Action("Create", "Tutorials")" class="btn btn-success" style="">
-                        Add a Tutorial
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </a>
             <br />
 
             @*<------------------------------------- Quizzes/Code challenges ----------------------------------->*@        
             <div style="padding-top:11em;">
-                <h3 align="center">Teach. <small>Manage your Code Challenges</small></h3>
+                <h3 align="center">Teach. <small>Manage your Code Challenges</small>
+                    <a href="@Url.Action("Create", "Quiz")" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                </h3>
                 <hr />
                 <br />
                 @foreach (var item in Model.EducatorQuizzes)
@@ -92,12 +92,12 @@
                                 <p>@Html.DisplayFor(modelItem => item.Goal)</p>
                                 <div class="">
                                     <a href="@Url.Action("Details", "Quiz", new { id = item.Id })" class="btn btn-info">
-                                        View
+
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
 
                                     <a href="@Url.Action("Edit", "Quiz", new { id = item.Id })" class="btn btn-warning">
-                                        Edit
+
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </a>
 
@@ -111,10 +111,6 @@
                 }
                 
             </div>
-                <a href="@Url.Action("Create", "Quiz")" class="btn btn-success">
-                    Add a Challenge
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </a>
             <br />
 
                 @*<---------------------------------------Collaborative Tutorials----------------------->*@
@@ -128,16 +124,15 @@
                             <div>
                                 <h4>@Html.DisplayFor(modelItem => item.Tutorial.Title)</h4>
                                 <div>
-                                    <p><span class="tobold">@Html.DisplayNameFor(modelItem => item.Tutorial):</span> @Html.DisplayFor(modelItem => item.Tutorial.Title)</p>
                                     <p><span class="tobold">Original Author: </span>@Html.DisplayFor(modelItem => item.Tutorial.Educator.UserName)</p>
                                     <div class="" >
                                         <a href="@Url.Action("Collaborate", "CollaborativeTutorial", new { id = item.Id })" class="btn btn-info">
-                                            View
+                                            
                                             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                         </a>
 
                                         <a href="@Url.Action("Edit", "Tutorials", new { id = item.TutorialId })" class="btn btn-warning">
-                                            Edit
+
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
                                     </div>
@@ -148,7 +143,7 @@
                     <br />
                 </div>
             @*<--------------------------------------- Tutorials for which you've added collaborators----------------------->*@
-            <div style="padding-top:11em;">
+            <div style="padding-top:20em;">
                 <h3 align="center"><small>Track the Tutorials to which you've added collaborators</small></h3>
                 <hr/>
                 <br />
@@ -161,12 +156,12 @@
                                 <p><span class="tobold">@Html.DisplayNameFor(modelItem => item.Tutorial.Votes):</span> @Html.DisplayFor(modelItem => item.Tutorial.Votes)</p>
                                 <div class="">
                                     <a href="@Url.Action("Collaborate", "CollaborativeTutorial", new { id = item.Id })" class="btn btn-info">
-                                        View
+
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                     </a>
 
                                     <a href="@Url.Action("Edit", "Tutorials", new { id = item.TutorialId })" class="btn btn-warning">
-                                        Edit
+
                                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                     </a>
                                 </div>
@@ -178,22 +173,22 @@
             </div>
 
             </div>
-
-        <div class="col-md-3 profile">
+        <!-----------------------------------------------------Right------------------------------------------------------------>
+        <div class="col-md-4 profile">
             <div align="right">
-                <h2>@User.Identity.GetUserName()</h2>
+                <h2 class="tobold">@User.Identity.GetUserName()</h2>
                 <p>@Html.DisplayNameFor(model => model.Points):   @Model.Points</p>
             </div>
         </div>
 
-        <div class="col-md-3 profile" style="padding:50px;color:deepskyblue" align="right">
+        <div class="col-md-4 profile" align="left">
             <div>
                 <p>This is your Dashboard. Here you can create and publish tutorials and code challenges, add collaborators to your projects,
                 see how your projects are being rated by users, and more.</p>
             </div>
         </div>
 
-        <div class="col-md-3 profile">
+        <div class="col-md-4 profile">
             <div align="left">
                 <pre style="background-color: #282b2e"><code class="python">def Greet(name):
     print("Welcome to Tutorial Hub, {}.".format(name))
@@ -205,9 +200,9 @@ Greet("@User.Identity.GetUserName()")
             </div>
         </div>
 
-        <div class="col-md-3 profile" style="padding:50px;" align="center">
+        <div class="col-md-4 profile" align="center">
             <div>
-                <h2>@Html.DisplayNameFor(model => model.PopularTutorials)</h2>
+                <h3>@Html.DisplayNameFor(model => model.PopularTutorials)</h3>
                 <ul class="nav">
                 @foreach (var i in Model.PopularTutorials)
                 {

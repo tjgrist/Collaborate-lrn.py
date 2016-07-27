@@ -3,65 +3,40 @@
 @{ 
     ViewBag.Title = "Collaborate";
 }
-<link rel="stylesheet" href="~/Content/TakeTutorial.css" />
+<link rel="stylesheet" href="~/Content/collaborate.css" />
 <link rel="stylesheet" href="~/Content/obsidian.css">
 <script src="~/Scripts/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-9">
-            <h4>@Model.Tutorial.Title</h4>
+        <div class="col-md-7">
+            <h3 align="center">@Model.Tutorial.Title <small>Author: @Html.DisplayFor(model => model.Tutorial.Educator.UserName)</small></h3>
             <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    Original Author:
-                </dt>
+            <div class="">
+                    <pre class="instructions">@Html.DisplayFor(model => model.Tutorial.BodyText)</pre>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Tutorial.Educator.UserName)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Tutorial.CreationDate)
-                </dt>
+            </div>
+        </div>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Tutorial.CreationDate)
-                </dd>
-                <dt>
+            <div class="col-md-3">
+                <p>@Html.DisplayNameFor(model => model.Tutorial.CreationDate) @Html.DisplayFor(model => model.Tutorial.CreationDate))</p>
+
+                <p>@Html.DisplayNameFor(model => model.Tutorial.Description): @Html.DisplayFor(model => model.Tutorial.Description)</p>
+            </div>
+            <div class="col-md-2">
+                <p>@Html.DisplayNameFor(model => model.Tutorial.Difficulty): @Html.DisplayFor(model => model.Tutorial.Difficulty)</p>
+                <p>@Html.DisplayNameFor(model => model.Tutorial.Votes): @Html.DisplayFor(model => model.Tutorial.Votes)</p>
+                <p>
                     Collaborators:
-                </dt>
-
-                <dd>
                     @foreach (var c in Model.Collaborators)
                     {
-                        <p>@Html.DisplayFor(x => c.UserName)</p>
+                        @Html.DisplayFor(x => c.UserName)
                     }
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Tutorial.Votes)
-                </dt>
+                </p>
+            </div>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Tutorial.Votes)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Tutorial.Description)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Tutorial.Description)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Tutorial.BodyText)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Tutorial.BodyText)
-                </dd>
-
-            </dl>
-        </div>
-        <div class="col-md-3">
+        <div class="col-md-5">
             <h5>
                 @Html.DisplayNameFor(model => model.Tutorial.CodeSample)
             </h5>
@@ -71,9 +46,11 @@
 
             </div>
         </div>
+
+
     </div>
     <hr />
-    <div class="col-md-9">
+    <div class="col-md-7">
         <div>
             @foreach (var c in Model.Comments)
             {
@@ -81,7 +58,7 @@
                     <p>@Html.DisplayFor(x => c.UserName)</p>
                     <p>@Html.DisplayFor(x => c.TimeStamp)</p>
                     <div style="background-color:#282b2e"><pre style="background-color:#282b2e;color:aliceblue">@Html.DisplayFor(x => c.Text)</pre></div>
-                    <p>@Html.ActionLink(" ", "DeleteComment", new { id = c.Id, ctId = Model.Id }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })</p>
+                    <p>@Html.ActionLink(" ", "DeleteComment", new { id = c.Id, ctId = Model.Id }, new { @class = "btn btn-danger glyphicon glyphicon-remove" })</p>
                 </div>
             }
         </div>
@@ -111,7 +88,7 @@
             </div>
         }
     </div>
-    <div class="col-md-3 text-center">
+    <div class="col-md-5 text-center">
         <p>
             @Html.ActionLink("Preview", "TakeTutorial", "Tutorials", new { id = Model.TutorialId }, new { @class = "btn btn-info" })
         </p>

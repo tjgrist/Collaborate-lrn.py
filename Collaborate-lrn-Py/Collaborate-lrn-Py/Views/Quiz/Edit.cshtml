@@ -1,6 +1,10 @@
 ﻿@model Collaborate_lrn_Py.Models.Quiz
 
-@using (Html.BeginForm())
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Quiz", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     
@@ -16,7 +20,6 @@
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -25,7 +28,6 @@
             @Html.LabelFor(model => model.Goal, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Goal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Goal, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -34,7 +36,6 @@
             @Html.LabelFor(model => model.Instruction, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.Instruction, new { htmlAttributes = new { @class = "form-control", @rows = 12 } })
-                @Html.ValidationMessageFor(model => model.Instruction, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -42,31 +43,26 @@
             @Html.LabelFor(model => model.DisplayedCode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.DisplayedCode, new { htmlAttributes = new { @class = "form-control", @rows = 12 } })
-                @Html.ValidationMessageFor(model => model.DisplayedCode
-           , "", new { @class = "text-danger" })
             </div>
         </div>
         
         <div class="form-group">
             @Html.LabelFor(model => model.ExpectedInput, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ExpectedInput, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ExpectedInput, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.ExpectedInput, new { htmlAttributes = new { @class = "form-control", @rows = 12 } })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ExpectedOutput, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ExpectedOutput, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ExpectedOutput, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.ExpectedOutput, new { htmlAttributes = new { @class = "form-control", @rows = 12 } })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control", @rows = 12 } })
-                @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -79,5 +75,9 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-default glyphicon glyphicon-arrow-left" })
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

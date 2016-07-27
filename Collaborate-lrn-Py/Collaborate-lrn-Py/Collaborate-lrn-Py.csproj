@@ -579,8 +579,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\collaborate.css" />
+    <Content Include="Content\sandstone.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\sandstone.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapdef.css" />
@@ -714,6 +717,7 @@
     <Content Include="Views\Tutorials\_Tutorials.cshtml" />
     <Content Include="Views\Profile\_Dash.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
+    <Content Include="Views\Tutorials\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
