@@ -144,7 +144,7 @@ namespace Collaborate_lrn_Py.Controllers
                 db.Entry(tutorial).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewBag.Message = "You edited your Tutorial! Make sure to re-publish it.";
-                return RedirectToAction("Index", "Profile", null);
+                return RedirectToAction("TakeTutorial", new { id = tutorial.ID });
             }
             ViewData["Difficulty"] = new SelectList(Tutorial.difficulties);
             return View(tutorial);

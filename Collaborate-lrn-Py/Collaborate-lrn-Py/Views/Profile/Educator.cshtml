@@ -12,17 +12,12 @@
     <div class="row">
         <div class="col-md-8">
             <div>
-                <h3 align="center">Create. <small>Manage your Tutorials</small>
-                    <a href="@Url.Action("Create", "Tutorials")" class="btn btn-success" style="">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </a>
-                </h3>
-                
+                <h3 align="center">Create. <small>Manage your Tutorials</small></h3>               
                 <hr />
                 <br />
                 @foreach (var item in Model.EducatorTutorials)
             {
-                    <div class="col-md-4">
+                    <div class="col-md-4 hover">
                         <div>
                             <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
                             <div>
@@ -76,15 +71,12 @@
             @*<------------------------------------- Quizzes/Code challenges ----------------------------------->*@        
             <div style="padding-top:11em;">
                 <h3 align="center">Teach. <small>Manage your Code Challenges</small>
-                    <a href="@Url.Action("Create", "Quiz")" class="btn btn-success">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </a>
                 </h3>
                 <hr />
                 <br />
                 @foreach (var item in Model.EducatorQuizzes)
                 {
-                    <div class="col-md-4">
+                    <div class="col-md-4 hover">
                         <div>
                             <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
                             <div>
@@ -120,7 +112,7 @@
                     <br />
                     @foreach (var item in Model.CollaborativeTutorials)
                     {
-                        <div class="col-md-4" style="padding-bottom:2em">
+                        <div class="col-md-4 hover" style="padding-bottom:2em">
                             <div>
                                 <h4>@Html.DisplayFor(modelItem => item.Tutorial.Title)</h4>
                                 <div>
@@ -149,7 +141,7 @@
                 <br />
                 @foreach (var item in Model.AddedCollaboratorsToTheseTutorials)
                 {
-                    <div class="col-md-4" style="padding-bottom:2em">
+                    <div class="col-md-4 hover" style="padding-bottom:2em">
                         <div>
                             <h4>@Html.DisplayFor(modelItem => item.Tutorial.Title)</h4>
                             <div>
@@ -174,22 +166,39 @@
 
             </div>
         <!-----------------------------------------------------Right------------------------------------------------------------>
-        <div class="col-md-4 profile">
-            <div align="right">
+        <div class="col-md-2 profile">
+            <div align="left" style="padding-left:1em">
                 <h2 class="tobold">@User.Identity.GetUserName()</h2>
                 <p>@Html.DisplayNameFor(model => model.Points):   @Model.Points</p>
             </div>
         </div>
+        <div class="col-md-2 profile">
+            <div align="right">
+                <div style="padding-top:1em">
+                    <a href="@Url.Action("Create", "Tutorials")" class="btn btn-success">
+                        Add a Tutorial
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div style="padding-top:1em">
+                    <a href="@Url.Action("Create", "Quiz")" class="btn btn-success">
+                        Add a Challenge
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        <div class="col-md-4 profile" align="left">
-            <div>
+
+        <div class="col-md-4 profile" >
+            <div align="left" style="padding-left:1em;">
                 <p>This is your Dashboard. Here you can create and publish tutorials and code challenges, add collaborators to your projects,
                 see how your projects are being rated by users, and more.</p>
             </div>
         </div>
 
         <div class="col-md-4 profile">
-            <div align="left">
+            <div align="left" style="padding-left:1em;">
                 <pre style="background-color: #282b2e"><code class="python">def Greet(name):
     print("Welcome to Tutorial Hub, {}.".format(name))
                    

@@ -93,15 +93,16 @@
 
 
 
-    <div class="col-md-4 profile" >
-        <div align="right">
+    <div class="col-md-2 profile" >
+        <div align="left" style="padding-left:1em;">
             <h2 class="tobold">@Model.CurrentUser.UserName </h2>
             <p>@Html.DisplayNameFor(model => model.CurrentUser.Points): <strong>@Html.DisplayFor(model => model.CurrentUser.Points)</strong></p>
             <p>@Html.DisplayNameFor(model => model.CurrentUser.CompletedTutorialsCount): <strong>@Html.DisplayFor(model => model.CurrentUser.CompletedTutorialsCount) </strong></p>
         </div>
     </div>
-    <div class="col-md-4 profile" align="right" >
-        <div >
+
+    <div class="col-md-2 profile">
+        <div align="right" style="padding-top:1em;">
             <a href="@Url.Action("Create", "Paths")" class="btn btn-success">
                 Create a Path
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -109,14 +110,14 @@
         </div>
     </div>
 
-        <div class="col-md-4 profile" align="right">
-            <div>
+        <div class="col-md-4 profile" >
+            <div align="left" style="padding-left:1em;">
                 <p>This is your Dashboard. Here you'll find links to create custom paths that you can publish 
                 publicly when they're ready.</p>
             </div>
         </div>
         <div class="col-md-4 profile" >
-                <div align="left">
+                <div align="left" style="padding-left:1em;">
                     <pre style="background-color: #282b2e"><code class="python">def Greet(name):
     print("Welcome to Tutorial Hub, {}.".format(name))
                    

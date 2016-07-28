@@ -66,6 +66,7 @@ namespace Collaborate_lrn_Py.Controllers
                     DisplayedCode = model.DisplayedCode,
                     ExpectedInput = model.ExpectedInput,
                     ExpectedOutput = model.ExpectedOutput,
+                    ErrorMessage = model.ErrorMessage,
                     Answer = model.Answer
                 };
                 db.Quiz.Add(quiz);
@@ -165,7 +166,7 @@ namespace Collaborate_lrn_Py.Controllers
                     }
                     else
                     {
-                        ViewBag.Message = "Something may be wrong with your input. Try again.";
+                        ViewBag.Message = "Bummer! Something may be wrong with your input.\r\n" + quiz.ErrorMessage;
                     }
                 }
                 catch (NullReferenceException e)

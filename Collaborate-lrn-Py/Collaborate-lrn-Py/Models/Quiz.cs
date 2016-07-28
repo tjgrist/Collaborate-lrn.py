@@ -27,6 +27,9 @@ namespace Collaborate_lrn_Py.Models
         [Display(Name = "Desired output of Student's code:")]
         public string ExpectedOutput { get; set; }
 
+        [Display(Name = "Error Message")]
+        public string ErrorMessage { get; set; }
+
         public string Answer { get; set; }
 
         [ForeignKey("Educator")]

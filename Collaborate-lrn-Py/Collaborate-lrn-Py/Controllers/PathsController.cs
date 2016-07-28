@@ -125,7 +125,7 @@ namespace Collaborate_lrn_Py.Controllers
                 selectedPath.Tutorials.Add(tutorial);
                 db.Entry(currentUser).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Profile");
+                return RedirectToAction("Index", "Tutorials");
             }            
             ViewData["PathSelection"] = new SelectList(currentUser.Paths.ToList(), "PathName", "PathName");
             return View(model);

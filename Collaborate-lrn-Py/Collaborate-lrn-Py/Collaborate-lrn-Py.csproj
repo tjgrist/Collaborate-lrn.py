@@ -556,6 +556,10 @@
     <Compile Include="Migrations\201607262215174_add notification migrations.Designer.cs">
       <DependentUpon>201607262215174_add notification migrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607280243338_error message .cs" />
+    <Compile Include="Migrations\201607280243338_error message .Designer.cs">
+      <DependentUpon>201607280243338_error message .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CollaborateViewModel.cs" />
@@ -609,6 +613,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\collaborate.jpg" />
     <Content Include="images\python.png" />
+    <Content Include="images\collab.png" />
+    <Content Include="images\take.png" />
     <Content Include="images\whitestar.gif" />
     <Content Include="images\yellowstar.gif" />
     <Content Include="Scripts\bootstrap.js" />
@@ -718,6 +724,7 @@
     <Content Include="Views\Profile\_Dash.cshtml" />
     <Content Include="Views\Shared\_ProfileLayout.cshtml" />
     <Content Include="Views\Tutorials\Error.cshtml" />
+    <Content Include="Views\Quiz\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -831,6 +838,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607262215174_add notification migrations.resx">
       <DependentUpon>201607262215174_add notification migrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607280243338_error message .resx">
+      <DependentUpon>201607280243338_error message .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
