@@ -111,10 +111,13 @@
 
             request.done(function (data) {
                 if (data.toString().includes("done")){
-                    $("#codecheck").text(data).removeClass("alert alert-danger").addClass("alert alert-success");
+                    $("#codecheck").text(data).removeClass("alert alert-warning").removeClass("alert alert-danger").addClass("alert alert-success");
+                }
+                else if (data.toString().includes("Object")){
+                    $("#codecheck").text(data).removeClass("alert alert-danger").removeClass("alert alert-success").addClass("alert alert-warning");
                 }
                 else{
-                    $("#codecheck").text(data).removeClass("alert alert-success").addClass("alert alert-danger");
+                    $("#codecheck").text(data).removeClass("alert alert-success").removeClass("alert alert-danger").addClass("alert alert-danger");
                     setTimeOut(function(){ location.reload(); }, 3000);
                     location.reload();
                 }
@@ -146,12 +149,12 @@
         });
         myPromise.then(function (mod) {
             console.log('success');
-            $("#result").html("Your code looks good. Is it the right answer?").removeClass("alert alert-danger").addClass("alert alert-default").fadeOut(5000);
+            $("#result").html("Your code looks good. Is it the right answer?").removeClass("alert alert-danger").addClass("alert alert-default").fadeOut(8000);
             $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");;
         },
             function (err) {
                 console.log(err.toString());
-                $("#result").html(err.toString()).removeClass("alert alert-default").addClass("alert alert-danger").fadeOut(5000);
+                $("#result").html(err.toString()).removeClass("alert alert-default").addClass("alert alert-danger").fadeOut(8000);
                 $("#codecheck").html("").removeClass("alert alert-danger").removeClass("alert alert-success");
             });
     }
