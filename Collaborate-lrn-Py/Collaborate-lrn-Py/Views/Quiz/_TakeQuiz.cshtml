@@ -33,9 +33,6 @@
                     <button type="button" class="btn btn-primary" onclick="runit()">Run</button>
                     <button type="button" class="btn btn-warning" onclick="autoGrade()">Check</button>
                     <button type="button" class="btn btn-info glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal"></button>
-                    <a href="@Url.Action("Complete", "Profile", null)" class="btn btn-success">
-                        Complete <span class="glyphicon glyphicon-ok"></span>
-                    </a>
                 </div>
             </form>
         </div>
@@ -44,6 +41,11 @@
         <div class="jumbotron">
             <pre id="output">Your Code's Output</pre>
             <div id="codecheck"></div>
+            <div id="complete" align="right">
+                <a href="@Url.Action("Complete", "Profile", null)" class="btn btn-success">
+                    Complete <span class="glyphicon glyphicon-ok"></span>
+                </a>
+            </div>
             <div id="result"></div>
         </div>
     </div>
@@ -112,6 +114,7 @@
             request.done(function (data) {
                 if (data.toString().includes("done")){
                     $("#codecheck").text(data).removeClass("alert alert-warning").removeClass("alert alert-danger").addClass("alert alert-success");
+                    $("#complete").fadeIn(2000);
                 }
                 else if (data.toString().includes("Object")){
                     $("#codecheck").text(data).removeClass("alert alert-danger").removeClass("alert alert-success").addClass("alert alert-warning");
@@ -124,6 +127,7 @@
             });
         }
     }
+    $("#complete").hide();
 </script>
 
 <script>
